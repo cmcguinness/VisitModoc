@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+
+{% block title %}Where to Eat - Visit Modoc County{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="hero-section" style="background-image: url('{{ url_for('static', filename='Modoc_County_Courthouse,_Alturas,_California_(218926125).jpg') }}'); height: 400px;">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Where to Eat</h1>
+        <p class="hero-subtitle">Local flavors and hearty meals</p>
+    </div>
+</div>
+
+<!-- Main Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto text-center">
+                <p class="lead">Modoc County offers authentic small-town dining experiences. From classic American fare to Mexican cuisine, you'll find hearty, home-style cooking that fuels your adventures.</p>
+            </div>
+        </div>
+
+        <!-- Alturas Dining -->
+        <div class="mb-5">
+            <h2 class="section-title">Dining in Alturas</h2>
+            <p class="mb-4">As the county seat, Alturas has the most dining options in Modoc County:</p>
+
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">American & Steakhouses</h5>
+                            <ul>
+                                <li><strong>Niles Hotel & Saloon</strong> - Historic saloon with steaks and burgers</li>
+                                <li><strong>Brass Rail</strong> - Local favorite for steaks and comfort food</li>
+                                <li><strong>Johnny's</strong> - Family dining and American classics</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Mexican Food</h5>
+                            <ul>
+                                <li><strong>Los Potrillos</strong> - Authentic Mexican cuisine</li>
+                                <li><strong>El Tepeyac</strong> - Traditional Mexican fare</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Breakfast & Cafes</h5>
+                            <ul>
+                                <li><strong>Brass Rail</strong> - Breakfast and coffee</li>
+                                <li><strong>Nipa's California Cuisine</strong> - California-style breakfast and lunch</li>
+                                <li>Various coffee shops downtown</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza & Fast Food</h5>
+                            <ul>
+                                <li><strong>Pizza chains</strong> - Delivery and dine-in</li>
+                                <li><strong>Fast food</strong> - McDonald's, Subway</li>
+                                <li><strong>Chinese food</strong> - Local Chinese restaurant</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <a href="https://www.google.com/maps/search/restaurants+in+alturas+ca" target="_blank" class="btn btn-outline-primary">Search Restaurants in Alturas</a>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Other Towns -->
+        <div class="mb-5">
+            <h2 class="section-title">Dining in Other Communities</h2>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Cedarville</h4>
+                            <p>Limited dining options in this small town:</p>
+                            <ul>
+                                <li><strong>Country Hearth Restaurant</strong> - Home cooking, breakfast and lunch</li>
+                                <li><strong>Surprise Valley Hot Springs</strong> - May offer meals for guests</li>
+                                <li>Small grocery store for supplies</li>
+                            </ul>
+                            <p class="text-muted"><em>Call ahead to confirm hours - some establishments have limited schedules.</em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Other Small Towns</h4>
+                            <p>Very limited dining in smaller communities:</p>
+                            <ul>
+                                <li><strong>Adin</strong> - Small cafe (seasonal, call ahead)</li>
+                                <li><strong>Canby</strong> - Limited options</li>
+                                <li><strong>Fort Bidwell</strong> - Very limited</li>
+                            </ul>
+                            <div class="alert alert-warning mt-3" role="alert">
+                                <strong>Pro Tip:</strong> Stock up on snacks and supplies in Alturas before heading to remote areas.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Groceries & Supplies -->
+        <div class="mb-5">
+            <h2 class="section-title">Groceries & Supplies</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Alturas</h5>
+                            <ul>
+                                <li><strong>Grocery stores</strong> - Full-service supermarkets</li>
+                                <li><strong>Hardware stores</strong> - Camping and outdoor supplies</li>
+                                <li><strong>Gas stations</strong> - Convenience items</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Cedarville</h5>
+                            <ul>
+                                <li>Small grocery store</li>
+                                <li>Gas station with basics</li>
+                                <li>Limited selection</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Other Areas</h5>
+                            <ul>
+                                <li>Very limited or no services</li>
+                                <li>Plan ahead and bring supplies</li>
+                                <li>Nearest full services may be hours away</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dining Tips -->
+        <div class="bg-light p-4 rounded">
+            <h3 class="mb-3">Dining Tips for Visitors</h3>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5>Limited Hours</h5>
+                    <p>Many restaurants close early (8-9 PM) and some are closed on Sundays or Mondays. Call ahead to confirm hours, especially in smaller towns.</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Cash Recommended</h5>
+                    <p>While most places accept cards, some smaller establishments may be cash-only. ATMs are available in Alturas.</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Bring Snacks</h5>
+                    <p>If you're exploring remote areas, pack food and water. Services can be sparse, and you may be hours from the nearest restaurant.</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Local Flavor</h5>
+                    <p>Don't expect fancy cuisine - you'll find honest, hearty food that reflects the ranching and rural character of the county.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+
+{% block title %}Plan Your Visit - Visit Modoc County{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="hero-section" style="background-image: url('{{ url_for('static', filename='Modoc-NF-01.jpg') }}'); height: 400px;">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Plan Your Visit</h1>
+        <p class="hero-subtitle">Everything you need to know before you go</p>
+    </div>
+</div>
+
+<!-- Main Content -->
+<section class="py-5">
+    <div class="container">
+        <!-- Getting Here -->
+        <div class="mb-5">
+            <h2 class="section-title">Getting Here</h2>
+            <p class="lead">Modoc County is located in the far northeast corner of California, bordering Oregon and Nevada.</p>
+
+            <div class="row g-4 mt-4">
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">By Car</h4>
+                            <p><strong>From the Bay Area (San Francisco):</strong> ~6 hours (350+ miles) via I-80 and US-395 or CA-299</p>
+                            <p><strong>From Sacramento:</strong> ~4.5 hours (250+ miles) via US-395 or CA-299</p>
+                            <p><strong>From Reno, NV:</strong> ~3 hours (150+ miles) via US-395 north</p>
+                            <p><strong>From Medford, OR:</strong> ~3.5 hours via OR-140</p>
+                            <p class="mt-3"><strong>Main Highways:</strong></p>
+                            <ul>
+                                <li>US-395 (north-south, main route)</li>
+                                <li>CA-299 (east-west through Alturas)</li>
+                                <li>CA-139 (north to Oregon)</li>
+                            </ul>
+                            <div class="alert alert-info mt-3">
+                                <strong>Winter Travel:</strong> Roads can close due to snow. Check conditions at <a href="https://roads.dot.ca.gov/" target="_blank">Caltrans QuickMap</a> before traveling.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">By Air</h4>
+                            <p><strong>Nearest Airports:</strong></p>
+                            <ul>
+                                <li><strong>Reno-Tahoe International (RNO)</strong> - 150 miles, major airport with car rentals</li>
+                                <li><strong>Redding Municipal (RDD)</strong> - 180 miles, regional flights</li>
+                                <li><strong>Klamath Falls, OR (LMT)</strong> - 120 miles, small regional airport</li>
+                            </ul>
+                            <p class="mt-3"><strong>Modoc County Airport (Alturas):</strong> Small general aviation airport for private planes only.</p>
+
+                            <h4 class="mt-4">Car Rental Required</h4>
+                            <p>You'll need a vehicle to explore Modoc County. Rent from Reno or Redding airports.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d778803.5840374785!2d-121.2299!3d41.4545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54cd1b08b4a7ee79%3A0x9bd49b7e7c7e0e9c!2sModoc%20County%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" class="rounded shadow"></iframe>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- When to Visit -->
+        <div class="mb-5">
+            <h2 class="section-title">When to Visit</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Spring (April-May)</h4>
+                            <p><strong>Weather:</strong> Cool to mild, 40-70°F. Can be wet.</p>
+                            <p><strong>Highlights:</strong></p>
+                            <ul>
+                                <li>Wildflowers blooming</li>
+                                <li>Migratory birds returning</li>
+                                <li>Fishing season opens</li>
+                                <li>Fewer crowds</li>
+                            </ul>
+                            <p><strong>Challenges:</strong> Muddy roads, lingering snow at higher elevations</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Summer (June-August)</h4>
+                            <p><strong>Weather:</strong> Warm to hot days, 75-90°F. Cool nights.</p>
+                            <p><strong>Highlights:</strong></p>
+                            <ul>
+                                <li>Best hiking and camping weather</li>
+                                <li>All roads and trails accessible</li>
+                                <li>Long daylight hours</li>
+                                <li>County Fair in August</li>
+                            </ul>
+                            <p><strong>Challenges:</strong> Can be hot, fire season, busier (though still quiet by most standards)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Fall (September-October)</h4>
+                            <p><strong>Weather:</strong> Mild days, cool nights, 50-75°F</p>
+                            <p><strong>Highlights:</strong></p>
+                            <ul>
+                                <li>Peak hunting season</li>
+                                <li>Stunning fall colors</li>
+                                <li>Comfortable temperatures</li>
+                                <li>Excellent wildlife viewing</li>
+                            </ul>
+                            <p><strong>Challenges:</strong> Lodging fills up during hunting season (book early)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Winter (November-March)</h4>
+                            <p><strong>Weather:</strong> Cold, snowy, 20-45°F</p>
+                            <p><strong>Highlights:</strong></p>
+                            <ul>
+                                <li>Snowmobiling and cross-country skiing</li>
+                                <li>Bald eagle viewing</li>
+                                <li>Peaceful, uncrowded</li>
+                                <li>Winter photography</li>
+                            </ul>
+                            <p><strong>Challenges:</strong> Road closures, limited services, extreme cold, 4WD required</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- What to Bring -->
+        <div class="mb-5">
+            <h2 class="section-title">What to Bring</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Essential Gear</h4>
+                            <ul>
+                                <li><strong>Vehicle:</strong> Reliable car or truck. 4WD recommended for backcountry.</li>
+                                <li><strong>Navigation:</strong> GPS, paper maps (cell service is limited)</li>
+                                <li><strong>Water:</strong> Bring plenty - sources can be scarce</li>
+                                <li><strong>Fuel:</strong> Fill up in Alturas - gas stations are few and far between</li>
+                                <li><strong>First Aid Kit:</strong> You may be hours from medical help</li>
+                                <li><strong>Emergency Supplies:</strong> Blanket, flashlight, extra food</li>
+                                <li><strong>Tire Repair:</strong> Spare tire, jack, tire repair kit</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Seasonal Items</h4>
+                            <p><strong>Summer:</strong></p>
+                            <ul>
+                                <li>Sunscreen and hat</li>
+                                <li>Insect repellent</li>
+                                <li>Light layers (temperatures vary)</li>
+                            </ul>
+                            <p><strong>Winter:</strong></p>
+                            <ul>
+                                <li>Chains or 4WD vehicle</li>
+                                <li>Warm clothing, gloves, boots</li>
+                                <li>Ice scraper, shovel</li>
+                                <li>Extra blankets</li>
+                            </ul>
+                            <p><strong>All Seasons:</strong></p>
+                            <ul>
+                                <li>Layered clothing (weather changes quickly)</li>
+                                <li>Rain gear</li>
+                                <li>Sturdy hiking boots</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Visitor Information -->
+        <div class="mb-5">
+            <h2 class="section-title">Visitor Information</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Important Contacts</h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><strong>Modoc County Chamber of Commerce</strong><br>
+                                    <a href="tel:530-233-4434">530-233-4434</a></li>
+                                <li class="mb-2"><strong>Modoc National Forest</strong><br>
+                                    <a href="tel:530-233-5811">530-233-5811</a><br>
+                                    <a href="https://www.fs.usda.gov/modoc" target="_blank">fs.usda.gov/modoc</a></li>
+                                <li class="mb-2"><strong>Emergency Services</strong><br>
+                                    911 (limited cell coverage)</li>
+                                <li class="mb-2"><strong>Road Conditions</strong><br>
+                                    <a href="https://roads.dot.ca.gov" target="_blank">roads.dot.ca.gov</a><br>
+                                    1-800-427-7623</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Services & Amenities</h4>
+                            <ul>
+                                <li><strong>Medical:</strong> Modoc Medical Center in Alturas</li>
+                                <li><strong>Gas Stations:</strong> Primarily in Alturas and Cedarville</li>
+                                <li><strong>ATMs:</strong> Available in Alturas</li>
+                                <li><strong>Cell Service:</strong> Limited or none in remote areas</li>
+                                <li><strong>Internet:</strong> Available at hotels, some cafes</li>
+                                <li><strong>Post Office:</strong> In Alturas and Cedarville</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Safety Tips -->
+        <div class="bg-light p-4 rounded">
+            <h3 class="mb-3">Safety & Etiquette</h3>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h5>Wildlife Safety</h5>
+                    <p>Keep distance from wild animals. Store food properly when camping. Be aware of rattlesnakes in warm months.</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Leave No Trace</h5>
+                    <p>Pack out all trash. Respect private property and cattle gates. Stay on designated roads and trails.</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Fire Safety</h5>
+                    <p>Check fire restrictions before lighting fires. Fire season (summer/fall) may prohibit campfires. Always fully extinguish fires.</p>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <h5>Be Prepared</h5>
+                    <p>This is remote country. Tell someone your plans. Carry emergency supplies. Don't rely on cell phones for navigation or emergencies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

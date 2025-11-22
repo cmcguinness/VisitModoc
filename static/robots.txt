@@ -1,0 +1,10 @@
+# robots.txt for Visit Modoc County
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://visit-modoc.com/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

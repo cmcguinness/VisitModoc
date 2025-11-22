@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Visit Modoc County - Northeast California's Hidden Gem{% endblock %}
+
+{% block meta_description %}Discover Modoc County, California - Northeast California's untouched wilderness. Experience world-class fishing, pristine hiking trails, abundant wildlife, and authentic small-town charm in California's best-kept secret.{% endblock %}
+
+{% block canonical %}https://visit-modoc.com/{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section" style="background-image: url('{{ url_for('static', filename='modoc_nf_valley_view.jpg') }}');">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Discover Modoc County</h1>
+        <p class="hero-subtitle">Northeast California's Untouched Wilderness</p>
+        <a href="#featured" class="btn btn-primary-custom btn-lg">Explore Now</a>
+    </div>
+</div>
+
+<!-- Introduction Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="section-title">Welcome to Modoc County</h2>
+                <p class="lead">Experience the authentic rural charm of Northeast California, where wide-open spaces, pristine wilderness, and abundant wildlife await.</p>
+                <p>Modoc County offers visitors a unique opportunity to disconnect from the busy world and reconnect with nature. From the volcanic landscapes of Lava Beds National Monument to the serene beauty of our lakes and forests, there's adventure around every corner.</p>
+            </div>
+            <div class="col-lg-6">
+                <img src="{{ url_for('static', filename='Modoc-NF-01.jpg') }}" alt="Scenic view of Modoc National Forest with mountains and wilderness landscape" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Activities Section -->
+<section id="featured" class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Things to Do</h2>
+            <p class="section-subtitle">Explore outdoor adventures and unique experiences</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ url_for('static', filename='patterson_lake_modoc.jpg') }}" class="card-img-top" alt="Fishing">
+                    <div class="card-body">
+                        <h5 class="card-title">Fishing & Water Sports</h5>
+                        <p class="card-text">Cast your line in pristine lakes and streams. Modoc County is home to excellent trout fishing, with numerous reservoirs and backcountry streams.</p>
+                        <a href="/things-to-do#fishing" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ url_for('static', filename='modoc_nf_valley_view.jpg') }}" class="card-img-top" alt="Hiking">
+                    <div class="card-body">
+                        <h5 class="card-title">Hiking & Backpacking</h5>
+                        <p class="card-text">Trek through Modoc National Forest's 1.6 million acres of wilderness. Discover remote trails, volcanic formations, and breathtaking vistas.</p>
+                        <a href="/things-to-do#hiking" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ url_for('static', filename='Modoc-NF-01.jpg') }}" class="card-img-top" alt="Wildlife">
+                    <div class="card-body">
+                        <h5 class="card-title">Wildlife Viewing</h5>
+                        <p class="card-text">Observe wild horses, pronghorn antelope, bald eagles, and hundreds of bird species in their natural habitat across diverse ecosystems.</p>
+                        <a href="/things-to-do#wildlife" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Cities Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title">Places to Visit</h2>
+            <p class="section-subtitle">Explore our charming communities</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <img src="{{ url_for('static', filename='Modoc_County_Courthouse,_Alturas,_California_(218926125).jpg') }}" class="card-img-top" alt="Alturas">
+                    <div class="card-body">
+                        <h5 class="card-title">Alturas</h5>
+                        <p class="card-text">The county seat and largest town, Alturas offers historic downtown shops, the Modoc County Museum, and serves as a gateway to outdoor adventures. Visit the historic courthouse and explore local culture.</p>
+                        <a href="/places-to-visit#alturas" class="btn btn-outline-primary">Discover Alturas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <img src="{{ url_for('static', filename='modoc_nf_valley_view.jpg') }}" class="card-img-top" alt="Cedarville">
+                    <div class="card-body">
+                        <h5 class="card-title">Cedarville</h5>
+                        <p class="card-text">A picturesque small town nestled in Surprise Valley. Known for its hot springs, ranching heritage, and proximity to the Warner Mountains. Experience authentic small-town California.</p>
+                        <a href="/places-to-visit#cedarville" class="btn btn-outline-primary">Discover Cedarville</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h2 class="section-title">Plan Your Visit</h2>
+                <p class="lead mb-4">Ready to explore Modoc County? Get all the information you need to plan your perfect getaway.</p>
+                <a href="/plan-your-visit" class="btn btn-primary-custom btn-lg me-3">Getting Here</a>
+                <a href="/where-to-stay" class="btn btn-outline-secondary btn-lg">Find Lodging</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

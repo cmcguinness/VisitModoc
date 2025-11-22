@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block title %}Technical Details - Visit Modoc County{% endblock %}
+
+{% block meta_description %}Technical details about the Visit Modoc County website, including photo credits, licensing information, and contact details.{% endblock %}
+
+{% block canonical %}https://visit-modoc.com/technical-details{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="hero-section" style="background-image: url('{{ url_for('static', filename='modoc_nf_valley_view.jpg') }}'); height: 300px;">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Technical Details</h1>
+    </div>
+</div>
+
+<!-- Main Content -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <p class="lead">Hey, there, curious visitor!</p>
+
+                <p>I'm not sure what you'd like to know, but here's the dump.</p>
+
+                <h2 class="mt-5 mb-3">Technology</h2>
+                <p>This website runs on a simple Python Flask application. It does almost nothing.<br>
+                It uses Bootstrap 5 for the base styling.</p>
+
+                <p>The website was written almost entirely by Claude Code in the space of an evening.<br>
+                Honestly, it did such a good job I figure it'd be a shame not to put it on the web.</p>
+
+                <h2 class="mt-5 mb-3">Photo Credits</h2>
+                <p>The photographs on this site are:</p>
+
+                <div class="bg-light p-3 rounded mb-3">
+                    <p class="mb-1"><strong>Image:</strong> Modoc_County_Courthouse_-_Alturas_California.jpg</p>
+                    <p class="mb-1"><strong>Author:</strong> Ian Poellet</p>
+                    <p class="mb-0"><strong>License:</strong> <a href="https://commons.wikimedia.org/wiki/File:Modoc_County_Courthouse_-_Alturas_California.jpg#Licensing" target="_blank">Wikimedia Commons</a></p>
+                </div>
+
+                <div class="bg-light p-3 rounded mb-3">
+                    <p class="mb-1"><strong>Image:</strong> Modoc_County_Courthouse,_Alturas,_California_(218926125).jpg</p>
+                    <p class="mb-1"><strong>Author:</strong> Ken Lund</p>
+                    <p class="mb-0"><strong>License:</strong> <a href="https://commons.wikimedia.org/wiki/File:Modoc_County_Courthouse,_Alturas,_California_%28218926125%29.jpg#Licensing" target="_blank">Wikimedia Commons</a></p>
+                </div>
+
+                <div class="bg-light p-3 rounded mb-3">
+                    <p class="mb-1"><strong>Image:</strong> Modoc-NF-01.jpg</p>
+                    <p class="mb-1"><strong>Author:</strong> US Government (National Forest Service)</p>
+                    <p class="mb-0"><strong>License:</strong> Public Domain</p>
+                </div>
+
+                <div class="bg-light p-3 rounded mb-3">
+                    <p class="mb-1"><strong>Image:</strong> patterson_lake_modoc.jpg</p>
+                    <p class="mb-1"><strong>Author:</strong> US Government (National Forest Service)</p>
+                    <p class="mb-0"><strong>License:</strong> Public Domain</p>
+                </div>
+
+                <div class="bg-light p-3 rounded mb-3">
+                    <p class="mb-1"><strong>Image:</strong> modoc_nf_valley_view.jpg</p>
+                    <p class="mb-1"><strong>Author:</strong> US Government (BLM)</p>
+                    <p class="mb-0"><strong>License:</strong> Public Domain</p>
+                </div>
+
+                <p class="mt-4">Apart from the images from Wikimedia, this website is in the public domain (see the footer for precise details). Do what you want with it.</p>
+
+                <h2 class="mt-5 mb-3">Contact</h2>
+                <p>If you want to contact me, send an email to:</p>
+                <p class="lead">admin (at) visit-modoc.com</p>
+                <p>It'll come right to me.</p>
+
+                <p>If there's something wrong, please, let me know and I will fix it as fast as I can.</p>
+
+                <p>Want to take over the website because you'll do a better job than I can? Let's talk!</p>
+
+                <h2 class="mt-5 mb-3">Why?</h2>
+                <p>Why did I do this? Why not?</p>
+
+                <p class="mt-4">Best,</p>
+                <p><strong>Charles McGuinness</strong></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

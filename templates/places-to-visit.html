@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+
+{% block title %}Places to Visit - Visit Modoc County{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="hero-section" style="background-image: url('{{ url_for('static', filename='Modoc_County_Courthouse_-_Alturas_California.jpg') }}'); height: 400px;">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Places to Visit</h1>
+        <p class="hero-subtitle">Discover our charming communities</p>
+    </div>
+</div>
+
+<!-- Main Content -->
+<section class="py-5">
+    <div class="container">
+        <!-- Alturas -->
+        <div id="alturas" class="mb-5">
+            <div class="row align-items-center mb-4">
+                <div class="col-lg-6">
+                    <h2 class="section-title">Alturas</h2>
+                    <p class="lead">The County Seat and Gateway to Adventure</p>
+                    <p>Alturas (population ~2,800) is the largest community in Modoc County and serves as the commercial and governmental center. This charming small town offers a glimpse into rural California life while providing modern amenities for visitors.</p>
+
+                    <h4 class="mt-4">What to See & Do:</h4>
+                    <ul>
+                        <li><strong>Modoc County Historical Museum</strong> - Learn about the region's Native American heritage, pioneer history, and natural history</li>
+                        <li><strong>Historic Courthouse</strong> - Beautiful 1914 Classical Revival architecture</li>
+                        <li><strong>Downtown Shopping</strong> - Local shops, antique stores, and Western wear</li>
+                        <li><strong>Niles Hotel & Saloon</strong> - Historic landmark dating back to 1908</li>
+                    </ul>
+
+                    <h4 class="mt-4">Events:</h4>
+                    <ul>
+                        <li><strong>Modoc County Fair</strong> - August (rodeo, exhibits, carnival)</li>
+                        <li><strong>Main Street Farmers Market</strong> - Summer weekends</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ url_for('static', filename='Modoc_County_Courthouse,_Alturas,_California_(218926125).jpg') }}" alt="Alturas Courthouse" class="img-fluid rounded shadow mb-3">
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Cedarville -->
+        <div id="cedarville" class="mb-5">
+            <div class="row align-items-center mb-4">
+                <div class="col-lg-6 order-lg-2">
+                    <h2 class="section-title">Cedarville</h2>
+                    <p class="lead">Heart of Surprise Valley</p>
+                    <p>Nestled in the scenic Surprise Valley along the California-Nevada border, Cedarville (population ~500) offers a peaceful retreat with stunning mountain views and natural hot springs.</p>
+
+                    <h4 class="mt-4">What to See & Do:</h4>
+                    <ul>
+                        <li><strong>Surprise Valley Hot Springs</strong> - Natural geothermal springs for soaking</li>
+                        <li><strong>Warner Mountains</strong> - Towering peaks as a dramatic backdrop</li>
+                        <li><strong>Historic Downtown</strong> - Preserved Old West buildings</li>
+                        <li><strong>Cedarville Museum</strong> - Local history and artifacts</li>
+                    </ul>
+
+                    <h4 class="mt-4">Nearby:</h4>
+                    <ul>
+                        <li><strong>Fort Bidwell</strong> - Historic military fort and Native American community</li>
+                        <li><strong>Lake City</strong> - Tiny community at north end of Surprise Valley</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <img src="{{ url_for('static', filename='modoc_nf_valley_view.jpg') }}" alt="Surprise Valley" class="img-fluid rounded shadow mb-3">
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Other Communities -->
+        <div class="mb-5">
+            <h2 class="section-title text-center mb-4">Other Communities</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Adin</h5>
+                            <p class="card-text">Small ranching community in the southwestern part of the county. Gateway to Ash Creek Wildlife Area and excellent deer hunting territory.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Likely</h5>
+                            <p class="card-text">Tiny community near the Jess Valley and South Fork Pit River. Known for cattle ranching and proximity to wilderness areas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Canby</h5>
+                            <p class="card-text">Small town on Highway 299 with historic buildings. Stop for supplies on your way to Lava Beds National Monument.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Eagleville</h5>
+                            <p class="card-text">Remote community in Surprise Valley known for ranching and proximity to Nevada border. Stunning mountain and valley views.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Natural & Historic Sites -->
+        <div class="mb-5">
+            <h2 class="section-title text-center mb-4">Natural & Historic Sites</h2>
+
+            <div class="row g-4 mb-4">
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Modoc National Forest</h4>
+                            <p>Covering 1.6 million acres, this vast forest offers unlimited outdoor recreation. Highlights include:</p>
+                            <ul>
+                                <li>Medicine Lake Highlands - volcanic landscape</li>
+                                <li>South Warner Wilderness - pristine backcountry</li>
+                                <li>Glass Mountain - obsidian flows</li>
+                                <li>Big Sage Reservoir - remote fishing</li>
+                            </ul>
+                            <a href="https://www.fs.usda.gov/modoc" target="_blank" class="btn btn-outline-primary">Forest Service Site</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Modoc National Wildlife Refuge</h4>
+                            <p>7,000+ acres providing critical habitat for migratory birds and wildlife:</p>
+                            <ul>
+                                <li>Waterfowl viewing in spring and fall</li>
+                                <li>Pronghorn antelope year-round</li>
+                                <li>Self-guided auto tour route</li>
+                                <li>Photography opportunities</li>
+                            </ul>
+                            <a href="https://www.fws.gov/refuge/modoc" target="_blank" class="btn btn-outline-primary">Refuge Website</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Petroglyph Point</h5>
+                            <p class="card-text">Ancient rock art carved by Native Americans thousands of years ago. Located near Lava Beds National Monument.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Captain Jack's Stronghold</h5>
+                            <p class="card-text">Historic site of the Modoc War (1872-73). Self-guided trail through lava formations where Modoc people made their stand.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Devil's Garden</h5>
+                            <p class="card-text">Wild horse viewing area. Home to one of the largest herds of wild horses in the United States.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
