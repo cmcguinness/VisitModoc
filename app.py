@@ -51,6 +51,16 @@ def technical_details():
     return render_template('technical-details.html')
 
 
+@app.route('/alturas')
+def alturas():
+    return render_template('alturas.html')
+
+
+@app.route('/cedarville')
+def cedarville():
+    return render_template('cedarville.html')
+
+
 @app.route('/sitemap.xml')
 def sitemap():
     return send_from_directory('static', 'sitemap.xml')

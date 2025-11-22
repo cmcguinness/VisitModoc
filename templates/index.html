@@ -22,9 +22,9 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
-                <h2 class="section-title">Welcome to Modoc County</h2>
+                <h2 class="section-title">Welcome to Modoc County, California</h2>
                 <p class="lead">Experience the authentic rural charm of Northeast California, where wide-open spaces, pristine wilderness, and abundant wildlife await.</p>
-                <p>Modoc County offers visitors a unique opportunity to disconnect from the busy world and reconnect with nature. From the volcanic landscapes of Lava Beds National Monument to the serene beauty of our lakes and forests, there's adventure around every corner.</p>
+                <p>Modoc County, CA offers visitors a unique opportunity to disconnect from the busy world and reconnect with nature. Whether you're interested in exploring California's outdoor recreation or seeking a peaceful tourism destination, this corner of the state delivers authentic experiences. From the volcanic landscapes near Lava Beds National Monument to the serene beauty of mountain lakes and national forests, there's adventure around every corner in Modoc County.</p>
             </div>
             <div class="col-lg-6">
                 <img src="{{ url_for('static', filename='Modoc-NF-01.jpg') }}" alt="Scenic view of Modoc National Forest with mountains and wilderness landscape" class="img-fluid rounded shadow">
@@ -107,15 +107,70 @@
     </div>
 </section>
 
-<!-- Call to Action Section -->
-<section class="py-5">
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mx-auto text-center">
-                <h2 class="section-title">Plan Your Visit</h2>
-                <p class="lead mb-4">Ready to explore Modoc County? Get all the information you need to plan your perfect getaway.</p>
-                <a href="/plan-your-visit" class="btn btn-primary-custom btn-lg me-3">Getting Here</a>
-                <a href="/where-to-stay" class="btn btn-outline-secondary btn-lg">Find Lodging</a>
+            <div class="col-lg-8 mx-auto">
+                <h2 class="section-title text-center mb-4">Planning Your Visit</h2>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                Why should I visit Modoc County?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Modoc County offers something increasingly rare: genuine solitude and unspoiled wilderness. If you're seeking an escape from crowded tourist destinations, this is California's best-kept secret. With over 1.6 million acres of public lands, world-class fishing, abundant wildlife, and authentic small-town charm, it's perfect for nature lovers and outdoor enthusiasts who want to experience the West as it once was.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                What are the best things to do in Modoc County?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Top activities include fishing in pristine lakes and streams, hiking through Modoc National Forest, wildlife viewing (especially wild horses and pronghorn antelope), exploring the Warner Mountains, and visiting nearby Lava Beds National Monument. The county is also excellent for hunting, camping, photography, and stargazing thanks to minimal light pollution.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                When is the best time to visit Modoc County, CA?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Summer (June-September) offers the best weather for hiking, camping, and water activities, with warm days and cool nights. Spring brings wildflowers and excellent fishing. Fall features stunning foliage and hunting season. Winter is ideal for snowmobiling and cross-country skiing. Each season offers unique experiences, so the best time depends on your interests.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                How do I get to Modoc County?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Modoc County is located in the northeast corner of California. Most visitors drive, as the scenic journey is part of the experience. The closest commercial airports are in Redding, CA (2.5 hours) and Reno, NV (3 hours). From major cities: San Francisco is about 6 hours, Sacramento 4.5 hours, and Portland 5 hours. <a href="/plan-your-visit">View detailed directions</a>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="text-center mt-5">
+                    <h3 class="mb-3">Ready to Explore Modoc County?</h3>
+                    <p class="lead mb-4">Get all the information you need to plan your perfect getaway.</p>
+                    <a href="/plan-your-visit" class="btn btn-primary-custom btn-lg me-3">Getting Here</a>
+                    <a href="/where-to-stay" class="btn btn-outline-secondary btn-lg">Find Lodging</a>
+                </div>
             </div>
         </div>
     </div>

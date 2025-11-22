@@ -1,20 +1,31 @@
 {% extends "base.html" %}
 
-{% block title %}Things to Do - Visit Modoc County{% endblock %}
+{% block title %}Things to Do in Modoc County, California - Outdoor Activities & Adventures{% endblock %}
+
+{% block meta_description %}Explore outdoor activities and adventures in Modoc County, California. Discover world-class fishing, scenic hiking trails, wildlife viewing, hunting, camping, and unique experiences in Northeast California's wilderness.{% endblock %}
+
+{% block canonical %}https://visit-modoc.com/things-to-do{% endblock %}
 
 {% block content %}
 <!-- Page Header -->
 <div class="hero-section" style="background-image: url('{{ url_for('static', filename='modoc_nf_valley_view.jpg') }}'); height: 400px;">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1 class="hero-title">Things to Do</h1>
-        <p class="hero-subtitle">Outdoor adventures and unique experiences</p>
+        <h1 class="hero-title">Things to Do in Modoc County</h1>
+        <p class="hero-subtitle">Outdoor adventures and unique experiences in Northeast California</p>
     </div>
 </div>
 
 <!-- Main Content -->
 <section class="py-5">
     <div class="container">
+        <!-- Introduction -->
+        <div class="row mb-5">
+            <div class="col-lg-10 mx-auto text-center">
+                <p class="lead">Whether you're planning a self-guided tour of Modoc County's natural wonders or seeking outdoor adventures off the beaten path, you'll find endless activities in this pristine corner of California. From fishing legendary lakes to exploring vast wilderness areas, here's your guide to experiencing the best of Modoc County.</p>
+            </div>
+        </div>
+
         <!-- Fishing & Water Sports -->
         <div id="fishing" class="mb-5">
             <div class="row align-items-center mb-4">
@@ -136,9 +147,10 @@
             </div>
         </div>
 
-        <!-- Nearby Attractions -->
+        <!-- Nearby Attractions & Tours -->
         <div class="bg-light p-4 rounded">
-            <h3 class="mb-3">Nearby Attractions</h3>
+            <h3 class="mb-3">Expand Your Tour: Nearby Attractions</h3>
+            <p class="mb-4">Extend your Modoc County adventure with these nearby destinations, perfect for multi-day tours of the region.</p>
             <div class="row">
                 <div class="col-md-6">
                     <h5>Lava Beds National Monument</h5>

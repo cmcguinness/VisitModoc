@@ -1,20 +1,31 @@
 {% extends "base.html" %}
 
-{% block title %}Places to Visit - Visit Modoc County{% endblock %}
+{% block title %}Places to Visit in Modoc County, CA - Towns, Sites & Attractions{% endblock %}
+
+{% block meta_description %}Discover charming towns and scenic destinations in Modoc County, California. Tour Alturas, explore Cedarville's hot springs, visit the Modoc National Wildlife Refuge, and experience authentic small-town California tourism.{% endblock %}
+
+{% block canonical %}https://visit-modoc.com/places-to-visit{% endblock %}
 
 {% block content %}
 <!-- Page Header -->
 <div class="hero-section" style="background-image: url('{{ url_for('static', filename='Modoc_County_Courthouse_-_Alturas_California.jpg') }}'); height: 400px;">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1 class="hero-title">Places to Visit</h1>
-        <p class="hero-subtitle">Discover our charming communities</p>
+        <h1 class="hero-title">Places to Visit in Modoc County</h1>
+        <p class="hero-subtitle">Tour charming towns and discover natural wonders</p>
     </div>
 </div>
 
 <!-- Main Content -->
 <section class="py-5">
     <div class="container">
+        <!-- Introduction -->
+        <div class="row mb-5">
+            <div class="col-lg-10 mx-auto text-center">
+                <p class="lead">Plan your Modoc County, California tour by exploring our authentic small towns, natural attractions, and historic sites. From the county seat of Alturas to the remote beauty of Surprise Valley, each destination offers unique insights into rural California life and outdoor recreation.</p>
+            </div>
+        </div>
+
         <!-- Alturas -->
         <div id="alturas" class="mb-5">
             <div class="row align-items-center mb-4">
@@ -36,6 +47,10 @@
                         <li><strong>Modoc County Fair</strong> - August (rodeo, exhibits, carnival)</li>
                         <li><strong>Main Street Farmers Market</strong> - Summer weekends</li>
                     </ul>
+                    <p class="mt-4">
+                        <a href="/alturas" class="btn btn-primary">Complete Alturas Guide</a>
+                        <span class="text-muted ms-2">Lodging, dining, shopping & more</span>
+                    </p>
                 </div>
                 <div class="col-lg-6">
                     <img src="{{ url_for('static', filename='Modoc_County_Courthouse,_Alturas,_California_(218926125).jpg') }}" alt="Alturas Courthouse" class="img-fluid rounded shadow mb-3">
@@ -66,6 +81,10 @@
                         <li><strong>Fort Bidwell</strong> - Historic military fort and Native American community</li>
                         <li><strong>Lake City</strong> - Tiny community at north end of Surprise Valley</li>
                     </ul>
+                    <p class="mt-4">
+                        <a href="/cedarville" class="btn btn-primary">Complete Cedarville Guide</a>
+                        <span class="text-muted ms-2">Hot springs, lodging, dining & more</span>
+                    </p>
                 </div>
                 <div class="col-lg-6 order-lg-1">
                     <img src="{{ url_for('static', filename='modoc_nf_valley_view.jpg') }}" alt="Surprise Valley" class="img-fluid rounded shadow mb-3">
@@ -108,6 +127,30 @@
                         <div class="card-body">
                             <h5 class="card-title">Eagleville</h5>
                             <p class="card-text">Remote community in Surprise Valley known for ranching and proximity to Nevada border. Stunning mountain and valley views.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">New Pine Creek</h5>
+                            <p class="card-text">Unique border town straddling the California-Oregon state line. Home to a fascinating 1980s border dispute that created an identity crisis for the settlement. <a href="/bartells-backroads#new-pine-creek">Discover the border dispute</a> on Bartell's Backroads.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Fort Bidwell</h5>
+                            <p class="card-text">California's northeastern-most town, featuring a historic military fort and Native American community. Known as one of the most remote places in the state. <a href="/bartells-backroads#fort-bidwell">Explore the loneliest town</a> on Bartell's Backroads.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Surprise Valley</h5>
+                            <p class="card-text">Scenic valley along the California-Nevada border, home to Cedarville, Fort Bidwell, and other small communities. Famous for natural hot springs and stunning Warner Mountain views. <a href="/bartells-backroads#surprise-valley">Discover the valley</a> on Bartell's Backroads.</p>
                         </div>
                     </div>
                 </div>
