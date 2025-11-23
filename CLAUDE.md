@@ -112,6 +112,7 @@ Uses `gunicorn` via Procfile for deployment on Railway.
 - Links need descriptive text (not "click here" or "learn more")
 - Color contrast ratio: 8.5:1 (AAA level)
 - Skip links present for keyboard navigation
+- Reduced motion support via `prefers-reduced-motion` media query
 
 **SEO:**
 - Each page has unique meta description

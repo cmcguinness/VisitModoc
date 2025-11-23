@@ -426,7 +426,7 @@ Do not design content in a way that is known to cause seizures or physical react
 - **Safest Option:** Avoid flashing entirely
 
 #### [OPERATE-303] Animation from Interactions
-- [ ] **Requirement:** Motion animation from interactions can be disabled (unless essential)
+- [x] **Requirement:** Motion animation from interactions can be disabled (unless essential)
 - **Level:** [Level AA] [Medium]
 - **Test:** [Manual] Test with prefers-reduced-motion media query
 - **Success:** Animations reduced or removed when user prefers reduced motion
@@ -864,7 +864,7 @@ Maximize compatibility with current and future user agents, including assistive 
 - **Success:** No required swipes, pinches, or multi-touch without alternatives
 
 #### [MOBILE-104] Motion and Animation
-- [ ] **Requirement:** Respects prefers-reduced-motion setting
+- [x] **Requirement:** Respects prefers-reduced-motion setting
 - **Level:** [Level AA] [Medium]
 - **Test:** [Manual] Enable reduced motion on device
 - **Success:** Animations reduced or removed

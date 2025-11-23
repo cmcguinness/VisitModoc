@@ -261,6 +261,27 @@
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
             }
+
+            /* Disable transforms for users who prefer reduced motion */
+            .btn-primary-custom:hover,
+            .card:hover {
+                transform: none !important;
+            }
+
+            /* Remove backdrop filter blur effect */
+            .navbar {
+                backdrop-filter: none !important;
+                background-color: rgb(44, 85, 48) !important;
+            }
+
+            /* Reduce shadow effects on hover to provide visual feedback without motion */
+            .btn-primary-custom:hover {
+                box-shadow: 0 2px 8px rgba(44, 85, 48, 0.3) !important;
+            }
+
+            .card:hover {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+            }
         }
     </style>
 
