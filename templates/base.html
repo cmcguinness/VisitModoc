@@ -174,13 +174,13 @@
         }
 
         footer a {
-            color: rgba(255, 255, 255, 0.8);
+            color: #ffffff;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         footer a:hover {
-            color: white;
+            color: #e0e0e0;
         }
 
         @media (max-width: 768px) {
@@ -195,6 +195,42 @@
             .hero-section {
                 height: 400px;
             }
+        }
+
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--modoc-accent);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 100;
+            border-radius: 0 0 4px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Focus Indicators for Accessibility */
+        a:focus-visible,
+        button:focus-visible,
+        .nav-link:focus-visible,
+        .btn:focus-visible {
+            outline: 3px solid var(--modoc-accent);
+            outline-offset: 2px;
+        }
+
+        .nav-link:focus-visible {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-item:focus-visible {
+            outline: 2px solid var(--modoc-primary);
+            outline-offset: -2px;
         }
     </style>
 
@@ -234,6 +270,9 @@
     {% block extra_schema %}{% endblock %}
 </head>
 <body>
+    <!-- Skip Links for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
@@ -280,7 +319,9 @@
     </nav>
 
     <!-- Main Content -->
-    {% block content %}{% endblock %}
+    <main id="main-content">
+        {% block content %}{% endblock %}
+    </main>
 
     <!-- Footer -->
     <footer>

@@ -2,13 +2,13 @@
 
 {% block title %}Places to Visit in Modoc County, CA - Towns, Sites & Attractions{% endblock %}
 
-{% block meta_description %}Discover charming towns and scenic destinations in Modoc County, California. Tour Alturas, explore Cedarville's hot springs, visit the Modoc National Wildlife Refuge, and experience authentic small-town California tourism.{% endblock %}
+{% block meta_description %}Discover charming towns and scenic destinations in Modoc County, California. Tour Alturas, explore Cedarville's hot springs, visit Lava Beds National Monument's volcanic caves, and experience authentic small-town California tourism.{% endblock %}
 
 {% block canonical %}https://visit-modoc.com/places-to-visit{% endblock %}
 
 {% block content %}
 <!-- Page Header -->
-<div class="hero-section" style="background-image: url('{{ url_for('static', filename='Modoc_County_Courthouse_-_Alturas_California.jpg') }}'); height: 400px;">
+<div class="hero-section" style="background-image: url('{{ url_for('static', filename='Modoc_County_Courthouse_-_Alturas_California.jpg') }}'); height: 400px;" role="img" aria-label="The neoclassical Modoc County Courthouse, opulent for a little farming community in far-northeastern California, opened in Alturus in 1914">
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <h1 class="hero-title">Places to Visit in Modoc County</h1>
@@ -53,7 +53,7 @@
                     </p>
                 </div>
                 <div class="col-lg-6">
-                    <img src="{{ url_for('static', filename='Modoc_County_Courthouse,_Alturas,_California_(218926125).jpg') }}" alt="Alturas Courthouse" class="img-fluid rounded shadow mb-3">
+                    <img src="{{ url_for('static', filename='Modoc_County_Courthouse,_Alturas,_California_(218926125).jpg') }}" alt="The neoclassical Modoc County Courthouse, opulent for a little farming community in far-northeastern California, opened in Alturus in 1914" class="img-fluid rounded shadow mb-3">
                 </div>
             </div>
         </div>
@@ -87,7 +87,63 @@
                     </p>
                 </div>
                 <div class="col-lg-6 order-lg-1">
-                    <img src="{{ url_for('static', filename='modoc_nf_valley_view.jpg') }}" alt="Surprise Valley" class="img-fluid rounded shadow mb-3">
+                    <img src="{{ url_for('static', filename='CresslerAndBonner.jpg') }}" alt="Cressler & Bonner building, built in 1883-84" class="img-fluid rounded shadow mb-3">
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Lava Beds National Monument -->
+        <div id="lava-beds" class="mb-5">
+            <div class="row align-items-center mb-4">
+                <div class="col-lg-6">
+                    <h2 class="section-title">Lava Beds National Monument</h2>
+                    <p class="lead">Volcanic Wonderland and Historic Battleground</p>
+                    <p>Located partially in Modoc County, <a href="https://www.nps.gov/labe/" target="_blank">Lava Beds National Monument</a> features the largest concentration of lava tube caves in North America. Established in 1925, this 46,000-acre monument sits on the northeastern flank of Medicine Lake Volcano.</p>
+
+                    <h4 class="mt-4">What to See & Do:</h4>
+                    <ul>
+                        <li><strong>Lava Tube Caves</strong> - Explore over 700 caves, including Mushpot Cave (self-guided), Skull Cave, and Valentine Cave</li>
+                        <li><strong>Modoc War Site</strong> - Historic battleground where Captain Jack and his warriors held off US Army forces for five months in 1872-1873</li>
+                        <li><strong>Petroglyph Point</strong> - Ancient rock art site with over 5,000 Native American carvings dating back 11,700 years</li>
+                        <li><strong>Volcanic Geology</strong> - Fumaroles, cinder cones, spatter cones, pit craters, and lava flows</li>
+                        <li><strong>Wildlife Viewing</strong> - Mule deer, pronghorn antelope, golden eagles, and over 200 bird species</li>
+                    </ul>
+
+                    <h4 class="mt-4">Visitor Information:</h4>
+                    <ul>
+                        <li><strong>Location</strong> - Primarily in Siskiyou County with portions in Modoc County</li>
+                        <li><strong>Access</strong> - Stock up on supplies in Alturas or Canby before visiting</li>
+                        <li><strong>Season</strong> - Open year-round; best visiting May-September</li>
+                        <li><strong>Caving Equipment</strong> - Bring flashlights/headlamps, sturdy shoes, and warm clothing</li>
+                    </ul>
+
+                    <div class="alert alert-info mt-4">
+                        <strong>Historical Significance:</strong> The monument preserves the site of the Modoc War, where a small band of Modoc warriors used the lava beds' natural defenses to resist capture for five months.
+                    </div>
+
+                    <p class="mt-4">
+                        <a href="https://www.nps.gov/labe/" target="_blank" class="btn btn-primary">Visit NPS Website</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Lava+Beds+National+Monument" target="_blank" class="btn btn-outline-secondary ms-2">View Map</a>
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card mb-3">
+                        <div class="card-body p-0">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97426.870!2d-121.5156!3d41.7135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54cd0a3e3e3e3e3d%3A0x3e3e3e3e3e3e3e3e!2sLava%20Beds%20National%20Monument!5e0!3m2!1sen!2sus!4v1234567890"
+                                title="Google Map showing the location of Lava Beds National Monument in Modoc County"
+                                aria-label="Interactive map of Lava Beds National Monument location"
+                                width="100%"
+                                height="400"
+                                style="border:0;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

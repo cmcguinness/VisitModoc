@@ -1,4 +1,5 @@
 import os
+import json
 from flask import Flask, render_template, send_from_directory
 
 app = Flask(__name__)
@@ -48,7 +49,10 @@ def bartells_backroads():
 
 @app.route('/technical-details')
 def technical_details():
-    return render_template('technical-details.html')
+    # Load image credits from licenses.json
+    with open('licenses.json', 'r') as f:
+        licenses_data = json.load(f)
+    return render_template('technical-details.html', image_credits=licenses_data['images'])
 
 
 @app.route('/alturas')
