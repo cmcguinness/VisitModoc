@@ -216,6 +216,16 @@ Create content that can be presented in different ways without losing informatio
 - **Success:** Screen readers announce "list of X items" and allow list navigation
 - **Common Issues:** Using `<div>` or `<p>` with CSS bullets instead of list markup
 
+#### [PERCEIVE-311] Section Elements with Headings
+- [ ] **Requirement:** `<section>` elements contain heading elements (h2-h6) to identify their purpose
+- **Level:** [Level A] [Medium]
+- **Test:** [Auto] W3C HTML Validator, [Manual] Review all `<section>` elements
+- **Success:** Every `<section>` element contains at least one heading that describes the section
+- **Common Issues:** Using `<section>` for styling/layout purposes without semantic structure
+- **Alternative:** Use `<div>` for generic containers that don't represent a distinct content section
+- **Example:** `<section><h2>About Us</h2><p>...</p></section>` or use `<div class="callout">` instead
+- **Reference:** HTML5 spec recommends sections have headings for accessibility and document outline
+
 ### 1.4 Distinguishable Content
 
 Make it easier for users to see and hear content.
