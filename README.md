@@ -2,6 +2,9 @@
 
 A tourism website showcasing Modoc County, California - Northeast California's hidden gem.
 
+Currently hosted at https://visit-modoc.com
+
+
 ## About
 
 Simple, content-focused website promoting Modoc County's outdoor recreation, wildlife viewing, small-town charm, and visitor amenities. Features guides to Alturas and Cedarville, dining and lodging listings, and outdoor activities.
