@@ -8,7 +8,7 @@
 
 {% block content %}
 <!-- Page Header -->
-<div class="hero-section" style="background-image: url('{{ url_for('static', filename='Modoc-NF-01.jpg') }}'); height: 400px;" role="img" aria-label="Medicine Lake recreation area Hemlock Camp Ground">
+<div class="hero-section" style="background-image: url('{{ url_for('static', filename='Modoc-NF-01.jpg') }}'); height: 400px;">
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <h1 class="hero-title">Plan Your Visit to Modoc County</h1>
@@ -72,7 +72,18 @@
             </div>
 
             <div class="mt-4">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d778803.5840374785!2d-121.2299!3d41.4545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54cd1b08b4a7ee79%3A0x9bd49b7e7c7e0e9c!2sModoc%20County%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" class="rounded shadow"></iframe>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d778803.5840374785!2d-121.2299!3d41.4545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54cd1b08b4a7ee79%3A0x9bd49b7e7c7e0e9c!2sModoc%20County%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890"
+                    title="Google Map showing Modoc County, California location and boundaries"
+                    aria-label="Interactive map of Modoc County, California"
+                    width="100%"
+                    height="400"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="rounded shadow">
+                </iframe>
             </div>
         </div>
 
@@ -248,19 +259,19 @@
             <h3 class="mb-3">Safety & Etiquette</h3>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <h5>Wildlife Safety</h5>
+                    <h4>Wildlife Safety</h4>
                     <p>Keep distance from wild animals. Store food properly when camping. Be aware of rattlesnakes in warm months.</p>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <h5>Leave No Trace</h5>
+                    <h4>Leave No Trace</h4>
                     <p>Pack out all trash. Respect private property and cattle gates. Stay on designated roads and trails.</p>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <h5>Fire Safety</h5>
+                    <h4>Fire Safety</h4>
                     <p>Check fire restrictions before lighting fires. Fire season (summer/fall) may prohibit campfires. Always fully extinguish fires.</p>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <h5>Be Prepared</h5>
+                    <h4>Be Prepared</h4>
                     <p>This is remote country. Tell someone your plans. Carry emergency supplies. Don't rely on cell phones for navigation or emergencies.</p>
                 </div>
             </div>
