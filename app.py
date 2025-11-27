@@ -1,6 +1,8 @@
 import os
 import json
-from flask import Flask, render_template, send_from_directory
+import time
+import re
+from flask import Flask, render_template, send_from_directory, Response, request
 
 app = Flask(__name__)
 
@@ -10,6 +12,94 @@ if os.environ.get('RAILWAY_ENVIRONMENT'):
     app.config['DEBUG'] = False
 else:
     app.config['DEBUG'] = True
+
+
+# Tarpit for malicious scanners
+# Patterns that indicate automated vulnerability scanning
+TARPIT_PATTERNS = [
+    # WordPress
+    r'/wp-',
+    r'/wordpress',
+    r'/wp\.php',
+    r'/xmlrpc\.php',
+    r'/wlwmanifest\.xml',
+    # PHP admin tools
+    r'/phpmyadmin',
+    r'/pma',
+    r'/myadmin',
+    r'/mysql',
+    r'/adminer',
+    # Other CMS
+    r'/joomla',
+    r'/drupal',
+    r'/administrator',
+    r'/typo3',
+    r'/magento',
+    # Shells and exploits
+    r'/shell',
+    r'/eval-stdin',
+    r'/backdoor',
+    r'/c99',
+    r'/r57',
+    r'/phpinfo',
+    # Config files
+    r'\.env',
+    r'\.git',
+    r'\.svn',
+    r'\.bak',
+    r'\.old',
+    r'\.swp',
+    r'\.zip$',
+    r'\.sql$',
+    r'\.tar',
+    r'/config\.',
+    r'/backup',
+    r'/dump',
+    # Common probes
+    r'/admin\.php',
+    r'/login\.php',
+    r'/test\.php',
+    r'/info\.php',
+    r'/debug',
+    r'/\.well-known/security\.txt',  # We don't have one, so it's a probe
+    r'/cgi-bin',
+    r'/scripts',
+    r'/aws',
+    r'/\.aws',
+    r'/credentials',
+]
+
+TARPIT_REGEX = re.compile('|'.join(TARPIT_PATTERNS), re.IGNORECASE)
+
+
+def tarpit_response():
+    """Generate a slow response that wastes scanner resources."""
+    # Fake PHP-looking garbage, sent byte by byte
+    garbage_lines = [
+        b'<?php /* WordPress Security Check */ ?>\n',
+        b'<?php require_once("wp-config.php"); ?>\n',
+        b'<?php // Validating credentials... ?>\n',
+        b'<?php $db = mysqli_connect("localhost", "root", ""); ?>\n',
+        b'<?php // Loading admin panel... ?>\n',
+        b'<?php session_start(); /* auth pending */ ?>\n',
+    ]
+    for _ in range(50):  # ~30 seconds total
+        for line in garbage_lines:
+            yield line
+            time.sleep(0.1)
+
+
+@app.before_request
+def check_for_probes():
+    """Intercept malicious probes and tarpit them."""
+    path = request.path
+    if TARPIT_REGEX.search(path):
+        return Response(
+            tarpit_response(),
+            status=200,
+            mimetype='text/plain',
+            headers={'X-Tarpit': 'enjoy-the-wait'}
+        )
 
 
 @app.route('/')
