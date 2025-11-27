@@ -2,6 +2,7 @@ import os
 import json
 import time
 import re
+from datetime import datetime, timezone
 from flask import Flask, render_template, send_from_directory, Response, request
 
 app = Flask(__name__)
@@ -94,6 +95,12 @@ def check_for_probes():
     """Intercept malicious probes and tarpit them."""
     path = request.path
     if TARPIT_REGEX.search(path):
+        # Log the probe attempt
+        cf_ip = request.headers.get('CF-Connecting-IP', 'unknown')
+        x_forwarded = request.headers.get('X-Forwarded-For', 'unknown')
+        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+        print(f"[TARPIT] {timestamp} | CF-IP: {cf_ip} | X-Forwarded-For: {x_forwarded} | URL: {request.url}", flush=True)
+
         return Response(
             tarpit_response(),
             status=200,
