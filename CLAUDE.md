@@ -120,6 +120,36 @@ Uses `gunicorn` via Procfile for deployment on Railway.
 - Open Graph and Twitter card metadata
 - Schema.org LocalBusiness structured data in base.html
 
+## Security: Tarpit for Scanners
+
+The site includes a tarpit system that slows down malicious vulnerability scanners. Instead of returning a quick 404, probes receive a slow-drip response that wastes attacker resources.
+
+**How it works:**
+- `@app.before_request` intercepts requests before routing
+- Malicious patterns trigger a 30-second slow response of fake PHP garbage
+- Legitimate routes are unaffected
+
+**Two detection methods:**
+1. **Pattern matching** (`TARPIT_PATTERNS`): Catches known malicious paths like `/wp-admin`, `.env`, `/phpmyadmin`, etc.
+2. **Backdoor detection** (`BACKDOOR_PATTERN`): Catches random 4-12 character paths (e.g., `/q1gpDhK4`) that don't match valid routes - these are probes for pre-installed backdoors
+
+**Log format:**
+```
+[TARPIT:pattern] 2025-11-27 03:01:07 UTC | CF-IP: 43.200.8.126 | X-Forwarded-For: 43.200.8.126 | URL: http://www.visit-modoc.com/.env
+[TARPIT:backdoor] 2025-11-27 03:05:20 UTC | CF-IP: 43.200.8.126 | X-Forwarded-For: 43.200.8.126 | URL: http://www.visit-modoc.com/q1gpDhK4
+```
+
+**Adding new patterns:**
+Add regex patterns to `TARPIT_PATTERNS` list in `app.py`. Patterns are case-insensitive.
+
+**Gunicorn config:**
+The Procfile uses `--workers 4 --timeout 45` to handle multiple concurrent tarpits without affecting legitimate users.
+
 ## Deployment
 
 The site deploys to Railway automatically from the main branch. Railway environment sets `RAILWAY_ENVIRONMENT` variable which disables debug mode in production.
+
+**Infrastructure:**
+- **Hosting:** Railway
+- **CDN/Security:** Cloudflare (handles DDoS, SSL, caching)
+- **Workers:** 4 gunicorn workers with 45-second timeout
