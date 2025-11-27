@@ -72,6 +72,19 @@ TARPIT_PATTERNS = [
 
 TARPIT_REGEX = re.compile('|'.join(TARPIT_PATTERNS), re.IGNORECASE)
 
+# Pattern for random backdoor probes (only checked on non-matching routes)
+BACKDOOR_PATTERN = re.compile(r'^/[a-zA-Z0-9]{4,12}$')
+
+
+def is_valid_route(path):
+    """Check if path matches any registered route."""
+    adapter = app.url_map.bind('')
+    try:
+        adapter.match(path)
+        return True
+    except Exception:
+        return False
+
 
 def tarpit_response():
     """Generate a slow response that wastes scanner resources."""
@@ -90,23 +103,33 @@ def tarpit_response():
             time.sleep(0.1)
 
 
+def log_and_tarpit(reason):
+    """Log the probe attempt and return a tarpit response."""
+    cf_ip = request.headers.get('CF-Connecting-IP', 'unknown')
+    x_forwarded = request.headers.get('X-Forwarded-For', 'unknown')
+    timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+    print(f"[TARPIT:{reason}] {timestamp} | CF-IP: {cf_ip} | X-Forwarded-For: {x_forwarded} | URL: {request.url}", flush=True)
+
+    return Response(
+        tarpit_response(),
+        status=200,
+        mimetype='text/plain',
+        headers={'X-Tarpit': 'enjoy-the-wait'}
+    )
+
+
 @app.before_request
 def check_for_probes():
     """Intercept malicious probes and tarpit them."""
     path = request.path
-    if TARPIT_REGEX.search(path):
-        # Log the probe attempt
-        cf_ip = request.headers.get('CF-Connecting-IP', 'unknown')
-        x_forwarded = request.headers.get('X-Forwarded-For', 'unknown')
-        timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
-        print(f"[TARPIT] {timestamp} | CF-IP: {cf_ip} | X-Forwarded-For: {x_forwarded} | URL: {request.url}", flush=True)
 
-        return Response(
-            tarpit_response(),
-            status=200,
-            mimetype='text/plain',
-            headers={'X-Tarpit': 'enjoy-the-wait'}
-        )
+    # Check explicit malicious patterns first
+    if TARPIT_REGEX.search(path):
+        return log_and_tarpit('pattern')
+
+    # For unknown routes, check if it looks like a backdoor probe
+    if not is_valid_route(path) and BACKDOOR_PATTERN.match(path):
+        return log_and_tarpit('backdoor')
 
 
 @app.route('/')
