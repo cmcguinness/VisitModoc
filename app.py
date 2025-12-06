@@ -2,6 +2,7 @@ import os
 import json
 import time
 import re
+import requests
 from datetime import datetime, timezone
 from flask import Flask, render_template, send_from_directory, Response, request
 
@@ -118,6 +119,51 @@ def log_and_tarpit(reason):
     )
 
 
+# Weather data cache
+_weather_cache = {'data': None, 'timestamp': 0}
+WEATHER_CACHE_DURATION = 3600  # 1 hour
+
+
+def get_weather():
+    """Fetch current weather for Alturas from NWS API with caching."""
+    now = time.time()
+
+    # Return cached data if still valid
+    if _weather_cache['data'] and (now - _weather_cache['timestamp']) < WEATHER_CACHE_DURATION:
+        return _weather_cache['data']
+
+    try:
+        headers = {'User-Agent': 'VisitModoc/1.0 (visit-modoc.com)'}
+
+        # NWS API for Alturas, CA area (pre-looked-up grid point)
+        forecast_url = 'https://api.weather.gov/gridpoints/REV/33,117/forecast'
+        response = requests.get(forecast_url, headers=headers, timeout=10)
+        response.raise_for_status()
+        data = response.json()
+
+        periods = data.get('properties', {}).get('periods', [])
+        if periods:
+            current = periods[0]
+            weather_data = {
+                'name': current.get('name', 'Now'),
+                'temperature': current.get('temperature'),
+                'unit': current.get('temperatureUnit', 'F'),
+                'description': current.get('shortForecast', ''),
+                'detailed': current.get('detailedForecast', ''),
+                'wind': current.get('windSpeed', ''),
+                'icon': current.get('icon', ''),
+                'success': True
+            }
+            _weather_cache['data'] = weather_data
+            _weather_cache['timestamp'] = now
+            return weather_data
+
+    except Exception as e:
+        print(f"[WEATHER] Error fetching weather: {e}", flush=True)
+
+    return {'success': False}
+
+
 @app.before_request
 def check_for_probes():
     """Intercept malicious probes and tarpit them."""
@@ -134,7 +180,8 @@ def check_for_probes():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    weather = get_weather()
+    return render_template('index.html', weather=weather)
 
 
 @app.route('/things-to-do')
@@ -159,7 +206,8 @@ def where_to_eat():
 
 @app.route('/plan-your-visit')
 def plan_your_visit():
-    return render_template('plan-your-visit.html')
+    weather = get_weather()
+    return render_template('plan-your-visit.html', weather=weather)
 
 
 @app.route('/bartells-backroads')

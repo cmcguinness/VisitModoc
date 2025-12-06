@@ -89,6 +89,44 @@
 
         <hr class="my-5">
 
+        <!-- Current Weather -->
+        <div id="current-weather" class="mb-5">
+            <h2 class="section-title">Current Weather in Alturas</h2>
+            <div class="row">
+                <div class="col-lg-8">
+                    {% if weather and weather.success %}
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-auto">
+                                    <div class="display-4 fw-bold text-primary">{{ weather.temperature }}&deg;{{ weather.unit }}</div>
+                                </div>
+                                <div class="col">
+                                    <h4 class="mb-1">{{ weather.name }}</h4>
+                                    <p class="mb-1 fs-5">{{ weather.description }}</p>
+                                    {% if weather.wind %}<p class="text-muted mb-0">Wind: {{ weather.wind }}</p>{% endif %}
+                                </div>
+                            </div>
+                            <hr>
+                            <p class="mb-2">{{ weather.detailed }}</p>
+                            <a href="https://forecast.weather.gov/MapClick.php?lat=41.4871&lon=-120.5425" target="_blank" class="btn btn-outline-primary btn-sm">Full 7-Day Forecast</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <p class="mb-2">Weather data temporarily unavailable.</p>
+                            <a href="https://forecast.weather.gov/MapClick.php?lat=41.4871&lon=-120.5425" target="_blank" class="btn btn-primary">View Forecast on Weather.gov</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <p class="text-muted small mt-2">Weather in Modoc County can change quickly. Check conditions before heading to remote areas.</p>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
         <!-- When to Visit -->
         <div class="mb-5">
             <h2 class="section-title">When to Visit</h2>

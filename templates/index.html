@@ -17,6 +17,20 @@
     </div>
 </div>
 
+<!-- Weather Strip -->
+{% if weather and weather.success %}
+<div class="bg-dark text-white py-2">
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center small">
+            <span class="me-2">Currently in Alturas:</span>
+            <strong class="me-2">{{ weather.temperature }}&deg;{{ weather.unit }}</strong>
+            <span class="me-3">{{ weather.description }}</span>
+            <a href="/plan-your-visit#current-weather" class="text-white-50">Full forecast</a>
+        </div>
+    </div>
+</div>
+{% endif %}
+
 <!-- Introduction Section -->
 <section class="py-5 bg-light">
     <div class="container">
