@@ -6,6 +6,39 @@
 
 {% block canonical %}https://visit-modoc.com/alturas{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://visit-modoc.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Places to Visit", "item": "https://visit-modoc.com/places-to-visit"},
+        {"@type": "ListItem", "position": 3, "name": "Alturas", "item": "https://visit-modoc.com/alturas"}
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "name": "Alturas, California",
+    "description": "Modoc County's seat and largest town. Gateway to Northeast California's wilderness with lodging, dining, shopping, and outdoor recreation.",
+    "url": "https://visit-modoc.com/alturas",
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "41.4871",
+        "longitude": "-120.5425"
+    },
+    "includesAttraction": [
+        {"@type": "TouristAttraction", "name": "Modoc County Historical Museum"},
+        {"@type": "TouristAttraction", "name": "Historic Modoc County Courthouse", "description": "1914 Classical Revival architecture"},
+        {"@type": "TouristAttraction", "name": "Niles Hotel & Saloon", "description": "Historic 1908 landmark with Old West atmosphere"}
+    ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Page Header -->
 <div class="hero-section" style="background-image: url('{{ url_for('static', filename='Modoc_County_Courthouse,_Alturas,_California_(218926125).jpg') }}'); height: 400px;">
@@ -153,9 +186,9 @@
                             <h3 class="card-title">American & Steakhouses</h3>
                             <ul class="small">
                                 <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Niles+Hotel+Alturas+CA" target="_blank">Niles Hotel & Saloon</a></strong> - Historic 1908 saloon with steaks and burgers. <a href="/bartells-backroads#niles-hotel">Step into the Old West</a></li>
-                                <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Brass+Rail+Alturas+CA" target="_blank">Brass Rail</a></strong> - Local favorite for steaks and comfort food (4.4★)</li>
-                                <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Wagon+Wheel+Restaurant+Alturas+CA" target="_blank">Wagon Wheel Restaurant</a></strong> - Family dining (4.7★)</li>
-                                <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Auction+Yard+Cafe+Alturas+CA" target="_blank">Auction Yard Café</a></strong> - American cuisine (4.7★)</li>
+                                <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Brass+Rail+Alturas+CA" target="_blank">Brass Rail</a></strong> - Basque-inspired dining, a regional tradition (4.4★)</li>
+                                <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Wagon+Wheel+Restaurant+Alturas+CA" target="_blank">Wagon Wheel Restaurant</a></strong> - Family dining; limited hours, closed Tue-Wed (4.7★)</li>
+                                <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Auction+Yard+Cafe+Alturas+CA" target="_blank">Auction Yard Café</a></strong> - American cuisine; breakfast & lunch only, closed Mon-Tue (4.7★)</li>
                                 <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Lazy+B+Alturas+CA" target="_blank">Lazy B</a></strong> - (4.5★)</li>
                                 <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Double-A+Cafe+Alturas+CA" target="_blank">Double-A Cafe</a></strong> - (5.0★)</li>
                                 <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Frostys+Alturas+CA" target="_blank">Frosty's</a></strong> - Burgers (4.2★)</li>
@@ -244,7 +277,6 @@
                             <h3 class="card-title">Pharmacies</h3>
                             <ul class="small">
                                 <li><strong><a href="https://modocmedicalcenter.org/last-frontier-pharmacy/" target="_blank">Last Frontier Pharmacy</a></strong> - 1111 N Nagle St</li>
-                                <li><strong><a href="https://www.riteaid.com/locations/ca/alturas/432-north-main-street.html" target="_blank">Rite Aid Pharmacy</a></strong> - 432 N Main St</li>
                             </ul>
                         </div>
                     </div>

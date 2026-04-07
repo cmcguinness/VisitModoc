@@ -2,6 +2,19 @@
 
 {% block title %}Where to Eat - Visit Modoc County{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://visit-modoc.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Where to Eat", "item": "https://visit-modoc.com/where-to-eat"}
+    ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Page Header -->
 <div class="hero-section" style="background-image: url('{{ url_for('static', filename='Modoc_County_Courthouse,_Alturas,_California_(218926125).jpg') }}'); height: 400px;">
@@ -36,9 +49,9 @@
                             <div class="small">
                                 <strong>American & Steakhouses</strong>
                                 <ul class="mb-2">
-                                    <li>Wagon Wheel (4.7★)</li>
-                                    <li>Auction Yard Café (4.7★)</li>
-                                    <li>Brass Rail (4.4★)</li>
+                                    <li>Wagon Wheel - closed Tue-Wed (4.7★)</li>
+                                    <li>Auction Yard Café - closed Mon-Tue (4.7★)</li>
+                                    <li>Brass Rail - Basque dining (4.4★)</li>
                                     <li>Niles Hotel & Saloon</li>
                                     <li>Lazy B (4.5★)</li>
                                     <li>Frosty's (4.2★)</li>
@@ -83,12 +96,11 @@
                                     <li>Woody's (4.6★)</li>
                                     <li>Country Hearth Restaurant, Bakery & Gift Shop (4.4★)</li>
                                     <li>Whalen's Public House - Pizza & craft beer</li>
-                                    <li>The Station / Surprise Cafe - Cafe & tapas</li>
+                                    <li>The Station - Cafe (call ahead)</li>
                                 </ul>
                                 <strong>Coffee & More</strong>
                                 <ul class="mb-3">
                                     <li>The Vault - Espresso bar (4.9★)</li>
-                                    <li>Surprise Valley Hot Springs - Guest meals</li>
                                 </ul>
                             </div>
                             <p class="text-muted small mb-3">Call ahead to confirm hours and embrace the relaxed pace of small-town life.</p>
@@ -148,7 +160,6 @@
                                 <ul class="mb-2">
                                     <li>Four Seasons Supply (Ace Hardware)</li>
                                     <li>Last Frontier Pharmacy</li>
-                                    <li>Rite Aid Pharmacy</li>
                                 </ul>
                                 <strong>Gas & Convenience</strong>
                                 <ul class="mb-2">
@@ -169,7 +180,6 @@
                                 <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Pages+Market+Cedarville+CA" target="_blank">Pages Market</a></strong> - 488 Main St (4.2★)</li>
                                 <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Corner+Store+Cedarville+CA" target="_blank">Corner Store</a></strong> - 600 Main St (4.7★)</li>
                                 <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Valley+Farm+Store+Cedarville+CA" target="_blank">Valley Farm Store</a></strong> - Fresh meats, lunch counter, locally sourced goods (5.0★)</li>
-                                <li><strong><a href="https://www.google.com/maps/search/?api=1&query=Wayward+Butterfly+Cedarville+CA" target="_blank">Wayward Butterfly</a></strong> - Gift shop (5.0★)</li>
                                 <li><strong>What to bring</strong> - Fresh produce, specialty items</li>
                             </ul>
                             <a href="https://www.google.com/maps/search/stores+in+cedarville+ca" target="_blank" class="btn btn-sm btn-outline-primary">Search Map</a>

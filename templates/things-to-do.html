@@ -6,6 +6,40 @@
 
 {% block canonical %}https://visit-modoc.com/things-to-do{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://visit-modoc.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Things to Do", "item": "https://visit-modoc.com/things-to-do"}
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "name": "Modoc County, California",
+    "description": "Outdoor activities and adventures in Modoc County including fishing, hiking, wildlife viewing, hunting, and camping in 1.6 million acres of public lands.",
+    "url": "https://visit-modoc.com/things-to-do",
+    "touristType": ["Nature Lovers", "Outdoor Enthusiasts", "Wildlife Watchers", "Anglers", "Hikers"],
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "41.4545",
+        "longitude": "-120.5449"
+    },
+    "includesAttraction": [
+        {"@type": "TouristAttraction", "name": "South Warner Wilderness", "description": "70,000 acres of pristine wilderness hiking"},
+        {"@type": "TouristAttraction", "name": "Modoc National Forest", "description": "1.6 million acres of forests, lakes, and volcanic landscapes"},
+        {"@type": "TouristAttraction", "name": "Devil's Garden Wild Horse Territory", "description": "One of the largest wild horse herds in the United States"},
+        {"@type": "TouristAttraction", "name": "Clear Lake Reservoir", "description": "Excellent trout fishing and boating"}
+    ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Page Header -->
 <div class="hero-section" style="background-image: url('{{ url_for('static', filename='modoc_nf_valley_view.jpg') }}'); height: 400px;">
@@ -40,6 +74,9 @@
                         <li><strong>Pit River</strong> - Wild trout in scenic canyon settings</li>
                         <li><strong>Eagle Lake</strong> - Known for Eagle Lake trout</li>
                     </ul>
+                    <div class="alert alert-success mt-3 mb-3">
+                        <strong>Regional News:</strong> The 2024 removal of four Klamath River dams has triggered a historic salmon recovery across the Klamath Basin. Over 10,000 Chinook passed former dam sites in 2025, and fall Chinook reached the upper Klamath Basin for the first time in over a century. While the Klamath River lies west of Modoc County, this ecological revival is revitalizing the broader region's waterways and fisheries.
+                    </div>
                     <p class="mt-3">
                         <a href="https://wildlife.ca.gov/Licensing" target="_blank" class="btn btn-outline-primary">Get a Fishing License</a>
                     </p>
@@ -67,7 +104,7 @@
                         <li><strong>Ash Creek Wildlife Area</strong> - Easy trails with wildlife viewing</li>
                     </ul>
                     <div class="alert alert-info mt-3 mb-0">
-                        <strong>Trail Development:</strong> The Modoc National Forest is planning new multi-use trails at Medicine Lake, Cedar Pass, Crowder Flat, and Ash/Rush Creek for hiking, mountain biking, and horseback riding.
+                        <strong>Trail Development:</strong> The Modoc National Forest has received approximately $1 million through the Great American Outdoors Act for trail improvements. New multi-use trails are being developed at Medicine Lake, Cedar Pass, Crowder Flat, and Ash/Rush Creek for hiking, mountain biking, and horseback riding.
                     </div>
                     <p class="mt-3">
                         <a href="https://www.fs.usda.gov/modoc" target="_blank" class="btn btn-outline-primary">Visit Forest Service Site</a>
@@ -160,12 +197,12 @@
                 <div class="col-md-6">
                     <h4>Lava Beds National Monument</h4>
                     <p>Partially located in Modoc County, explore over 700 lava tube caves - the largest concentration in North America. Features Native American petroglyphs at Petroglyph Point and the historic Modoc War battleground. <a href="/places-to-visit#lava-beds">Learn more</a></p>
-                    <p class="text-muted small"><strong>Note:</strong> NPS staffing changes may affect visitor center hours. Check the <a href="https://www.nps.gov/labe/planyourvisit/hours.htm" target="_blank">Lava Beds hours page</a> before your visit.</p>
+                    <p class="text-muted small"><strong>Note:</strong> Visitor center hours are 9:30am-4:00pm daily. Camping is $20/night per site. Check the <a href="https://www.nps.gov/labe/planyourvisit/hours.htm" target="_blank">Lava Beds hours page</a> before your visit for any seasonal changes.</p>
                     <a href="https://www.nps.gov/labe/" target="_blank" class="btn btn-sm btn-outline-secondary">Visit NPS Site</a>
                 </div>
                 <div class="col-md-6">
                     <h4>Tule Lake Area Attractions</h4>
-                    <p><strong>Tule Lake National Wildlife Refuge</strong> - One of the premier birding destinations in North America with millions of migratory waterfowl. Perfect for wildlife photography and seasonal bird watching.</p>
+                    <p><strong>Tule Lake National Wildlife Refuge</strong> - One of the premier birding destinations in North America with millions of migratory waterfowl. Perfect for wildlife photography and seasonal bird watching. After a devastating 2024 botulism outbreak, the refuge made a remarkable recovery in 2025, welcoming back over 250,000 spring migrants thanks to improved water management.</p>
                     <p><strong>Tule Lake National Monument</strong> - Powerful WWII history site preserving the largest Japanese American incarceration camp. Educational tours available seasonally (advance planning recommended). <a href="/places-to-visit#tule-lake-monument">Visit the Tule Lake Monument page</a></p>
                     <a href="https://www.fws.gov/refuge/tule-lake" target="_blank" class="btn btn-sm btn-outline-secondary">Wildlife Refuge</a>
                     <a href="https://www.nps.gov/tule/" target="_blank" class="btn btn-sm btn-outline-secondary ms-2">National Monument</a>

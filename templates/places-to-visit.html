@@ -6,6 +6,40 @@
 
 {% block canonical %}https://visit-modoc.com/places-to-visit{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://visit-modoc.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Places to Visit", "item": "https://visit-modoc.com/places-to-visit"}
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "TouristDestination",
+    "name": "Modoc County, California",
+    "description": "Charming towns, natural attractions, and historic sites in Northeast California's Modoc County.",
+    "url": "https://visit-modoc.com/places-to-visit",
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "41.4545",
+        "longitude": "-120.5449"
+    },
+    "includesAttraction": [
+        {"@type": "TouristAttraction", "name": "Lava Beds National Monument", "description": "Over 700 lava tube caves, the largest concentration in North America"},
+        {"@type": "TouristAttraction", "name": "Tule Lake National Monument", "description": "WWII Japanese American incarceration history site"},
+        {"@type": "TouristAttraction", "name": "Modoc National Wildlife Refuge", "description": "7,000+ acres of critical migratory bird habitat"},
+        {"@type": "TouristAttraction", "name": "Captain Jack's Stronghold", "description": "Historic site of the Modoc War (1872-73)"},
+        {"@type": "TouristAttraction", "name": "Petroglyph Point", "description": "Over 5,000 Native American carvings dating back 11,700 years"}
+    ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Page Header -->
 <div class="hero-section" style="background-image: url('{{ url_for('static', filename='Modoc_County_Courthouse_-_Alturas_California.jpg') }}'); height: 400px;">
@@ -116,6 +150,7 @@
                         <li><strong>Location</strong> - Primarily in Siskiyou County with portions in Modoc County</li>
                         <li><strong>Access</strong> - Stock up on supplies in Alturas or Canby before visiting</li>
                         <li><strong>Season</strong> - Open year-round; best visiting May-September</li>
+                        <li><strong>Camping</strong> - $20/night per site; visitor center hours 9:30am-4:00pm daily</li>
                         <li><strong>Caving Equipment</strong> - Bring flashlights/headlamps, sturdy shoes, and warm clothing</li>
                     </ul>
 

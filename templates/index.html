@@ -6,6 +6,49 @@
 
 {% block canonical %}https://visit-modoc.com/{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Why should I visit Modoc County?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Modoc County offers something increasingly rare: genuine solitude and unspoiled wilderness. With over 1.6 million acres of public lands, world-class fishing, abundant wildlife, and authentic small-town charm, it's perfect for nature lovers and outdoor enthusiasts who want to experience the West as it once was."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "What are the best things to do in Modoc County?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Top activities include fishing in pristine lakes and streams, hiking through Modoc National Forest, wildlife viewing (especially wild horses and pronghorn antelope), exploring the Warner Mountains, and visiting nearby Lava Beds National Monument. The county is also excellent for hunting, camping, photography, and stargazing thanks to minimal light pollution."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "When is the best time to visit Modoc County, CA?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Summer (June-September) offers the best weather for hiking, camping, and water activities. Spring brings wildflowers and excellent fishing. Fall features stunning foliage and hunting season. Winter is ideal for snowmobiling and cross-country skiing. Each season offers unique experiences."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How do I get to Modoc County?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Modoc County is located in the northeast corner of California. Most visitors drive. The closest commercial airports are in Redding, CA (2.5 hours) and Reno, NV (3 hours). From major cities: San Francisco is about 6 hours, Sacramento 4.5 hours, and Portland 5 hours."
+            }
+        }
+    ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Hero Section -->
 <div class="hero-section" style="background-image: url('{{ url_for('static', filename='modoc_nf_valley_view.jpg') }}');">

@@ -2,6 +2,19 @@
 
 {% block title %}Where to Stay - Visit Modoc County{% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://visit-modoc.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Where to Stay", "item": "https://visit-modoc.com/where-to-stay"}
+    ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Page Header -->
 <div class="hero-section" style="background-image: url('{{ url_for('static', filename='modoc_nf_valley_view.jpg') }}'); height: 400px;">
