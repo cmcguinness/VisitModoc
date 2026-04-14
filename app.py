@@ -233,6 +233,21 @@ def cedarville():
     return render_template('cedarville.html')
 
 
+@app.route('/merchants/the-vault')
+def merchant_the_vault():
+    return render_template('merchants/the-vault.html')
+
+
+@app.route('/merchants/bidwell-canyon-farm')
+def merchant_bidwell_canyon_farm():
+    return render_template('merchants/bidwell-canyon-farm.html')
+
+
+@app.route('/merchants/valley-farm-store')
+def merchant_valley_farm_store():
+    return render_template('merchants/valley-farm-store.html')
+
+
 @app.route('/sitemap.xml')
 def sitemap():
     return send_from_directory('static', 'sitemap.xml')

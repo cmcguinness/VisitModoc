@@ -1,0 +1,347 @@
+{% extends "base.html" %}
+
+{% block title %}Valley Farm Store - Local Food, Meat, Produce &amp; Cafe in Cedarville, CA{% endblock %}
+
+{% block meta_description %}Valley Farm Store on Main Street in Cedarville, California — fresh meat, local produce, organic ice cream, ranch and home goods, plus a cafe serving locally sourced burrito bowls, salads, sandwiches, espresso drinks, and Friday-night wood-fired pizza.{% endblock %}
+
+{% block canonical %}https://visit-modoc.com/merchants/valley-farm-store{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://visit-modoc.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Cedarville", "item": "https://visit-modoc.com/cedarville"},
+        {"@type": "ListItem", "position": 3, "name": "Valley Farm Store", "item": "https://visit-modoc.com/merchants/valley-farm-store"}
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "GroceryStore",
+    "name": "Valley Farm Store",
+    "description": "Independent grocery store and cafe in Cedarville, California, serving local and regional meat, produce, organic ice cream, ranch and home goods, espresso drinks, made-to-order food, and Friday-night wood-fired pizza.",
+    "url": "https://visit-modoc.com/merchants/valley-farm-store",
+    "image": "https://visit-modoc.com/static/valley-farm-store.png",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "540 Main Street",
+        "addressLocality": "Cedarville",
+        "addressRegion": "CA",
+        "postalCode": "96104",
+        "addressCountry": "US"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "41.5293",
+        "longitude": "-120.1726"
+    },
+    "openingHoursSpecification": [
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "15:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "10:00", "closes": "15:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "10:00", "closes": "15:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "10:00", "closes": "19:00"},
+        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "17:00"}
+    ],
+    "sameAs": [
+        "https://www.instagram.com/valleyfarmstore/"
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="py-5" style="background-color: var(--modoc-primary); color: white;">
+    <div class="container text-center">
+        <p class="text-uppercase mb-2" style="letter-spacing: 2px; opacity: 0.85;">Cedarville Merchants</p>
+        <h1 class="display-4 mb-2">Valley Farm Store</h1>
+        <p class="lead mb-0">Local &amp; Real Food on Main Street, Cedarville</p>
+    </div>
+</div>
+
+<!-- Main Content -->
+<section class="py-5">
+    <div class="container">
+
+        <!-- About + Photo -->
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h2 class="section-title">Welcome to Valley Farm Store</h2>
+                <p class="lead">"Making local &amp; real food accessible to all."</p>
+                <p>Valley Farm Store is a beloved independent grocery, cafe, and gathering spot in the heart of Cedarville. Step inside for fresh meat, local produce, organic ice cream, ranch and home goods, garden seeds, espresso drinks, made-to-order food, and a warm welcome from one of Surprise Valley's most passionate champions of real food.</p>
+                <p>Whether you're picking up groceries, grabbing lunch on the road through Surprise Valley, or settling in for Friday-night pizza, the Valley Farm Store stocks and serves food worth slowing down for.</p>
+                <p class="mt-4">
+                    <a href="https://www.instagram.com/valleyfarmstore/" target="_blank" rel="noopener" class="btn btn-primary">Follow on Instagram</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Valley+Farm+Store+540+Main+St+Cedarville+CA" target="_blank" rel="noopener" class="btn btn-outline-secondary ms-2">Get Directions</a>
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="{{ url_for('static', filename='valley-farm-store.png') }}"
+                     alt="Interior of Valley Farm Store in Cedarville, California, showing a wooden counter, hanging plants, and a tall display rack filled with brightly-packaged garden seed packets"
+                     class="img-fluid rounded shadow">
+                <p class="text-muted small mt-2 mb-0">Photo: <a href="https://www.instagram.com/valleyfarmstore/" target="_blank" rel="noopener">@valleyfarmstore on Instagram</a></p>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- What You'll Find / In the Store -->
+        <div class="mb-5">
+            <h2 class="section-title text-center mb-4">In the Store</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Meat</h3>
+                            <p class="card-text mb-0">Local and regional meat, including pasture-raised options. A go-to source for high-quality protein in Surprise Valley.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Produce</h3>
+                            <p class="card-text mb-0">Fresh fruits and vegetables, including local greens and seasonal harvests from area farms.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Organic Ice Cream</h3>
+                            <p class="card-text mb-0">Scoops, cones, sandwiches, milkshakes, and root beer floats. A summer-afternoon must-stop in Cedarville.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Ranch &amp; Home Goods</h3>
+                            <p class="card-text mb-0">Garden seeds, pantry staples, and household goods for Surprise Valley life. Plus more &mdash; the inventory rotates with the seasons.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Menu Caveat -->
+        <div class="mb-5">
+            <div class="alert alert-warning mb-0">
+                <h3 class="alert-heading h5">About the menu highlights below</h3>
+                <p class="mb-0">The items below are <strong>a small handful of highlights</strong> from Valley Farm Store's eats, pizza, drinks, and treats menus &mdash; meant to give you a flavor of the place, not a complete listing. The actual menus are larger and change with the seasons and the kitchen's whims. <strong>Please double-check current offerings with Valley Farm Store directly</strong> &mdash; via <a href="https://www.instagram.com/valleyfarmstore/" target="_blank" rel="noopener" class="alert-link">@valleyfarmstore on Instagram</a> or in person &mdash; before counting on a specific item.</p>
+            </div>
+        </div>
+
+        <!-- Farm Store Eats -->
+        <div class="mb-5">
+            <h2 class="section-title text-center mb-2">A Taste of Farm Store Eats</h2>
+            <p class="text-center text-muted mb-4"><em>Made-to-order food served Thursday&ndash;Sunday, 11:30 AM until close. A few favorites to give you the idea:</em></p>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Burrito Bowl</h3>
+                            <p class="card-text mb-0">Your choice of meat over rice and beans, topped with cheese, tomato, lettuce, salsa, sour cream, pickled onion, and chipotle mayo.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Sourdough BLT</h3>
+                            <p class="card-text mb-0">Uncured bacon and raw cheddar on toasted organic sourdough with organic tomato, local greens, and house-made aioli. Served with chips.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Yogurt Parfait</h3>
+                            <p class="card-text mb-0">Alexandre A2 yogurt topped with grain-free granola, fresh fruit (or local jam), and maple syrup.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center text-muted small mt-3 mb-0"><em>The full menu rotates with the seasons and includes other salads, sandwiches, soups, nachos, and daily specials.</em></p>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Friday Night Pizza -->
+        <div class="mb-5">
+            <div class="text-center mb-4">
+                <h2 class="section-title d-inline-block">Friday Night Pizza</h2>
+                <p class="text-muted mb-0"><em>Wood-style pies served Fridays from 4 PM, on a 10" house crust made in-house from local unbleached flour. A couple of the regulars:</em></p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">The Beefy Babe</h3>
+                            <p class="card-text mb-0">Red sauce, mozzarella, local shredded beef, pickled onion, and a local jalape&ntilde;o honey drizzle.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">The BBQ Bird</h3>
+                            <p class="card-text mb-0">Red sauce, mozzarella, red onion, and pastured chicken with a BBQ sauce drizzle.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-center text-muted small mt-3 mb-0"><em>Other pizzas (and a caesar salad) are also on the Friday-night board.</em></p>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Drinks -->
+        <div class="mb-5">
+            <h2 class="section-title text-center mb-2">From the Drink Bar</h2>
+            <p class="text-center text-muted mb-4"><em>Locally roasted coffee, espresso drinks, teas, and house-made specialties. A few to look for:</em></p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Cowboy Latte</h3>
+                            <p class="card-text small mb-0">Frothed maple cream with fresh-made coffee. Iced or hot.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Cold Brew Coffee</h3>
+                            <p class="card-text small mb-0">Locally roasted coffee cold-brewed for 24+ hours. Black or topped with cream. (When available.)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Strawberry Spritzer</h3>
+                            <p class="card-text small mb-0">A refreshing sparkling strawberry spritzer for warm Surprise Valley afternoons.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-muted small mt-3 mb-0"><em>Plus matcha, hot cocoa, organic lemonade, hot apple cider, loose-leaf teas, and a rotating cold case.</em></p>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Sweet Treats -->
+        <div class="mb-5">
+            <h2 class="section-title text-center mb-2">Sweet Treats</h2>
+            <p class="text-center text-muted mb-4"><em>House-made and local-sourced. A few of the standouts:</em></p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Organic Ice Cream Cone</h3>
+                            <p class="card-text small mb-0">Scoops of vanilla, chocolate, strawberry, mint chocolate chip, or cookies &amp; cream &mdash; with optional toppings like local jam.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Ice Cream Sandwich</h3>
+                            <p class="card-text small mb-0">A scoop of ice cream sandwiched between two house-made organic cookies. Ask about the day's combos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Root Beer Float</h3>
+                            <p class="card-text small mb-0">Double scoop of vanilla ice cream with organic root beer.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-muted small mt-3 mb-0"><em>Plus milkshakes, house-made organic cookies, and other sweets.</em></p>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Sourcing Standards Callout -->
+        <div class="mb-5">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <div class="card border-0 bg-light">
+                        <div class="card-body p-4">
+                            <h2 class="section-title">Our Standards</h2>
+                            <p class="mb-0">At Valley Farm Store, the team uses as many locally and regionally sourced ingredients as possible. Menu items may shift slightly with the seasons. Everything on the menu &mdash; and in the store &mdash; is free of refined seed oils, synthetic food dyes, and ultra-processed preservatives or ingredients.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Hours & Location -->
+        <div class="mb-5">
+            <h2 class="section-title text-center mb-4">Hours &amp; Location</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Visit</h3>
+                            <p class="mb-1"><strong>Valley Farm Store</strong></p>
+                            <p class="mb-1">540 Main Street</p>
+                            <p class="mb-3">Cedarville, CA 96104</p>
+
+                            <h4 class="h6 mt-4">Hours</h4>
+                            <p class="mb-1"><strong>Sunday:</strong> 10:00 AM &ndash; 3:00 PM</p>
+                            <p class="mb-1"><strong>Monday:</strong> Closed</p>
+                            <p class="mb-1"><strong>Tuesday:</strong> Closed</p>
+                            <p class="mb-1"><strong>Wednesday:</strong> 10:00 AM &ndash; 3:00 PM</p>
+                            <p class="mb-1"><strong>Thursday:</strong> 10:00 AM &ndash; 3:00 PM</p>
+                            <p class="mb-1"><strong>Friday:</strong> 10:00 AM &ndash; 7:00 PM <span class="text-muted small">(Pizza from 4 PM)</span></p>
+                            <p class="mb-3"><strong>Saturday:</strong> 10:00 AM &ndash; 5:00 PM</p>
+
+                            <p class="text-muted small"><em>Hours may shift seasonally. Check <a href="https://www.instagram.com/valleyfarmstore/" target="_blank" rel="noopener">@valleyfarmstore on Instagram</a> for the latest.</em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body p-0">
+                            <iframe
+                                src="https://maps.google.com/maps?q=540+Main+St+Cedarville+CA+96104&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                title="Google Map showing the location of Valley Farm Store at 540 Main Street, Cedarville, California"
+                                aria-label="Interactive map of Valley Farm Store's location in Cedarville"
+                                width="600"
+                                height="400"
+                                style="border:0; width:100%; height:100%; min-height:480px;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back -->
+        <div class="text-center mt-5">
+            <p class="text-muted small mb-2"><em>This is a community-created listing on Visit Modoc, not affiliated with Valley Farm Store. Visit <a href="https://www.instagram.com/valleyfarmstore/" target="_blank" rel="noopener">@valleyfarmstore on Instagram</a> for the latest from the store.</em></p>
+            <a href="/cedarville" class="btn btn-outline-primary">&larr; Back to Cedarville Guide</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

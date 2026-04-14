@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}The Vault - Coffee House & Artisan Goods in Cedarville, CA{% endblock %}
+
+{% block meta_description %}The Vault is an independent coffee house in historic downtown Cedarville, California, serving fresh brewed coffee, espresso, Italian sodas, and locally baked goods in a friendly small-town gathering spot.{% endblock %}
+
+{% block canonical %}https://visit-modoc.com/merchants/the-vault{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://visit-modoc.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Cedarville", "item": "https://visit-modoc.com/cedarville"},
+        {"@type": "ListItem", "position": 3, "name": "The Vault", "item": "https://visit-modoc.com/merchants/the-vault"}
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CafeOrCoffeeShop",
+    "name": "The Vault",
+    "description": "Independent coffee house in historic downtown Cedarville, California, serving fresh brewed coffee, espresso, Italian sodas, and locally baked goods in a friendly small-town gathering spot.",
+    "url": "https://visit-modoc.com/merchants/the-vault",
+    "image": "https://visit-modoc.com/static/the-vault.jpg",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "596 Main Street",
+        "addressLocality": "Cedarville",
+        "addressRegion": "CA",
+        "postalCode": "96104",
+        "addressCountry": "US"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "41.5293",
+        "longitude": "-120.1726"
+    },
+    "servesCuisine": ["Coffee", "Espresso", "Italian Sodas", "Pastries"],
+    "sameAs": [
+        "https://www.instagram.com/cedarvillevault/"
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="py-5" style="background-color: var(--modoc-primary); color: white;">
+    <div class="container text-center">
+        <p class="text-uppercase mb-2" style="letter-spacing: 2px; opacity: 0.85;">Cedarville Merchants</p>
+        <h1 class="display-4 mb-2">The Vault</h1>
+        <p class="lead mb-0">Coffee House &amp; Artisan Goods in Historic Downtown Cedarville</p>
+    </div>
+</div>
+
+<!-- Main Content -->
+<section class="py-5">
+    <div class="container">
+
+        <!-- About + Photo -->
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h2 class="section-title">Welcome to The Vault</h2>
+                <p class="lead">A welcoming independent coffee house in historic downtown Cedarville, California.</p>
+                <p>Step inside for a fresh brewed cup of coffee, a cool refreshing Italian soda, or a fresh baked scone, cookie, or pastry &mdash; and settle in to enjoy the easy small-town pace.</p>
+                <p>The Vault is the kind of small-town gathering spot Surprise Valley is known for &mdash; a friendly stop for travelers exploring CA-299, motorcycle riders crossing the Warner Mountains, and locals catching up over a cup.</p>
+                <p class="mt-4">
+                    <a href="https://www.instagram.com/cedarvillevault/" target="_blank" rel="noopener" class="btn btn-primary">Follow on Instagram</a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=The+Vault+596+Main+St+Cedarville+CA" target="_blank" rel="noopener" class="btn btn-outline-secondary ms-2">Get Directions</a>
+                </p>
+            </div>
+            <div class="col-lg-6 text-center">
+                <img src="{{ url_for('static', filename='the-vault.jpg') }}"
+                     alt="Brick storefront of The Vault coffee house in Cedarville, California, with hanging signs reading 'ESPRESSO' and 'ARTISAN GOODS' and a vintage red fire hydrant out front"
+                     class="img-fluid rounded shadow">
+                <p class="text-muted small mt-2 mb-0">Photo: <a href="https://www.instagram.com/cedarvillevault/" target="_blank" rel="noopener">@cedarvillevault on Instagram</a></p>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Menu / What They Serve -->
+        <div class="mb-5">
+            <h2 class="section-title text-center mb-4">What's on the Menu</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Fresh Brewed Coffee</h3>
+                            <p class="card-text">Hand-poured choices of brews and flavors, plus a self-serve house coffee bar. Whether you want something carefully crafted or a quick refill, The Vault has you covered.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Espresso &amp; Lattes</h3>
+                            <p class="card-text">Espresso drinks made with carefully selected beans for a rich, smooth flavor. Lattes, chai, and other hot or iced specialty drinks round out the menu.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Classic Italian Sodas</h3>
+                            <p class="card-text">Need a refreshing drink on a hot Surprise Valley afternoon? Choose from over 15 flavors of handmade Italian sodas, or mix and match your own combination.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Local Baked Goods</h3>
+                            <p class="card-text">Fresh baked scones, cookies, and pastries &mdash; locally produced and made fresh every day. The perfect little treat to pair with your favorite drink.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Hours & Location -->
+        <div class="mb-5">
+            <h2 class="section-title text-center mb-4">Hours &amp; Location</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h3 class="card-title h5">Visit</h3>
+                            <p class="mb-1"><strong>The Vault</strong></p>
+                            <p class="mb-1">596 Main Street</p>
+                            <p class="mb-3">Cedarville, CA 96104</p>
+
+                            <h4 class="h6 mt-4">Hours</h4>
+                            <p class="mb-1"><strong>Friday:</strong> 6:00 AM &ndash; 6:00 PM</p>
+                            <p class="mb-1"><strong>Saturday:</strong> 6:00 AM &ndash; 6:00 PM</p>
+                            <p class="mb-3"><strong>Sunday:</strong> 6:00 AM &ndash; 3:00 PM</p>
+
+                            <p class="text-muted small"><em>Hours may vary seasonally. Check <a href="https://www.instagram.com/cedarvillevault/" target="_blank" rel="noopener">@cedarvillevault on Instagram</a> for the latest updates.</em></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-body p-0">
+                            <iframe
+                                src="https://maps.google.com/maps?q=596+Main+St+Cedarville+CA+96104&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                title="Google Map showing the location of The Vault coffee house at 596 Main Street, Cedarville, California"
+                                aria-label="Interactive map of The Vault's location in Cedarville"
+                                width="600"
+                                height="400"
+                                style="border:0; width:100%; height:100%; min-height:380px;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Cedarville -->
+        <div class="text-center mt-5">
+            <p class="text-muted small mb-2"><em>This is a community-created listing on Visit Modoc, not affiliated with The Vault. Visit <a href="https://www.instagram.com/cedarvillevault/" target="_blank" rel="noopener">@cedarvillevault on Instagram</a> for the latest from the shop.</em></p>
+            <a href="/cedarville" class="btn btn-outline-primary">&larr; Back to Cedarville Guide</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

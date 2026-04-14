@@ -120,6 +120,29 @@ Uses `gunicorn` via Procfile for deployment on Railway.
 - Open Graph and Twitter card metadata
 - Schema.org LocalBusiness structured data in base.html
 
+## Handling Restaurant & Cafe Menus
+
+Menus go stale fast — restaurants change items, prices, and seasons constantly. The site is a community guide, not a directory of authoritative menus, and we don't want visitors to drive somewhere expecting a dish that no longer exists.
+
+**Rules for any menu content on the site:**
+
+1. **Never transcribe a full menu.** Even if you have a complete menu image or PDF from the business, only include a small handful of items (typically 3 per category, never more than 4). The goal is to give visitors a flavor of the place, not a comprehensive listing.
+
+2. **Frame menu items as highlights, not as the menu.** Use language like "A few favorites:", "A taste of [section]", "A couple of the regulars:", or "A few to look for:". Avoid headings like "Menu" or "Full Menu" that imply completeness.
+
+3. **Always include a closer line** under each menu section indicating there's more — e.g., "Plus matcha, hot cocoa, organic lemonade, and a rotating cold case." or "The full menu rotates with the seasons and includes other salads, sandwiches, and specials."
+
+4. **Never include prices.** Prices change constantly, are easy to get wrong, and create the impression that the listed price is what visitors will pay. Drop dollar figures, "$X / $Y" size pricing, "Always available $X" notes, etc. If a portion choice matters, describe it without numbers ("available as a whole or half sandwich").
+
+5. **Always include a prominent caveat alert** above the menu sections (Bootstrap `alert-warning` works well) that says something like:
+   > These are a small handful of highlights from [Business]'s menu — meant to give you a flavor of the place, not a complete listing. The actual menu is larger and changes with the seasons. **Please double-check current offerings with [Business] directly** — via [their Instagram/website] or in person — before counting on a specific item.
+
+6. **Pick items that show character.** When choosing the small subset to feature, pick items that demonstrate what makes the place distinctive (signature dishes, locally sourced ingredients, unusual specialties) rather than generic items found everywhere.
+
+**Why these rules exist:** A previous iteration of the Valley Farm Store page transcribed the entire menu from photos with prices, which (a) created a maintenance burden, (b) risked misleading visitors when items changed, (c) felt presumptuous on behalf of the business, and (d) made the page feel like an unsanctioned reproduction rather than a tourism guide. The rules above keep merchant pages welcoming and useful without creating false expectations.
+
+**Note on broad-category descriptions:** Cards that describe what a place generally offers in broad terms ("espresso drinks, baked goods, Italian sodas") are fine and don't count as a menu. The rules above apply to specific named items with descriptions ("Sourdough BLT — uncured bacon and raw cheddar on toasted organic sourdough...").
+
 ## Security: Tarpit for Scanners
 
 The site includes a tarpit system that slows down malicious vulnerability scanners. Instead of returning a quick 404, probes receive a slow-drip response that wastes attacker resources.
