@@ -4,7 +4,7 @@ import time
 import re
 import requests
 from datetime import datetime, timezone
-from flask import Flask, render_template, send_from_directory, Response, request
+from flask import Flask, render_template, send_from_directory, Response, request, redirect
 
 app = Flask(__name__)
 
@@ -240,7 +240,7 @@ def merchant_the_vault():
 
 @app.route('/merchants/bidwell-canyon-farm')
 def merchant_bidwell_canyon_farm():
-    return render_template('merchants/bidwell-canyon-farm.html')
+    return redirect('https://www.bidwellcanyonfarm.com/', code=301)
 
 
 @app.route('/merchants/valley-farm-store')

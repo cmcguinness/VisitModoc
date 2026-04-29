@@ -45,3 +45,6 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Site management docs (reports, analytics, notes — not part of the website)
+site-management/
