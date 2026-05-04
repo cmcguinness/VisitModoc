@@ -1,0 +1,465 @@
+{% extends "base.html" %}
+
+{% block title %}Modoc County Webcams - Cedar Pass, Highway 395 & Alturas Live Cameras{% endblock %}
+
+{% block meta_description %}Live webcams in and around Modoc County, California. Check Cedar Pass and SR-139 road conditions, watch the Warner Mountains and Tule Lake basin, and see US-395 and OR-140 approaches from Lakeview, Oregon. All public Caltrans, ALERTCalifornia, and TripCheck cameras in one map.{% endblock %}
+
+{% block canonical %}https://visit-modoc.com/webcams{% endblock %}
+
+{% block og_url %}https://visit-modoc.com/webcams{% endblock %}
+{% block og_title %}Modoc County Webcams - Live Cameras for Cedar Pass, Hwy 395 & Surprise Valley{% endblock %}
+{% block og_description %}Map of every public webcam in or around Modoc County: Cedar Pass, SR-139 Perez, Lava Beds, US-395 at Lakeview, OR-140 Warner Summit, plus ALERTCalifornia wildfire cameras.{% endblock %}
+
+{% block twitter_url %}https://visit-modoc.com/webcams{% endblock %}
+{% block twitter_title %}Modoc County Webcams - Live Cameras for Cedar Pass, Hwy 395 & Surprise Valley{% endblock %}
+{% block twitter_description %}Map of every public webcam in or around Modoc County: Cedar Pass, SR-139 Perez, Lava Beds, US-395 at Lakeview, OR-140 Warner Summit, plus ALERTCalifornia wildfire cameras.{% endblock %}
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://visit-modoc.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Plan Your Visit", "item": "https://visit-modoc.com/plan-your-visit"},
+        {"@type": "ListItem", "position": 3, "name": "Webcams", "item": "https://visit-modoc.com/webcams"}
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Webcams in and around Modoc County, California",
+    "description": "Public live webcams in Modoc County and adjacent areas, including Caltrans highway cameras, ALERTCalifornia wildfire cameras, and Oregon TripCheck approach cameras.",
+    "itemListOrder": "https://schema.org/ItemListOrderAscending",
+    "numberOfItems": 10,
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Cedar Pass (SR-299) Caltrans Camera", "url": "https://visit-modoc.com/webcams#cam-cedar-pass"},
+        {"@type": "ListItem", "position": 2, "name": "Perez / Tionesta (SR-139) Caltrans Camera", "url": "https://visit-modoc.com/webcams#cam-perez"},
+        {"@type": "ListItem", "position": 3, "name": "Blue Mountain (Modoc) 1 Wildfire Camera", "url": "https://visit-modoc.com/webcams#cam-blue-mtn-1"},
+        {"@type": "ListItem", "position": 4, "name": "Blue Mountain (Modoc) 2 Wildfire Camera", "url": "https://visit-modoc.com/webcams#cam-blue-mtn-2"},
+        {"@type": "ListItem", "position": 5, "name": "Round Mountain (Modoc) 1 Wildfire Camera", "url": "https://visit-modoc.com/webcams#cam-round-mtn"},
+        {"@type": "ListItem", "position": 6, "name": "Likely Mountain (Modoc) 2 Wildfire Camera", "url": "https://visit-modoc.com/webcams#cam-likely-mtn"},
+        {"@type": "ListItem", "position": 7, "name": "Lava Beds National Monument Visitor Center Webcam", "url": "https://visit-modoc.com/webcams#cam-lava-beds"},
+        {"@type": "ListItem", "position": 8, "name": "US-395 at Lakeview, Oregon TripCheck Camera", "url": "https://visit-modoc.com/webcams#cam-lakeview-395"},
+        {"@type": "ListItem", "position": 9, "name": "OR-140 at Warner Mountain Summit TripCheck Camera", "url": "https://visit-modoc.com/webcams#cam-warner-summit"},
+        {"@type": "ListItem", "position": 10, "name": "Hatchet Mountain (SR-299) Caltrans Camera", "url": "https://visit-modoc.com/webcams#cam-hatchet-mtn"}
+    ]
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Are there live webcams in Modoc County, California?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. Caltrans operates two highway cameras inside Modoc County: Cedar Pass on SR-299 (between Alturas and Cedarville) and Perez on SR-139 (between Canby and the Oregon border). UC San Diego's ALERTCalifornia network also operates pan-tilt-zoom wildfire cameras at Blue Mountain and Round Mountain inside the county."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How do I check road and weather conditions for Cedar Pass?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Caltrans maintains a live camera on SR-299 about a mile west of Cedar Pass summit. The image refreshes about once a minute. For text-based road conditions and closures, see Caltrans QuickMap at quickmap.dot.ca.gov."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Is there a webcam looking at Surprise Valley or the Warner Mountains?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "There is no permanent webcam looking directly into Surprise Valley. The closest views come from the Cedar Pass Caltrans cam (which sits on the climb from Alturas toward Cedarville) and ODOT's OR-140 camera at Warner Mountain Summit east of Lakeview, Oregon, which looks toward the northern end of the Warner Mountains."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Are there wildfire cameras in Modoc County?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. ALERTCalifornia, run by UC San Diego, operates several pan-tilt-zoom wildfire cameras in Modoc County, including Blue Mountain (Modoc) 1 and 2 and Round Mountain (Modoc) 1. They are available to the public and include near-infrared night vision and 24-hour timelapse playback."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Is there an Alturas, California webcam?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "There is no city-center webcam in Alturas itself. The nearest live camera is the Caltrans Cedar Pass camera on SR-299, a few miles east of town."
+            }
+        }
+    ]
+}
+</script>
+
+<link rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""/>
+<style>
+    #webcam-map { height: 500px; border-radius: 8px; z-index: 0; }
+    #webcam-map .leaflet-popup-content { margin: 12px 14px; font-size: 0.95rem; line-height: 1.4; }
+    #webcam-map .leaflet-popup-content strong { display: block; margin-bottom: 4px; }
+    .webcam-marker { background: transparent; border: 0; }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<div class="hero-section"
+     style="background-image: url('{{ url_for('static', filename='modoc_nf_valley_view.jpg') }}'); height: 400px;"
+     role="img"
+     aria-label="View of Surprise Valley from the Warner Mountains, Modoc National Forest.">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Modoc County Webcams</h1>
+        <p class="hero-subtitle">Live views of roads, mountains, and approaches to Northeast California</p>
+    </div>
+</div>
+
+<!-- Main Content -->
+<section class="py-5">
+    <div class="container">
+        <!-- Introduction -->
+        <div class="row mb-4">
+            <div class="col-lg-10 mx-auto">
+                <p class="lead">Live webcams in and around Modoc County, California &mdash; collected in one place. Caltrans cameras cover Cedar Pass on Highway 299 between Alturas and Cedarville and SR-139 at Perez (north of Canby). ALERTCalifornia wildfire cameras watch the backcountry from Blue Mountain, Round Mountain, and Likely Mountain. We've also included approach cameras in adjoining counties &mdash; useful for travelers checking conditions on the way in, and occasionally for spotting smoke from a Modoc fire on the horizon.</p>
+                <p>Caltrans and TripCheck images on this page refresh automatically about every minute. If a camera looks frozen or pitch-black, it may be down for maintenance, dusk/night, or covered in snow &mdash; try again later or follow the source link for status info. Each camera card notes where the camera physically sits and what it actually shows, since some adjoining-area cameras don't have a direct view of Modoc itself.</p>
+            </div>
+        </div>
+
+        <!-- Camera Locations Map -->
+        <div class="mb-5">
+            <h2 class="section-title">Camera Locations</h2>
+            <p>Pins mark approximate camera locations. Markers with arrows are <strong>fixed</strong> cameras &mdash; the arrow shows roughly which way they're aimed. Plain blue pins are <strong>pan-tilt-zoom</strong> cameras that can look anywhere. Click a marker for details.</p>
+            <div id="webcam-map" role="region" aria-label="Map of webcam locations in and around Modoc County, California"></div>
+            <p class="text-muted small mt-2 mb-0">Coordinates and aim directions are approximate, derived from public camera descriptions. Please use the source links for authoritative views.</p>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Highway Cameras (Modoc) -->
+        <div class="mb-5">
+            <h2 class="section-title">Modoc Highway Cameras</h2>
+            <p class="lead">Caltrans cameras on the two main mountain crossings into Modoc. Especially useful in winter, when Cedar Pass can pick up serious snow.</p>
+
+            <div class="row g-4 mt-2">
+                <div class="col-lg-6" id="cam-cedar-pass">
+                    <div class="card h-100 shadow-sm">
+                        <img class="card-img-top webcam-live"
+                             src="https://cwwp2.dot.ca.gov/data/d2/cctv/image/cedarpass/cedarpass.jpg"
+                             alt="Live Caltrans traffic camera image of SR-299 at Cedar Pass, approximately one mile west of the summit, east of Alturas in Modoc County."
+                             loading="lazy">
+                        <div class="card-body">
+                            <h3 class="h4 card-title">Cedar Pass &mdash; SR-299</h3>
+                            <p class="card-text">On State Route 299 about a mile west of Cedar Pass, between Alturas and Cedarville. The pass tops out at 6,305 feet and is the main winter crossing into Surprise Valley.</p>
+                            <a href="https://cwwp2.dot.ca.gov/vm/loc/d2/cedarpass.htm" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">Open at Caltrans</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" id="cam-perez">
+                    <div class="card h-100 shadow-sm">
+                        <img class="card-img-top webcam-live"
+                             src="https://cwwp2.dot.ca.gov/data/d2/cctv/image/perez/perez.jpg"
+                             alt="Live Caltrans traffic camera image of SR-139 at the Perez Agricultural Inspection Station, about half a mile south of Perez and north of Canby in Modoc County."
+                             loading="lazy">
+                        <div class="card-body">
+                            <h3 class="h4 card-title">Perez (Tionesta) &mdash; SR-139</h3>
+                            <p class="card-text">On State Route 139 at the Perez Agricultural Inspection Station, between Canby and the Oregon border. This is the camera Surprise Valley locals call "Tionesta."</p>
+                            <a href="https://cwwp2.dot.ca.gov/vm/loc/d2/perez.htm" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">Open at Caltrans</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <p class="text-muted small mb-0">More Caltrans District 2 cameras (Lassen, Shasta, Siskiyou) are listed at <a href="https://dot.ca.gov/caltrans-near-me/district-2/d2-popular-links/d2-view-all-cameras" target="_blank" rel="noopener">dot.ca.gov &mdash; District 2 Cameras</a>. For statewide road conditions, use <a href="https://quickmap.dot.ca.gov/" target="_blank" rel="noopener">Caltrans QuickMap</a>.</p>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- ALERTCalifornia Cameras -->
+        <div class="mb-5">
+            <h2 class="section-title">Modoc Backcountry &amp; Wildfire Cameras</h2>
+            <p class="lead">UC San Diego's ALERTCalifornia network operates pan-tilt-zoom cameras across California's wildlands for early fire detection. The Modoc cameras give long-range views from high points across the county and time-lapse playback for the previous 24 hours.</p>
+
+            <div class="alert alert-info">
+                These cameras are interactive at the source &mdash; click and drag to pan, scroll to zoom, and use the timeline to scrub recent footage. They can't be embedded directly here, so the cards below link out to ALERTCalifornia.
+            </div>
+
+            <div class="row g-4 mt-2">
+                <div class="col-md-6 col-lg-4" id="cam-blue-mtn-1">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="h5 card-title">Blue Mtn (Modoc) 1</h3>
+                            <p class="card-text">Mountaintop camera with sweeping views across central Modoc. Pan-tilt-zoom, with near-infrared at night.</p>
+                            <a href="https://cameras.alertcalifornia.org/?pos=41.45_-120.5_10" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">View live &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" id="cam-blue-mtn-2">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="h5 card-title">Blue Mtn (Modoc) 2</h3>
+                            <p class="card-text">Companion camera at the same site, aimed in a different direction for full horizon coverage.</p>
+                            <a href="https://ops.alertcalifornia.org/cam-console/11020" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">View live &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" id="cam-round-mtn">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="h5 card-title">Round Mtn (Modoc) 1</h3>
+                            <p class="card-text">High-elevation camera offering a different vantage on the Modoc backcountry.</p>
+                            <a href="https://ops.alertcalifornia.org/cam-console/4716" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">View live &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" id="cam-likely-mtn">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="h5 card-title">Likely Mtn (Modoc) 2</h3>
+                            <p class="card-text">High peak above the town of Likely in southern Modoc, on a long-time fire-lookout site. Useful for wildfire smoke spotting across the South Warner Wilderness and the Modoc/Lassen line.</p>
+                            <a href="https://ops.alertcalifornia.org/cam-console/2648" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">View live &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <p class="text-muted small mb-0">To explore the full network, visit <a href="https://cameras.alertcalifornia.org/?pos=41.45_-120.5_9" target="_blank" rel="noopener">the ALERTCalifornia map centered on Modoc</a>. Camera names and IDs occasionally change as the network is upgraded; if a link is dead, browse from the map.</p>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- Approach & Adjoining-Area Cameras -->
+        <div class="mb-5">
+            <h2 class="section-title">Approach &amp; Adjoining-Area Cameras</h2>
+            <p class="lead">These cameras don't sit inside Modoc County, but they're useful in three ways: checking road and weather conditions on the way in, gauging snow on the surrounding mountains, and occasionally spotting a smoke plume from a distant Modoc fire on the horizon. Each card below is honest about where the camera physically sits and what it actually shows.</p>
+
+            <div class="row g-4 mt-2">
+                <div class="col-lg-6" id="cam-lakeview-395">
+                    <div class="card h-100 shadow-sm">
+                        <img class="card-img-top webcam-live"
+                             src="https://www.tripcheck.com/roadcams/cams/Lakeview_pid2412.JPG"
+                             alt="Live Oregon TripCheck traffic camera image of US-395 at Lakeview, Oregon, about 17 miles north of the Modoc County line at New Pine Creek."
+                             loading="lazy">
+                        <div class="card-body">
+                            <h3 class="h4 card-title">US-395 at Lakeview, OR</h3>
+                            <p class="card-text"><strong>Where:</strong> Lake County, Oregon, in downtown Lakeview &mdash; about 17 miles north of the Modoc line at New Pine Creek. <strong>What it shows:</strong> US-395 through Lakeview, not Modoc. Useful for checking weather and road conditions on the most common northern approach to Alturas.</p>
+                            <a href="https://www.tripcheck.com/Pages/View-Camera/?camIds=2412" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">Open at TripCheck</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" id="cam-warner-summit">
+                    <div class="card h-100 shadow-sm">
+                        <img class="card-img-top webcam-live"
+                             src="https://www.tripcheck.com/roadcams/cams/ORE140 at Warner Mtn Summit_pid2380.JPG"
+                             alt="Live Oregon TripCheck traffic camera image of OR-140 at Warner Mountain Summit, east of Lakeview, Oregon."
+                             loading="lazy">
+                        <div class="card-body">
+                            <h3 class="h4 card-title">OR-140 at Warner Mountain Summit</h3>
+                            <p class="card-text"><strong>Where:</strong> Lake County, Oregon, on OR-140 east of Lakeview, well north of the CA border. <strong>What it shows:</strong> the Oregon side of the divide between Goose Lake and Warner Valley &mdash; not Modoc directly. The Warner Mountains continue south from here into Modoc, so it can be a useful early-season snow gauge for the range.</p>
+                            <a href="https://www.tripcheck.com/Pages/View-Camera/?camIds=2380" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">Open at TripCheck</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" id="cam-hatchet-mtn">
+                    <div class="card h-100 shadow-sm">
+                        <img class="card-img-top webcam-live"
+                             src="https://cwwp2.dot.ca.gov/data/d2/cctv/image/hatchetmtn/hatchetmtn.jpg"
+                             alt="Live Caltrans traffic camera image of SR-299 at the Hatchet Mountain summit, east of Burney in Shasta County, California."
+                             loading="lazy">
+                        <div class="card-body">
+                            <h3 class="h4 card-title">Hatchet Mountain &mdash; SR-299</h3>
+                            <p class="card-text"><strong>Where:</strong> Shasta County, on SR-299 at the summit east of Burney, ~70 miles west of Adin. <strong>What it shows:</strong> the highway over the Hatchet Mountain summit &mdash; not Modoc itself. Worth a glance if you're approaching Modoc from Redding via SR-299, which is the main western route in.</p>
+                            <a href="https://cwwp2.dot.ca.gov/vm/loc/d2/hatchetmtn.htm" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">Open at Caltrans</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" id="cam-lava-beds">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h3 class="h4 card-title">Lava Beds National Monument Visitor Center</h3>
+                            <p class="card-text"><strong>Where:</strong> Siskiyou County, at the Lava Beds visitor center (~4,700 ft), just west of the Modoc line. <strong>What it shows:</strong> a wide northward view over the Lava Beds wilderness and Tule Lake basin &mdash; mostly Siskiyou and Klamath Co., Oregon. Modoc sits to the east, behind/beside the camera, so it doesn't show Modoc directly, but it's a useful weather-and-smoke view for the western edge of the region.</p>
+                            <a href="https://www.nps.gov/media/webcam/view.htm?id=81B46183-1DD8-B71B-0B44D2EBCDA304A5" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">View live &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3">
+                <p class="text-muted small mb-0">Don't see a camera you'd expect? There are very few public cameras in remote NW Nevada (Washoe County) or in the high country of Lassen and Siskiyou facing toward Modoc. If you know of one we've missed, the contact link is at the bottom of the page.</p>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- FAQ -->
+        <div class="mb-5">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="accordion" id="webcamFaq">
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">Are there live webcams in Modoc County, California?</button>
+                    </h3>
+                    <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#webcamFaq">
+                        <div class="accordion-body">Yes. Caltrans operates two highway cameras inside Modoc County: <a href="#cam-cedar-pass">Cedar Pass on SR-299</a> (between Alturas and Cedarville) and <a href="#cam-perez">Perez on SR-139</a> (between Canby and the Oregon border). UC San Diego's ALERTCalifornia network also operates pan-tilt-zoom wildfire cameras at Blue Mountain and Round Mountain inside the county.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">How do I check road and weather conditions for Cedar Pass?</button>
+                    </h3>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#webcamFaq">
+                        <div class="accordion-body">Caltrans maintains a <a href="#cam-cedar-pass">live camera on SR-299 about a mile west of Cedar Pass summit</a>. The image refreshes about once a minute. For text-based road conditions and closures, see <a href="https://quickmap.dot.ca.gov/" target="_blank" rel="noopener">Caltrans QuickMap</a>.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">Is there a webcam looking at Surprise Valley or the Warner Mountains?</button>
+                    </h3>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#webcamFaq">
+                        <div class="accordion-body">There is no permanent webcam looking directly into Surprise Valley. The closest views come from the <a href="#cam-cedar-pass">Cedar Pass Caltrans cam</a> (which sits on the climb from Alturas toward Cedarville) and <a href="#cam-warner-summit">ODOT's OR-140 camera at Warner Mountain Summit</a> east of Lakeview, Oregon, which looks toward the northern end of the Warner Mountains.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">Are there wildfire cameras in Modoc County?</button>
+                    </h3>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#webcamFaq">
+                        <div class="accordion-body">Yes. ALERTCalifornia, run by UC San Diego, operates several pan-tilt-zoom wildfire cameras in Modoc County, including <a href="#cam-blue-mtn-1">Blue Mountain (Modoc) 1 and 2</a> and <a href="#cam-round-mtn">Round Mountain (Modoc) 1</a>. They are available to the public and include near-infrared night vision and 24-hour timelapse playback.</div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">Is there an Alturas, California webcam?</button>
+                    </h3>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#webcamFaq">
+                        <div class="accordion-body">There is no city-center webcam in Alturas itself. The nearest live camera is the <a href="#cam-cedar-pass">Caltrans Cedar Pass camera on SR-299</a>, a few miles east of town.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-5">
+
+        <!-- About / Sources -->
+        <div class="bg-light p-4 rounded">
+            <h2 class="h3 mb-3">About These Cameras</h2>
+            <p>None of the cameras on this page are operated by Visit Modoc &mdash; we're just collecting public feeds in one place. The actual sources are:</p>
+            <ul>
+                <li><strong><a href="https://dot.ca.gov/caltrans-near-me/district-2/d2-popular-links/d2-view-all-cameras" target="_blank" rel="noopener">Caltrans District 2</a></strong> &mdash; Cedar Pass and Perez highway cameras</li>
+                <li><strong><a href="https://alertcalifornia.org/" target="_blank" rel="noopener">ALERTCalifornia</a></strong> (UC San Diego) &mdash; Blue Mtn and Round Mtn wildfire cameras</li>
+                <li><strong><a href="https://www.tripcheck.com/" target="_blank" rel="noopener">Oregon TripCheck</a></strong> (ODOT) &mdash; US-395 Lakeview and OR-140 Warner Mountain Summit</li>
+                <li><strong><a href="https://www.nps.gov/labe/" target="_blank" rel="noopener">National Park Service</a></strong> &mdash; Lava Beds National Monument visitor center</li>
+            </ul>
+            <p class="mb-0">For a broader view of the region, the <strong><a href="https://surprisevalleychamber.com/weather-roads.htm" target="_blank" rel="noopener">Surprise Valley Chamber of Commerce</a></strong> also keeps a useful weather and roads page.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Auto-refresh embedded webcam images every 60 seconds -->
+<script>
+(function () {
+    var REFRESH_MS = 60000;
+    function refreshWebcams() {
+        var imgs = document.querySelectorAll('img.webcam-live');
+        var stamp = '?t=' + Date.now();
+        imgs.forEach(function (img) {
+            var base = img.src.split('?')[0];
+            img.src = base + stamp;
+        });
+    }
+    setInterval(refreshWebcams, REFRESH_MS);
+})();
+</script>
+
+<!-- Leaflet map of camera locations -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+<script>
+(function () {
+    if (typeof L === 'undefined') return;
+
+    // Compass degrees: 0 = N, 90 = E, 180 = S, 270 = W
+    var cameras = [
+        { id: 'cam-cedar-pass',     name: 'Cedar Pass (SR-299)',                   lat: 41.5573, lon: -120.3232, type: 'fixed', aim: 270, blurb: 'Caltrans &mdash; SR-299, ~1 mile west of the pass. <em>In Modoc.</em>' },
+        { id: 'cam-perez',          name: 'Perez / Tionesta (SR-139)',             lat: 41.7860, lon: -120.9610, type: 'fixed', aim: 180, blurb: 'Caltrans &mdash; SR-139 at the Perez Ag Inspection Station. <em>In Modoc.</em>' },
+        { id: 'cam-blue-mtn-1',     name: 'Blue Mtn (Modoc) 1',                    lat: 41.3000, lon: -120.4500, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ). <em>In Modoc.</em>' },
+        { id: 'cam-blue-mtn-2',     name: 'Blue Mtn (Modoc) 2',                    lat: 41.3000, lon: -120.4500, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ). <em>In Modoc.</em>' },
+        { id: 'cam-round-mtn',      name: 'Round Mtn (Modoc) 1',                   lat: 41.5000, lon: -120.7000, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ). <em>In Modoc.</em>' },
+        { id: 'cam-likely-mtn',     name: 'Likely Mtn (Modoc) 2',                  lat: 41.2200, lon: -120.4500, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ) above Likely. <em>In Modoc.</em>' },
+        { id: 'cam-lava-beds',      name: 'Lava Beds NM Visitor Center',           lat: 41.7141, lon: -121.5081, type: 'fixed', aim: 0,   blurb: 'NPS &mdash; northward view, Lava Beds wilderness. <em>In Siskiyou Co. (does not show Modoc directly).</em>' },
+        { id: 'cam-lakeview-395',   name: 'US-395 at Lakeview, OR',                lat: 42.1881, lon: -120.3458, type: 'fixed', aim: 180, blurb: 'Oregon TripCheck &mdash; US-395 in Lakeview. <em>In Lake Co., OR (approach view, not Modoc).</em>' },
+        { id: 'cam-warner-summit',  name: 'OR-140 at Warner Mountain Summit',      lat: 42.2000, lon: -120.1900, type: 'fixed', aim: 90,  blurb: 'Oregon TripCheck &mdash; OR-140 east of Lakeview. <em>In Lake Co., OR (approach view, not Modoc).</em>' },
+        { id: 'cam-hatchet-mtn',    name: 'Hatchet Mountain (SR-299)',             lat: 40.9550, lon: -121.5570, type: 'fixed', aim: 90,  blurb: 'Caltrans &mdash; SR-299 summit east of Burney. <em>In Shasta Co. (western approach, not Modoc).</em>' }
+    ];
+
+    function fixedIcon(aim) {
+        var svg =
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">' +
+                '<g transform="rotate(' + aim + ' 20 20)">' +
+                    '<line x1="20" y1="20" x2="20" y2="3" stroke="#c0392b" stroke-width="3" stroke-linecap="round"/>' +
+                    '<polygon points="13,9 20,1 27,9" fill="#c0392b"/>' +
+                '</g>' +
+                '<circle cx="20" cy="20" r="6" fill="#c0392b" stroke="#fff" stroke-width="2"/>' +
+            '</svg>';
+        return L.divIcon({
+            className: 'webcam-marker',
+            html: svg,
+            iconSize: [40, 40],
+            iconAnchor: [20, 20],
+            popupAnchor: [0, -16]
+        });
+    }
+
+    function ptzIcon() {
+        var svg =
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true">' +
+                '<circle cx="20" cy="20" r="11" fill="#2c5530" stroke="#fff" stroke-width="2"/>' +
+                '<circle cx="20" cy="20" r="4" fill="#fff"/>' +
+                '<circle cx="20" cy="20" r="2" fill="#2c5530"/>' +
+            '</svg>';
+        return L.divIcon({
+            className: 'webcam-marker',
+            html: svg,
+            iconSize: [34, 34],
+            iconAnchor: [17, 17],
+            popupAnchor: [0, -14]
+        });
+    }
+
+    var map = L.map('webcam-map', { scrollWheelZoom: false }).setView([41.65, -120.7], 8);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 17
+    }).addTo(map);
+
+    var bounds = [];
+    cameras.forEach(function (c) {
+        var icon = c.type === 'ptz' ? ptzIcon() : fixedIcon(c.aim);
+        var popup =
+            '<strong>' + c.name + '</strong>' +
+            c.blurb +
+            '<br><a href="#' + c.id + '">View details below &rarr;</a>';
+        L.marker([c.lat, c.lon], { icon: icon, title: c.name })
+            .addTo(map)
+            .bindPopup(popup);
+        bounds.push([c.lat, c.lon]);
+    });
+
+    if (bounds.length > 1) {
+        map.fitBounds(bounds, { padding: [40, 40] });
+    }
+})();
+</script>
+{% endblock %}

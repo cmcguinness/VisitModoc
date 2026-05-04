@@ -48,3 +48,6 @@ Thumbs.db
 
 # Site management docs (reports, analytics, notes — not part of the website)
 site-management/
+
+# Local screenshots from Claude Code testing
+.claude_screenshots/

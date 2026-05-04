@@ -215,6 +215,11 @@ def bartells_backroads():
     return render_template('bartells-backroads.html')
 
 
+@app.route('/webcams')
+def webcams():
+    return render_template('webcams.html')
+
+
 @app.route('/technical-details')
 def technical_details():
     # Load image credits from licenses.json

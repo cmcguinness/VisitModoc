@@ -67,6 +67,12 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://visit-modoc.com/webcams</loc>
+        <lastmod>2026-05-04</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
         <loc>https://visit-modoc.com/technical-details</loc>
         <lastmod>2026-04-06</lastmod>
         <changefreq>yearly</changefreq>
