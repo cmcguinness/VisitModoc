@@ -2,6 +2,7 @@ import os
 import json
 import time
 import re
+import threading
 import requests
 from datetime import datetime, timezone
 from flask import Flask, render_template, send_from_directory, Response, request, redirect
@@ -76,6 +77,13 @@ TARPIT_REGEX = re.compile('|'.join(TARPIT_PATTERNS), re.IGNORECASE)
 # Pattern for random backdoor probes (only checked on non-matching routes)
 BACKDOOR_PATTERN = re.compile(r'^/[a-zA-Z0-9]{4,12}$')
 
+# Cap how many tarpits can run at once. With gthread workers, each tarpit ties
+# up one thread for ~30s; without a cap, a flood of probes can starve real
+# requests. Excess probes get redirected somewhere wasteful instead.
+TARPIT_MAX_CONCURRENT = 4
+_tarpit_sem = threading.Semaphore(TARPIT_MAX_CONCURRENT)
+RICK_ROLL_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+
 
 def is_valid_route(path):
     """Check if path matches any registered route."""
@@ -88,8 +96,12 @@ def is_valid_route(path):
 
 
 def tarpit_response():
-    """Generate a slow response that wastes scanner resources."""
-    # Fake PHP-looking garbage, sent byte by byte
+    """Generate a slow response that wastes scanner resources.
+
+    Releases one tarpit slot when iteration ends (whether normally or because
+    the client disconnected and Flask called close() on the generator).
+    Caller must have acquired _tarpit_sem before invoking this.
+    """
     garbage_lines = [
         b'<?php /* WordPress Security Check */ ?>\n',
         b'<?php require_once("wp-config.php"); ?>\n',
@@ -98,19 +110,27 @@ def tarpit_response():
         b'<?php // Loading admin panel... ?>\n',
         b'<?php session_start(); /* auth pending */ ?>\n',
     ]
-    for _ in range(50):  # ~30 seconds total
-        for line in garbage_lines:
-            yield line
-            time.sleep(0.1)
+    try:
+        for _ in range(50):  # ~30 seconds total
+            for line in garbage_lines:
+                yield line
+                time.sleep(0.1)
+    finally:
+        _tarpit_sem.release()
 
 
 def log_and_tarpit(reason):
-    """Log the probe attempt and return a tarpit response."""
+    """Log the probe attempt and tarpit it, or redirect if at capacity."""
     cf_ip = request.headers.get('CF-Connecting-IP', 'unknown')
     x_forwarded = request.headers.get('X-Forwarded-For', 'unknown')
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
-    print(f"[TARPIT:{reason}] {timestamp} | CF-IP: {cf_ip} | X-Forwarded-For: {x_forwarded} | URL: {request.url}", flush=True)
 
+    if not _tarpit_sem.acquire(blocking=False):
+        # Already at max concurrent tarpits; send the overflow somewhere fun.
+        print(f"[TARPIT:{reason}:rickroll] {timestamp} | CF-IP: {cf_ip} | X-Forwarded-For: {x_forwarded} | URL: {request.url}", flush=True)
+        return redirect(RICK_ROLL_URL, code=302)
+
+    print(f"[TARPIT:{reason}] {timestamp} | CF-IP: {cf_ip} | X-Forwarded-For: {x_forwarded} | URL: {request.url}", flush=True)
     return Response(
         tarpit_response(),
         status=200,
