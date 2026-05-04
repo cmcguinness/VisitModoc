@@ -106,6 +106,22 @@
     #webcam-map .leaflet-popup-content { margin: 12px 14px; font-size: 0.95rem; line-height: 1.4; }
     #webcam-map .leaflet-popup-content strong { display: block; margin-bottom: 4px; }
     .webcam-marker { background: transparent; border: 0; }
+    /* Reserve a 4:3 placeholder area before the image loads so the page
+       doesn't re-flow. Once loaded, the image's natural aspect takes over. */
+    .webcam-live { width: 100%; height: auto; background-color: #e9ecef; }
+    .webcam-live:not(.loaded) {
+        aspect-ratio: 4 / 3;
+        background-image: linear-gradient(135deg, #e9ecef 25%, #dee2e6 25%, #dee2e6 50%, #e9ecef 50%, #e9ecef 75%, #dee2e6 75%);
+        background-size: 20px 20px;
+        animation: webcam-loading 2s linear infinite;
+    }
+    @keyframes webcam-loading {
+        0% { background-position: 0 0; }
+        100% { background-position: 40px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .webcam-live:not(.loaded) { animation: none; }
+    }
 </style>
 {% endblock %}
 
@@ -152,9 +168,12 @@
                 <div class="col-lg-6" id="cam-cedar-pass">
                     <div class="card h-100 shadow-sm">
                         <img class="card-img-top webcam-live"
-                             src="https://cwwp2.dot.ca.gov/data/d2/cctv/image/cedarpass/cedarpass.jpg"
+                             src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%204%203%22%2F%3E"
+                             data-src="https://cwwp2.dot.ca.gov/data/d2/cctv/image/cedarpass/cedarpass.jpg"
                              alt="Live Caltrans traffic camera image of SR-299 at Cedar Pass, approximately one mile west of the summit, east of Alturas in Modoc County."
-                             loading="lazy">
+                             loading="lazy"
+                             decoding="async"
+                             fetchpriority="low">
                         <div class="card-body">
                             <h3 class="h4 card-title">Cedar Pass &mdash; SR-299</h3>
                             <p class="card-text">On State Route 299 about a mile west of Cedar Pass, between Alturas and Cedarville. The pass tops out at 6,305 feet and is the main winter crossing into Surprise Valley.</p>
@@ -165,9 +184,12 @@
                 <div class="col-lg-6" id="cam-perez">
                     <div class="card h-100 shadow-sm">
                         <img class="card-img-top webcam-live"
-                             src="https://cwwp2.dot.ca.gov/data/d2/cctv/image/perez/perez.jpg"
+                             src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%204%203%22%2F%3E"
+                             data-src="https://cwwp2.dot.ca.gov/data/d2/cctv/image/perez/perez.jpg"
                              alt="Live Caltrans traffic camera image of SR-139 at the Perez Agricultural Inspection Station, about half a mile south of Perez and north of Canby in Modoc County."
-                             loading="lazy">
+                             loading="lazy"
+                             decoding="async"
+                             fetchpriority="low">
                         <div class="card-body">
                             <h3 class="h4 card-title">Perez (Tionesta) &mdash; SR-139</h3>
                             <p class="card-text">On State Route 139 at the Perez Agricultural Inspection Station, between Canby and the Oregon border. This is the camera Surprise Valley locals call "Tionesta."</p>
@@ -248,9 +270,12 @@
                 <div class="col-lg-6" id="cam-lakeview-395">
                     <div class="card h-100 shadow-sm">
                         <img class="card-img-top webcam-live"
-                             src="https://www.tripcheck.com/roadcams/cams/Lakeview_pid2412.JPG"
+                             src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%204%203%22%2F%3E"
+                             data-src="https://www.tripcheck.com/roadcams/cams/Lakeview_pid2412.JPG"
                              alt="Live Oregon TripCheck traffic camera image of US-395 at Lakeview, Oregon, about 17 miles north of the Modoc County line at New Pine Creek."
-                             loading="lazy">
+                             loading="lazy"
+                             decoding="async"
+                             fetchpriority="low">
                         <div class="card-body">
                             <h3 class="h4 card-title">US-395 at Lakeview, OR</h3>
                             <p class="card-text"><strong>Where:</strong> Lake County, Oregon, in downtown Lakeview &mdash; about 17 miles north of the Modoc line at New Pine Creek. <strong>What it shows:</strong> US-395 through Lakeview, not Modoc. Useful for checking weather and road conditions on the most common northern approach to Alturas.</p>
@@ -261,9 +286,12 @@
                 <div class="col-lg-6" id="cam-warner-summit">
                     <div class="card h-100 shadow-sm">
                         <img class="card-img-top webcam-live"
-                             src="https://www.tripcheck.com/roadcams/cams/ORE140 at Warner Mtn Summit_pid2380.JPG"
+                             src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%204%203%22%2F%3E"
+                             data-src="https://www.tripcheck.com/roadcams/cams/ORE140 at Warner Mtn Summit_pid2380.JPG"
                              alt="Live Oregon TripCheck traffic camera image of OR-140 at Warner Mountain Summit, east of Lakeview, Oregon."
-                             loading="lazy">
+                             loading="lazy"
+                             decoding="async"
+                             fetchpriority="low">
                         <div class="card-body">
                             <h3 class="h4 card-title">OR-140 at Warner Mountain Summit</h3>
                             <p class="card-text"><strong>Where:</strong> Lake County, Oregon, on OR-140 east of Lakeview, well north of the CA border. <strong>What it shows:</strong> the Oregon side of the divide between Goose Lake and Warner Valley &mdash; not Modoc directly. The Warner Mountains continue south from here into Modoc, so it can be a useful early-season snow gauge for the range.</p>
@@ -274,9 +302,12 @@
                 <div class="col-lg-6" id="cam-hatchet-mtn">
                     <div class="card h-100 shadow-sm">
                         <img class="card-img-top webcam-live"
-                             src="https://cwwp2.dot.ca.gov/data/d2/cctv/image/hatchetmtn/hatchetmtn.jpg"
+                             src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%204%203%22%2F%3E"
+                             data-src="https://cwwp2.dot.ca.gov/data/d2/cctv/image/hatchetmtn/hatchetmtn.jpg"
                              alt="Live Caltrans traffic camera image of SR-299 at the Hatchet Mountain summit, east of Burney in Shasta County, California."
-                             loading="lazy">
+                             loading="lazy"
+                             decoding="async"
+                             fetchpriority="low">
                         <div class="card-body">
                             <h3 class="h4 card-title">Hatchet Mountain &mdash; SR-299</h3>
                             <p class="card-text"><strong>Where:</strong> Shasta County, on SR-299 at the summit east of Burney, ~70 miles west of Adin. <strong>What it shows:</strong> the highway over the Hatchet Mountain summit &mdash; not Modoc itself. Worth a glance if you're approaching Modoc from Redding via SR-299, which is the main western route in.</p>
@@ -366,29 +397,46 @@
     </div>
 </section>
 
-<!-- Auto-refresh embedded webcam images every 60 seconds -->
+<!-- Defer webcam images and auto-refresh every 60 seconds -->
 <script>
 (function () {
     var REFRESH_MS = 60000;
+    function loadOne(img) {
+        var url = img.getAttribute('data-src');
+        if (!url) return;
+        img.addEventListener('load', function () { img.classList.add('loaded'); }, { once: true });
+        img.src = url;
+    }
     function refreshWebcams() {
-        var imgs = document.querySelectorAll('img.webcam-live');
+        var imgs = document.querySelectorAll('img.webcam-live.loaded');
         var stamp = '?t=' + Date.now();
         imgs.forEach(function (img) {
-            var base = img.src.split('?')[0];
+            var base = (img.getAttribute('data-src') || img.src).split('?')[0];
             img.src = base + stamp;
         });
     }
-    setInterval(refreshWebcams, REFRESH_MS);
+    function startInitialLoad() {
+        document.querySelectorAll('img.webcam-live[data-src]').forEach(loadOne);
+        setInterval(refreshWebcams, REFRESH_MS);
+    }
+    // Wait until the rest of the page (HTML, CSS, map JS) has settled
+    // before kicking off external webcam fetches.
+    if (document.readyState === 'complete') {
+        startInitialLoad();
+    } else {
+        window.addEventListener('load', startInitialLoad, { once: true });
+    }
 })();
 </script>
 
 <!-- Leaflet map of camera locations -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+<script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
 <script>
 (function () {
-    if (typeof L === 'undefined') return;
+    function initMap() {
+        if (typeof L === 'undefined') return;
 
     // Compass degrees: 0 = N, 90 = E, 180 = S, 270 = W
     var cameras = [
@@ -399,8 +447,8 @@
         { id: 'cam-round-mtn',      name: 'Round Mtn (Modoc) 1',                   lat: 41.5000, lon: -120.7000, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ). <em>In Modoc.</em>' },
         { id: 'cam-likely-mtn',     name: 'Likely Mtn (Modoc) 2',                  lat: 41.2200, lon: -120.4500, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ) above Likely. <em>In Modoc.</em>' },
         { id: 'cam-lava-beds',      name: 'Lava Beds NM Visitor Center',           lat: 41.7141, lon: -121.5081, type: 'fixed', aim: 0,   blurb: 'NPS &mdash; northward view, Lava Beds wilderness. <em>In Siskiyou Co. (does not show Modoc directly).</em>' },
-        { id: 'cam-lakeview-395',   name: 'US-395 at Lakeview, OR',                lat: 42.1881, lon: -120.3458, type: 'fixed', aim: 180, blurb: 'Oregon TripCheck &mdash; US-395 in Lakeview. <em>In Lake Co., OR (approach view, not Modoc).</em>' },
-        { id: 'cam-warner-summit',  name: 'OR-140 at Warner Mountain Summit',      lat: 42.2000, lon: -120.1900, type: 'fixed', aim: 90,  blurb: 'Oregon TripCheck &mdash; OR-140 east of Lakeview. <em>In Lake Co., OR (approach view, not Modoc).</em>' },
+        { id: 'cam-lakeview-395',   name: 'US-395 at Lakeview, OR',                lat: 42.1881, lon: -120.3458, type: 'fixed', aim: 0,   blurb: 'Oregon TripCheck &mdash; US-395 in Lakeview, looking north. <em>In Lake Co., OR (approach view, not Modoc).</em>' },
+        { id: 'cam-warner-summit',  name: 'OR-140 at Warner Mountain Summit',      lat: 42.2000, lon: -120.1900, type: 'fixed', aim: 270, blurb: 'Oregon TripCheck &mdash; OR-140 east of Lakeview, looking west. <em>In Lake Co., OR (approach view, not Modoc).</em>' },
         { id: 'cam-hatchet-mtn',    name: 'Hatchet Mountain (SR-299)',             lat: 40.9550, lon: -121.5570, type: 'fixed', aim: 90,  blurb: 'Caltrans &mdash; SR-299 summit east of Burney. <em>In Shasta Co. (western approach, not Modoc).</em>' }
     ];
 
@@ -459,6 +507,14 @@
 
     if (bounds.length > 1) {
         map.fitBounds(bounds, { padding: [40, 40] });
+    }
+    }
+
+    // Wait for the deferred Leaflet script + DOM to be ready before initializing.
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMap);
+    } else {
+        initMap();
     }
 })();
 </script>
