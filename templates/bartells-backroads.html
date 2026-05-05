@@ -24,10 +24,20 @@
         <!-- Accessibility Notice -->
         <div class="row mb-4">
             <div class="col-lg-8 mx-auto">
-                <div class="alert alert-info" role="region" aria-label="Video accessibility information">
-                    <h2 class="alert-heading h5">Video Accessibility</h2>
-                    <p class="mb-2">All YouTube videos on this page have captions available for viewers who are deaf or hard of hearing.</p>
-                    <p class="mb-0"><strong>To enable captions:</strong> Click the CC (Closed Captions) button in the video player, then select your preferred caption language.</p>
+                <div class="accordion" id="videoA11yAccordion">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#videoA11y" aria-expanded="false" aria-controls="videoA11y">
+                                Video Accessibility
+                            </button>
+                        </h2>
+                        <div id="videoA11y" class="accordion-collapse collapse" data-bs-parent="#videoA11yAccordion">
+                            <div class="accordion-body">
+                                <p class="mb-2">All YouTube videos on this page have captions available for viewers who are deaf or hard of hearing.</p>
+                                <p class="mb-0"><strong>To enable captions:</strong> Click the CC (Closed Captions) button in the video player, then select your preferred caption language.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
