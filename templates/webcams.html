@@ -110,9 +110,16 @@
     .webcam-marker { background: transparent; border: 0; }
     /* Reserve a 4:3 placeholder area before the image loads so the page
        doesn't re-flow. Once loaded, the image's natural aspect takes over. */
-    .webcam-live { width: 100%; height: auto; background-color: #e9ecef; }
+    .webcam-live, .webcam-pano { width: 100%; height: auto; background-color: #e9ecef; display: block; }
     .webcam-live:not(.loaded) {
         aspect-ratio: 4 / 3;
+        background-image: linear-gradient(135deg, #e9ecef 25%, #dee2e6 25%, #dee2e6 50%, #e9ecef 50%, #e9ecef 75%, #dee2e6 75%);
+        background-size: 20px 20px;
+        animation: webcam-loading 2s linear infinite;
+    }
+    /* Panorama: wide strip (~10.7:1 native). Reserve that aspect while loading. */
+    .webcam-pano:not(.loaded) {
+        aspect-ratio: 32 / 3;
         background-image: linear-gradient(135deg, #e9ecef 25%, #dee2e6 25%, #dee2e6 50%, #e9ecef 50%, #e9ecef 75%, #dee2e6 75%);
         background-size: 20px 20px;
         animation: webcam-loading 2s linear infinite;
@@ -122,7 +129,7 @@
         100% { background-position: 40px 0; }
     }
     @media (prefers-reduced-motion: reduce) {
-        .webcam-live:not(.loaded) { animation: none; }
+        .webcam-live:not(.loaded), .webcam-pano:not(.loaded) { animation: none; }
     }
 </style>
 {% endblock %}
@@ -263,12 +270,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4" id="cam-devils-garden-2">
-                    <div class="card h-100 shadow-sm">
+                <div class="col-12" id="cam-devils-garden-2">
+                    <div class="card shadow-sm">
+                        <img class="card-img-top webcam-pano"
+                             src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%201067%20100%22%2F%3E"
+                             data-alertca-cam-id="1940"
+                             alt="Live 360-degree panorama from the ALERTCalifornia Devils Garden 2 camera in central-western Modoc County."
+                             loading="lazy"
+                             decoding="async"
+                             fetchpriority="low">
                         <div class="card-body">
-                            <h3 class="h5 card-title">Devils Garden 2</h3>
-                            <p class="card-text">Companion camera on the Devils Garden plateau, aimed in a different direction for fuller horizon coverage of the Modoc backcountry.</p>
-                            <a href="https://ops.alertcalifornia.org/cam-console/1940" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">View live &rarr;</a>
+                            <h3 class="h5 card-title">Devils Garden 2 &mdash; Live 360&deg; Panorama</h3>
+                            <p class="card-text mb-2">A full horizon sweep from the Devils Garden plateau, refreshed every couple of minutes by ALERTCalifornia. The image is a wide panorama (about 11520 &times; 1080 pixels) so it appears as a thin strip; click through to ALERTCalifornia for the interactive view with pan/tilt/zoom.</p>
+                            <a href="https://ops.alertcalifornia.org/cam-console/1940" target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">Open at ALERTCalifornia</a>
                         </div>
                     </div>
                 </div>
@@ -417,17 +431,22 @@
     </div>
 </section>
 
-<!-- Defer webcam images and auto-refresh every 60 seconds -->
+<!-- Defer webcam images and auto-refresh on a sensible cadence -->
 <script>
 (function () {
     var REFRESH_MS = 60000;
-    function loadOne(img) {
+    var ALERTCA_REFRESH_MS = 180000; // ALERTCalifornia panos are large (~3 MB) and update every 1-2 min
+    var ALERTCA_API = 'https://api.cdn.prod.alertwest.com/api/panorama/list/byCamId?camId=';
+    var ALERTCA_IMG_BASE = 'https://img.cdn.prod.alertwest.com/data/img/';
+
+    function loadStaticImg(img) {
         var url = img.getAttribute('data-src');
         if (!url) return;
         img.addEventListener('load', function () { img.classList.add('loaded'); }, { once: true });
         img.src = url;
     }
-    function refreshWebcams() {
+
+    function refreshStaticWebcams() {
         var imgs = document.querySelectorAll('img.webcam-live.loaded');
         var stamp = '?t=' + Date.now();
         imgs.forEach(function (img) {
@@ -435,12 +454,35 @@
             img.src = base + stamp;
         });
     }
-    function startInitialLoad() {
-        document.querySelectorAll('img.webcam-live[data-src]').forEach(loadOne);
-        setInterval(refreshWebcams, REFRESH_MS);
+
+    function loadAlertCaImg(img) {
+        var camId = img.getAttribute('data-alertca-cam-id');
+        if (!camId) return;
+        fetch(ALERTCA_API + encodeURIComponent(camId) + '&timestamp=', { mode: 'cors' })
+            .then(function (resp) { return resp.ok ? resp.json() : null; })
+            .then(function (data) {
+                var cur = data && data.data && data.data[camId] && data.data[camId].cur;
+                if (!cur || !cur.cmlg_img_name || !cur.cmlg_date) return;
+                var parts = cur.cmlg_date.split('-'); // [YYYY, MM, DD]
+                if (parts.length !== 3) return;
+                var url = ALERTCA_IMG_BASE + camId + '/' + parts[0] + '/' + parts[1] + '/' + parts[2] + '/' + cur.cmlg_img_name;
+                img.addEventListener('load', function () { img.classList.add('loaded'); }, { once: true });
+                img.src = url;
+            })
+            .catch(function () { /* swallow — placeholder stays visible, click-through link still works */ });
     }
-    // Wait until the rest of the page (HTML, CSS, map JS) has settled
-    // before kicking off external webcam fetches.
+
+    function refreshAlertCaImgs() {
+        document.querySelectorAll('img.webcam-pano[data-alertca-cam-id]').forEach(loadAlertCaImg);
+    }
+
+    function startInitialLoad() {
+        document.querySelectorAll('img.webcam-live[data-src]').forEach(loadStaticImg);
+        document.querySelectorAll('img.webcam-pano[data-alertca-cam-id]').forEach(loadAlertCaImg);
+        setInterval(refreshStaticWebcams, REFRESH_MS);
+        setInterval(refreshAlertCaImgs, ALERTCA_REFRESH_MS);
+    }
+
     if (document.readyState === 'complete') {
         startInitialLoad();
     } else {
@@ -466,8 +508,8 @@
         { id: 'cam-blue-mtn-2',     name: 'Blue Mtn (Modoc) 2',                    lat: 41.3000, lon: -120.4500, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ). <em>In Modoc.</em>' },
         { id: 'cam-round-mtn',      name: 'Round Mtn (Modoc) 1',                   lat: 41.5000, lon: -120.7000, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ). <em>In Modoc.</em>' },
         { id: 'cam-likely-mtn',     name: 'Likely Mtn (Modoc) 2',                  lat: 41.2200, lon: -120.4500, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ) above Likely. <em>In Modoc.</em>' },
-        { id: 'cam-devils-garden-1',name: 'Devils Garden 1',                       lat: 41.5500, lon: -120.9500, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ) on the Devils Garden plateau. <em>In Modoc.</em>' },
-        { id: 'cam-devils-garden-2',name: 'Devils Garden 2',                       lat: 41.5500, lon: -120.9500, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ) on the Devils Garden plateau. <em>In Modoc.</em>' },
+        { id: 'cam-devils-garden-1',name: 'Devils Garden 1',                       lat: 41.4991, lon: -120.6228, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ) on the Devils Garden plateau. <em>In Modoc.</em>' },
+        { id: 'cam-devils-garden-2',name: 'Devils Garden 2',                       lat: 41.4991, lon: -120.6228, type: 'ptz',              blurb: 'ALERTCalifornia wildfire camera (PTZ) on the Devils Garden plateau, with a 360&deg; panorama. <em>In Modoc.</em>' },
         { id: 'cam-lava-beds',      name: 'Lava Beds NM Visitor Center',           lat: 41.7141, lon: -121.5081, type: 'fixed', aim: 0,   blurb: 'NPS &mdash; northward view, Lava Beds wilderness. <em>In Siskiyou Co. (does not show Modoc directly).</em>' },
         { id: 'cam-lakeview-395',   name: 'US-395 at Lakeview, OR',                lat: 42.1881, lon: -120.3458, type: 'fixed', aim: 0,   blurb: 'Oregon TripCheck &mdash; US-395 in Lakeview, looking north. <em>In Lake Co., OR (approach view, not Modoc).</em>' },
         { id: 'cam-warner-summit',  name: 'OR-140 at Warner Mountain Summit',      lat: 42.2000, lon: -120.1900, type: 'fixed', aim: 270, blurb: 'Oregon TripCheck &mdash; OR-140 east of Lakeview, looking west. <em>In Lake Co., OR (approach view, not Modoc).</em>' },
