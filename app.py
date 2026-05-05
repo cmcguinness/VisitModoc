@@ -198,6 +198,43 @@ def check_for_probes():
         return log_and_tarpit('backdoor')
 
 
+def _set_cache_control(response, max_age):
+    """Replace Cache-Control with `public, max-age=<n>`, overriding any default
+    `no-cache` that Flask's send_from_directory adds to static responses."""
+    response.headers['Cache-Control'] = f'public, max-age={max_age}'
+
+
+@app.after_request
+def add_cache_headers(response):
+    """Set Cache-Control so Cloudflare can serve assets from edge cache."""
+    # Never cache tarpit responses or rick-roll redirects.
+    if response.headers.get('X-Tarpit') or response.status_code in (302, 301):
+        response.headers['Cache-Control'] = 'no-store'
+        return response
+
+    path = request.path
+
+    # Sitemap and robots: short cache so search engines see updates promptly.
+    if path in ('/sitemap.xml', '/robots.txt'):
+        _set_cache_control(response, 3600)  # 1 hour
+        return response
+
+    # Static assets (images, CSS, manifests, favicons): long cache.
+    # The site has no asset versioning, so 7 days is a balance between
+    # cacheability and being able to update an image without renaming.
+    if path.startswith('/static/') or path in ('/favicon.ico',):
+        _set_cache_control(response, 604800)  # 7 days
+        return response
+
+    # HTML pages: short edge cache. Cloudflare won't cache HTML by default
+    # without a Cache Rule, but the header is correct if you ever turn that on.
+    if response.mimetype == 'text/html' and response.status_code == 200:
+        _set_cache_control(response, 300)  # 5 minutes
+        return response
+
+    return response
+
+
 @app.route('/')
 def index():
     weather = get_weather()
