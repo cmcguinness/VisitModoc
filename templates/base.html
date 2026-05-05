@@ -108,7 +108,23 @@
         .card-header.season-summer { background-color: #c2701f; color: #fff; }
         .card-header.season-fall   { background-color: #92400e; color: #fff; }
         .card-header.season-winter { background-color: #2c5d8a; color: #fff; }
-        .card-header .season-icon {
+
+        /* Service-tier headers for the Groceries & Supplies cards: green = full,
+           amber = limited, rust = none. Same WCAG-AA-checked palette as seasons. */
+        .card-header.svc-full { background-color: #4a8b2a; color: #fff; }
+        .card-header.svc-some { background-color: #c2701f; color: #fff; }
+        .card-header.svc-none { background-color: #92400e; color: #fff; }
+
+        /* Generic themed-band colors for any card-header that wants one.
+           All four clear WCAG AA 4.5:1 with white text. Used by the More
+           Activities cards on /things-to-do. */
+        .card-header.theme-green { background-color: #4a8b2a; color: #fff; }
+        .card-header.theme-amber { background-color: #c2701f; color: #fff; }
+        .card-header.theme-rust  { background-color: #92400e; color: #fff; }
+        .card-header.theme-blue  { background-color: #2c5d8a; color: #fff; }
+
+        .card-header .season-icon,
+        .card-header .card-header-icon {
             width: 1.1em;
             height: 1.1em;
             vertical-align: -0.2em;
