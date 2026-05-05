@@ -51,3 +51,6 @@ site-management/
 
 # Local screenshots from Claude Code testing
 .claude_screenshots/
+
+# Cached IP geolocation lookups (used by analyze_visitors.py)
+.ip_cache.json

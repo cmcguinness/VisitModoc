@@ -249,10 +249,11 @@ def log_http_request(response):
     if path.startswith('/static/') or response.headers.get('X-Tarpit'):
         return response
     cf_ip = request.headers.get('CF-Connecting-IP', '-')
+    cf_country = request.headers.get('CF-IPCountry', '-')
     ua = request.headers.get('User-Agent', '-')
     size = response.headers.get('Content-Length', '-')
     timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
-    print(f"[HTTP] {timestamp} | {cf_ip} | {request.method} {path} {response.status_code} {size} | UA: {ua}", flush=True)
+    print(f"[HTTP] {timestamp} | {cf_ip} | {cf_country} | {request.method} {path} {response.status_code} {size} | UA: {ua}", flush=True)
     return response
 
 
