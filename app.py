@@ -55,6 +55,8 @@ TARPIT_PATTERNS = [
     r'\.zip$',
     r'\.sql$',
     r'\.tar',
+    r'\.log$',
+    r'\.log\.',
     r'/config\.',
     r'/backup',
     r'/dump',
