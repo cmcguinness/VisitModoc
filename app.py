@@ -128,7 +128,9 @@ def log_and_tarpit(reason):
     if not _tarpit_sem.acquire(blocking=False):
         # Already at max concurrent tarpits; send the overflow somewhere fun.
         print(f"[TARPIT:{reason}:rickroll] {timestamp} | CF-IP: {cf_ip} | X-Forwarded-For: {x_forwarded} | URL: {request.url}", flush=True)
-        return redirect(RICK_ROLL_URL, code=302)
+        resp = redirect(RICK_ROLL_URL, code=302)
+        resp.headers['X-Tarpit'] = 'rickroll'
+        return resp
 
     print(f"[TARPIT:{reason}] {timestamp} | CF-IP: {cf_ip} | X-Forwarded-For: {x_forwarded} | URL: {request.url}", flush=True)
     return Response(
@@ -232,6 +234,25 @@ def add_cache_headers(response):
         _set_cache_control(response, 300)  # 5 minutes
         return response
 
+    return response
+
+
+@app.after_request
+def log_http_request(response):
+    """One-line access log per request with the real client IP from Cloudflare.
+
+    Skips /static/ assets and tarpit responses (already logged separately) to
+    keep the log signal-heavy. Real-IP comes from CF-Connecting-IP since the
+    site sits behind Cloudflare; gunicorn's default access log would only see
+    Cloudflare's edge IPs."""
+    path = request.path
+    if path.startswith('/static/') or response.headers.get('X-Tarpit'):
+        return response
+    cf_ip = request.headers.get('CF-Connecting-IP', '-')
+    ua = request.headers.get('User-Agent', '-')
+    size = response.headers.get('Content-Length', '-')
+    timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+    print(f"[HTTP] {timestamp} | {cf_ip} | {request.method} {path} {response.status_code} {size} | UA: {ua}", flush=True)
     return response
 
 
