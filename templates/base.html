@@ -73,20 +73,33 @@
             scroll-margin-top: 100px;
         }
 
-        /* Raised-cap style on page-intro leads: oversized first letter whose
-           baseline aligns with the first text line, so it reads as the first
-           letter of the opening word. Add `lead-drop` to the main page lead;
-           section-internal leads are unaffected. */
-        p.lead-drop::first-letter {
-            float: left;
+        /* Pull-quote style for the page-intro paragraph: vertical accent bar,
+           slightly larger serif text. Visually distinct from body copy without
+           making the body text feel small by comparison. Add the `intro-quote`
+           class to the opening paragraph of a page. */
+        .intro-quote {
+            border-left: 5px solid var(--modoc-primary);
+            padding: 0.25rem 0 0.25rem 1.5rem;
+            margin: 1rem 0 2.5rem 0;
             font-family: Georgia, "Times New Roman", serif;
-            font-size: 4em;
-            line-height: 1;
-            font-weight: 700;
-            color: var(--modoc-primary);
-            padding-right: 0.06em;
-            margin-top: -0.55em;
-            margin-bottom: -0.1em;
+            font-size: 1.3rem;
+            line-height: 1.55;
+            color: #2c3e50;
+        }
+        .intro-quote p {
+            margin-bottom: 0.75rem;
+        }
+        .intro-quote p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Slightly stronger card borders + a subtle shadow so sections like
+           Plan Your Visit's "By Car" / "By Air" cards have a visible boundary
+           against the white page background. Bootstrap's default border is
+           too pale at #dee2e6. */
+        .card {
+            border-color: #c8cdd4;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
         }
 
         .navbar {
