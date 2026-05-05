@@ -102,6 +102,8 @@
       href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
       crossorigin=""/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"/>
 <style>
     #webcam-map { height: 500px; border-radius: 8px; z-index: 0; }
     #webcam-map .leaflet-popup-content { margin: 12px 14px; font-size: 0.95rem; line-height: 1.4; }
@@ -152,8 +154,8 @@
         <!-- Introduction -->
         <div class="row mb-4">
             <div class="col-lg-10 mx-auto">
-                <p class="lead">Live webcams in and around Modoc County, California &mdash; collected in one place. Caltrans cameras cover Cedar Pass on Highway 299 between Alturas and Cedarville and SR-139 at Perez (north of Canby). ALERTCalifornia wildfire cameras watch the backcountry from Blue Mountain, Sugar Hill, the Devils Garden plateau, Round Mountain, and Likely Mountain &mdash; each captures a 360&deg; panorama every couple of minutes. We've also included approach cameras in adjoining counties &mdash; useful for travelers checking conditions on the way in, and occasionally for spotting smoke from a Modoc fire on the horizon.</p>
-                <p>Caltrans and TripCheck images on this page refresh automatically about every minute. If a camera looks frozen or pitch-black, it may be down for maintenance, dusk/night, or covered in snow &mdash; try again later or follow the source link for status info. Each camera card notes where the camera physically sits and what it actually shows, since some adjoining-area cameras don't have a direct view of Modoc itself.</p>
+                <p class="lead">Live webcams in and around Modoc County, collected in one place. Useful for checking road and weather conditions on the way in, watching the backcountry, and occasionally spotting smoke from a distant fire.</p>
+                <p>Images refresh about every minute. A frozen or black image usually means maintenance, dusk/night, or snow on the lens &mdash; try again later or follow the source link.</p>
             </div>
         </div>
 
@@ -503,6 +505,7 @@
 <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
+<script defer src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 <script>
 (function () {
     function initMap() {
@@ -542,18 +545,20 @@
     }
 
     function ptzIcon() {
+        // 40x40 to clear WCAG 24x24 minimum touch-target size, even when
+        // markers cluster on co-located ALERTCalifornia camera sites.
         var svg =
-            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="34" height="34" aria-hidden="true">' +
-                '<circle cx="20" cy="20" r="11" fill="#2c5530" stroke="#fff" stroke-width="2"/>' +
-                '<circle cx="20" cy="20" r="4" fill="#fff"/>' +
-                '<circle cx="20" cy="20" r="2" fill="#2c5530"/>' +
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">' +
+                '<circle cx="20" cy="20" r="13" fill="#2c5530" stroke="#fff" stroke-width="2"/>' +
+                '<circle cx="20" cy="20" r="5" fill="#fff"/>' +
+                '<circle cx="20" cy="20" r="2.5" fill="#2c5530"/>' +
             '</svg>';
         return L.divIcon({
             className: 'webcam-marker',
             html: svg,
-            iconSize: [34, 34],
-            iconAnchor: [17, 17],
-            popupAnchor: [0, -14]
+            iconSize: [40, 40],
+            iconAnchor: [20, 20],
+            popupAnchor: [0, -16]
         });
     }
 
@@ -563,6 +568,16 @@
         maxZoom: 17
     }).addTo(map);
 
+    // Cluster overlapping markers (e.g., Perez and Blue Mtn ~3mi apart) so each
+    // is independently clickable at the fitBounds zoom; clicking a cluster zooms
+    // in and spiderfies the children.
+    var cluster = L.markerClusterGroup({
+        showCoverageOnHover: false,
+        spiderfyOnMaxZoom: true,
+        spiderfyDistanceMultiplier: 1.4,
+        maxClusterRadius: 30
+    });
+
     var bounds = [];
     cameras.forEach(function (c) {
         var icon = c.type === 'ptz' ? ptzIcon() : fixedIcon(c.aim);
@@ -570,11 +585,12 @@
             '<strong>' + c.name + '</strong>' +
             c.blurb +
             '<br><a href="#' + c.id + '">View details below &rarr;</a>';
-        L.marker([c.lat, c.lon], { icon: icon, title: c.name })
-            .addTo(map)
-            .bindPopup(popup);
+        cluster.addLayer(
+            L.marker([c.lat, c.lon], { icon: icon, title: c.name }).bindPopup(popup)
+        );
         bounds.push([c.lat, c.lon]);
     });
+    map.addLayer(cluster);
 
     if (bounds.length > 1) {
         map.fitBounds(bounds, { padding: [40, 40] });

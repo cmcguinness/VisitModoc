@@ -42,6 +42,26 @@
             --modoc-primary: #2c5530;
             --modoc-secondary: #8b7355;
             --modoc-accent: #4a90a4;
+            /* Override Bootstrap's default link blue (#0d6efd) — it fails WCAG AA
+               (4.5:1) against the alert-info background (#cff4fc, ratio 3.85) and
+               the .bg-light card-footer (#f8f9fa, ratio 4.24). #0a58ca clears 4.5:1
+               on both (5.5:1 and 5.4:1 respectively). */
+            --bs-link-color: #0a58ca;
+            --bs-link-color-rgb: 10, 88, 202;
+            --bs-link-hover-color: #042c70;
+            --bs-link-hover-color-rgb: 4, 44, 112;
+        }
+
+        /* btn-outline-primary text uses --bs-primary by default (#0d6efd),
+           which fails 4.5:1 on bg-light (#f8f9fa). Push it to the same darker
+           blue we use for plain links. */
+        .btn-outline-primary {
+            --bs-btn-color: #0a58ca;
+            --bs-btn-border-color: #0a58ca;
+            --bs-btn-hover-bg: #0a58ca;
+            --bs-btn-hover-border-color: #0a58ca;
+            --bs-btn-active-bg: #0a58ca;
+            --bs-btn-active-border-color: #0a58ca;
         }
 
         body {
