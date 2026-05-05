@@ -73,6 +73,22 @@
             scroll-margin-top: 100px;
         }
 
+        /* Raised-cap style on page-intro leads: oversized first letter whose
+           baseline aligns with the first text line, so it reads as the first
+           letter of the opening word. Add `lead-drop` to the main page lead;
+           section-internal leads are unaffected. */
+        p.lead-drop::first-letter {
+            float: left;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 4em;
+            line-height: 1;
+            font-weight: 700;
+            color: var(--modoc-primary);
+            padding-right: 0.06em;
+            margin-top: -0.55em;
+            margin-bottom: -0.1em;
+        }
+
         .navbar {
             background-color: rgba(44, 85, 48, 0.95) !important;
             backdrop-filter: blur(10px);
