@@ -54,3 +54,4 @@ site-management/
 
 # Cached IP geolocation lookups (used by analyze_visitors.py)
 .ip_cache.json
+.envrc
