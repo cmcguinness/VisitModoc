@@ -202,10 +202,23 @@ def check_for_probes():
         return log_and_tarpit('backdoor')
 
 
-def _set_cache_control(response, max_age):
+# Pages whose rendered HTML embeds the (hourly) weather widget. They get a
+# shorter edge TTL than the otherwise-static content pages.
+WEATHER_PAGES = {'/', '/plan-your-visit'}
+
+
+def _set_cache_control(response, max_age, s_maxage=None):
     """Replace Cache-Control with `public, max-age=<n>`, overriding any default
-    `no-cache` that Flask's send_from_directory adds to static responses."""
-    response.headers['Cache-Control'] = f'public, max-age={max_age}'
+    `no-cache` that Flask's send_from_directory adds to static responses.
+
+    `s_maxage` (shared/edge TTL) lets Cloudflare cache longer than browsers:
+    browsers honor max-age and re-validate sooner (so a content fix shows up
+    quickly), while the edge serves from cache for s-maxage and offloads the
+    origin. Cloudflare prefers s-maxage over max-age for its edge TTL."""
+    cc = f'public, max-age={max_age}'
+    if s_maxage is not None:
+        cc += f', s-maxage={s_maxage}'
+    response.headers['Cache-Control'] = cc
 
 
 @app.after_request
@@ -230,10 +243,15 @@ def add_cache_headers(response):
         _set_cache_control(response, 604800)  # 7 days
         return response
 
-    # HTML pages: short edge cache. Cloudflare won't cache HTML by default
-    # without a Cache Rule, but the header is correct if you ever turn that on.
+    # HTML pages. Cloudflare won't cache HTML without a Cache Rule, but these
+    # headers are correct for one set to "respect origin Cache-Control".
+    # Weather pages get a short edge TTL; the rest are effectively static
+    # (they only change on deploy) so the edge can hold them much longer.
     if response.mimetype == 'text/html' and response.status_code == 200:
-        _set_cache_control(response, 300)  # 5 minutes
+        if request.path in WEATHER_PAGES:
+            _set_cache_control(response, 120, s_maxage=600)    # edge 10 min
+        else:
+            _set_cache_control(response, 300, s_maxage=3600)   # edge 1 hour
         return response
 
     return response
