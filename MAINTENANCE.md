@@ -32,6 +32,42 @@ a freshen, or hand it to Claude with "let's do a quarterly pass."
 
 ## Audit log
 
+### 2026-08-01 — monthly refresh (manual; cloud routine's digest never arrived)
+
+The "Visit Modoc — monthly refresh" cloud routine fired on schedule (Jul 1 and Aug 1) but
+delivered nothing: the Gmail connector has no send tool, only draft tools, so each digest sits
+as an unsent draft titled "Visit Modoc — monthly refresh (<Month Year>)". Ran the pass by hand
+instead.
+
+**Fixed**
+
+- `modocharvest.org` is **entirely offline** — the root serves the host's "Contact Hosting
+  Technical Support" page and every sub-path 404s. Replaced the three dead
+  `modocharvest.org/modoc-harvest-certified-farmers-markets/` links (`alturas.html`,
+  `cedarville.html`, `plan-your-visit.html`) with the
+  [Modoc Certified Farmers Markets Facebook page](https://www.facebook.com/ModocCFM/), which is
+  their live presence. The `mailto:FarmersMarket@ModocHarvest.org` contacts were left in place.
+- The Vault (`merchants/the-vault.html`) hours corrected to Mon + Fri–Sun 6 AM–3 PM, closed
+  Tue–Thu. The page previously showed Fri/Sat until 6 PM and omitted Monday entirely. Two
+  independent listings agree on the new hours; **confirm against @cedarvillevault on Instagram**.
+
+**Verified, no change needed**
+
+- Modoc District Fair: Aug 27–30 2026, "America 250" theme — already correct on the site.
+- Valley Farm Store: still a password-walled Shopify placeholder, merchant page stays. Its
+  published hours match the merchant page exactly.
+- ~44 featured businesses: no confirmed closures. The Yelp "LAZY B GRILL - CLOSED" entry is a
+  stale duplicate of the still-open Lazy B at the same address; "Cedarville Cafe & Saloon -
+  CLOSED" is the predecessor at 415 Main St, now Woody's (open, and the site features Woody's).
+
+**Known link-checker noise (do not re-investigate)**
+
+- `bidwellcanyonfarm.com` reports `SSL error: SSLError` — a false positive. Their cert chains to
+  Let's Encrypt's new Generation Y root (ISRG Root YR / intermediate YR2), which the `certifi`
+  bundle used by `requests` doesn't yet carry. Browsers and macOS `curl` verify it fine.
+- `facebook.com` returns HTTP 400 to the checker's UA; github.com 403, linkedin.com 999,
+  vrbo.com 429 — all bot-blocks, all reachable in a browser.
+
 ### 2026-05-05 — initial Lighthouse pass
 
 Ran Lighthouse (desktop, navigation mode) on every public page. Final scores after fixes:
@@ -78,4 +114,4 @@ Ran Lighthouse (desktop, navigation mode) on every public page. Final scores aft
 | Image attribution | `licenses.json` (single source of truth, see CLAUDE.md) |
 | Sitemap | `static/sitemap.xml` |
 | SEO/meta | per-page Jinja blocks in templates that extend `base.html` |
-| Outreach context | `~/.claude-personal/projects/-Volumes-DataT2-Projects-VisitModoc/memory/` |
+| Outreach context | `~/.claude-personal/projects/-Volumes-DataT2-Projects-VisitModoc/memory/` (path is keyed to the repo's old DataT2 location; the repo now lives on DataT1 but the memories stayed put) |
