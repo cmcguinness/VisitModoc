@@ -117,12 +117,18 @@
                                     <div class="display-4 fw-bold text-primary">{{ weather.temperature }}&deg;{{ weather.unit }}</div>
                                 </div>
                                 <div class="col">
-                                    <h3 class="mb-1 h4">{{ weather.name }}</h3>
+                                    <h3 class="mb-1 h4">{% if weather.is_observation %}Right now{% else %}{{ weather.period_name }}{% endif %}</h3>
                                     <p class="mb-1 fs-5">{{ weather.description }}</p>
                                     {% if weather.wind %}<p class="text-muted mb-0">Wind: {{ weather.wind }}</p>{% endif %}
+                                    {% if weather.is_observation and weather.observed_at %}<p class="text-muted small mb-0">Observed at Alturas Municipal Airport, {{ weather.observed_at }}</p>{% endif %}
                                 </div>
                             </div>
+                            {% if weather.is_observation and weather.period_temperature %}
                             <hr>
+                            <p class="mb-2"><strong>{{ weather.period_name }}:</strong> {{ weather.period_label|lower }} of {{ weather.period_temperature }}&deg;{{ weather.unit }}, {{ weather.period_description|lower }}</p>
+                            {% else %}
+                            <hr>
+                            {% endif %}
                             <p class="mb-2">{{ weather.detailed }}</p>
                             <a href="https://forecast.weather.gov/MapClick.php?lat=41.4871&lon=-120.5425" target="_blank" class="btn btn-outline-primary btn-sm">Full 7-Day Forecast</a>
                         </div>

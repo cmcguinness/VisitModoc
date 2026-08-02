@@ -5,7 +5,11 @@ import re
 import threading
 import requests
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from flask import Flask, render_template, send_from_directory, Response, request, redirect
+
+# Modoc County observes Pacific time; NWS timestamps arrive in UTC.
+PACIFIC = ZoneInfo('America/Los_Angeles')
 
 app = Flask(__name__)
 
@@ -145,47 +149,120 @@ def log_and_tarpit(reason):
 
 # Weather data cache
 _weather_cache = {'data': None, 'timestamp': 0}
-WEATHER_CACHE_DURATION = 3600  # 1 hour
+WEATHER_CACHE_DURATION = 900  # 15 minutes
+
+# NWS endpoints for Alturas. The forecast grid is the one api.weather.gov
+# returns for 41.4871,-120.5425 (Medford office) — do not hand-edit it; look it
+# up via https://api.weather.gov/points/41.4871,-120.5425 if it ever changes.
+NWS_FORECAST_URL = 'https://api.weather.gov/gridpoints/MFR/176,20/forecast'
+# KAAT = Alturas Municipal Airport, the reporting station in town. The forecast
+# endpoint's periods carry a period HIGH or LOW, never a current reading, so the
+# observed temperature has to come from a station.
+NWS_OBSERVATION_URL = 'https://api.weather.gov/stations/KAAT/observations/latest'
+NWS_HEADERS = {'User-Agent': 'VisitModoc/1.0 (visit-modoc.com)'}
+
+
+def _c_to_f(celsius):
+    """NWS observations report metric; the site displays Fahrenheit."""
+    return round(celsius * 9 / 5 + 32)
+
+
+def _fetch_observation():
+    """Latest observed conditions at KAAT, or None if unavailable.
+
+    Any field in an observation can be null when a sensor drops out, so the
+    caller must treat a missing temperature as "no observation" rather than
+    rendering a blank number.
+    """
+    response = requests.get(NWS_OBSERVATION_URL, headers=NWS_HEADERS, timeout=10)
+    response.raise_for_status()
+    props = response.json().get('properties', {})
+
+    temp_c = (props.get('temperature') or {}).get('value')
+    if temp_c is None:
+        return None
+
+    wind_kph = (props.get('windSpeed') or {}).get('value')
+    observed = {
+        'temperature': _c_to_f(temp_c),
+        'description': props.get('textDescription', ''),
+        'wind': f'{round(wind_kph * 0.621371)} mph' if wind_kph is not None else '',
+    }
+
+    timestamp = props.get('timestamp')
+    if timestamp:
+        try:
+            when = datetime.fromisoformat(timestamp).astimezone(PACIFIC)
+            observed['observed_at'] = when.strftime('%-I:%M %p').lower()
+        except (ValueError, TypeError):
+            pass
+
+    return observed
+
+
+def _fetch_forecast():
+    """The next NWS forecast period (e.g. 'Tonight'), or None if unavailable."""
+    response = requests.get(NWS_FORECAST_URL, headers=NWS_HEADERS, timeout=10)
+    response.raise_for_status()
+    periods = response.json().get('properties', {}).get('periods', [])
+    if not periods:
+        return None
+
+    period = periods[0]
+    return {
+        'period_name': period.get('name', 'Next'),
+        # A daytime period's temperature is that day's high; a nighttime
+        # period's is the overnight low. Label it so neither reads as "now".
+        'period_label': 'High' if period.get('isDaytime') else 'Low',
+        'period_temperature': period.get('temperature'),
+        'period_description': period.get('shortForecast', ''),
+        'detailed': period.get('detailedForecast', ''),
+        'icon': period.get('icon', ''),
+    }
 
 
 def get_weather():
-    """Fetch current weather for Alturas from NWS API with caching."""
+    """Current conditions and next forecast period for Alturas, cached.
+
+    `temperature` is an actual observation whenever KAAT is reporting; if the
+    station is silent we fall back to the forecast period's high/low and set
+    `is_observation` False so the templates stop saying "currently".
+    """
     now = time.time()
 
-    # Return cached data if still valid
     if _weather_cache['data'] and (now - _weather_cache['timestamp']) < WEATHER_CACHE_DURATION:
         return _weather_cache['data']
 
+    observed = None
+    forecast = None
+
     try:
-        headers = {'User-Agent': 'VisitModoc/1.0 (visit-modoc.com)'}
-
-        # NWS API for Alturas, CA area (pre-looked-up grid point)
-        forecast_url = 'https://api.weather.gov/gridpoints/REV/33,117/forecast'
-        response = requests.get(forecast_url, headers=headers, timeout=10)
-        response.raise_for_status()
-        data = response.json()
-
-        periods = data.get('properties', {}).get('periods', [])
-        if periods:
-            current = periods[0]
-            weather_data = {
-                'name': current.get('name', 'Now'),
-                'temperature': current.get('temperature'),
-                'unit': current.get('temperatureUnit', 'F'),
-                'description': current.get('shortForecast', ''),
-                'detailed': current.get('detailedForecast', ''),
-                'wind': current.get('windSpeed', ''),
-                'icon': current.get('icon', ''),
-                'success': True
-            }
-            _weather_cache['data'] = weather_data
-            _weather_cache['timestamp'] = now
-            return weather_data
-
+        observed = _fetch_observation()
     except Exception as e:
-        print(f"[WEATHER] Error fetching weather: {e}", flush=True)
+        print(f"[WEATHER] Error fetching observation: {e}", flush=True)
 
-    return {'success': False}
+    try:
+        forecast = _fetch_forecast()
+    except Exception as e:
+        print(f"[WEATHER] Error fetching forecast: {e}", flush=True)
+
+    if not observed and not forecast:
+        return {'success': False}
+
+    weather_data = {'success': True, 'unit': 'F', 'is_observation': bool(observed)}
+    if forecast:
+        weather_data.update(forecast)
+
+    if observed:
+        weather_data.update(observed)
+    else:
+        # No station reading — show the period's high/low, honestly labelled.
+        weather_data['temperature'] = forecast.get('period_temperature')
+        weather_data['description'] = forecast.get('period_description', '')
+
+    _weather_cache['data'] = weather_data
+    _weather_cache['timestamp'] = now
+    return weather_data
 
 
 @app.before_request

@@ -61,6 +61,19 @@ could do. `scripts/check_links.py` is still the first step of that pass.
   Tue–Thu. The page previously showed Fri/Sat until 6 PM and omitted Monday entirely. Two
   independent listings agree on the new hours; **confirm against @cedarvillevault on Instagram**.
 
+**Weather widget fixed (two bugs, found while chasing a "site says 59°, NWS says 79°" report)**
+
+- `get_weather()` called the NWS *forecast* endpoint and rendered `periods[0].temperature` under
+  the label "Currently". That value is the period's HIGH (daytime) or LOW (overnight), never an
+  observation — so the number was wrong nearly all the time, in either direction depending on the
+  hour. Current conditions now come from `stations/KAAT/observations/latest` (Alturas Municipal
+  Airport), converted from Celsius; the forecast period is shown separately and labelled.
+- The hardcoded grid `REV/33,117` wasn't Alturas — that cell sits at 39.705,-120.189 near Portola,
+  ~150 miles south, in the Reno office. Corrected to `MFR/176,20` (Medford), which is what
+  `api.weather.gov/points/41.4871,-120.5425` returns. **Don't hand-edit the grid**; look it up.
+- Degraded paths tested: station silent → falls back to the forecast high/low with an honest label
+  ("Alturas — Tonight low: 47°F"); both endpoints down → widget hidden, pages still 200.
+
 **Verified, no change needed**
 
 - Modoc District Fair: Aug 27–30 2026, "America 250" theme — already correct on the site.
