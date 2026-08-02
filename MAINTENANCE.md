@@ -39,6 +39,11 @@ delivered nothing: the Gmail connector has no send tool, only draft tools, so ea
 as an unsent draft titled "Visit Modoc — monthly refresh (<Month Year>)". Ran the pass by hand
 instead.
 
+**The routine is now retired** (disabled, not deleted — `RemoteTrigger` has no delete action).
+The monthly pass is session-driven from here: say "time for the monthly update" and the work
+happens in a session, which can fix, commit, and push — none of which the read-only routine
+could do. `scripts/check_links.py` is still the first step of that pass.
+
 **Fixed**
 
 - `modocharvest.org` is **entirely offline** — the root serves the host's "Contact Hosting
@@ -47,6 +52,11 @@ instead.
   `cedarville.html`, `plan-your-visit.html`) with the
   [Modoc Certified Farmers Markets Facebook page](https://www.facebook.com/ModocCFM/), which is
   their live presence. The `mailto:FarmersMarket@ModocHarvest.org` contacts were left in place.
+- Added a "Local Food Hub" card to `/alturas` (Groceries & Supplies) for the Modoc Harvest Food
+  Hub at 112 E 2nd St, linking their [Open Food Network shop](https://openfoodnetwork.net/modoc-harvest-food-hub/shop).
+  With modocharvest.org down this is their only verifiable live storefront — it had an active
+  order cycle (pickup 8/6–8/7) when checked. Their own OFN profile still links the dead
+  `modocharvest.org/food-hub` URL.
 - The Vault (`merchants/the-vault.html`) hours corrected to Mon + Fri–Sun 6 AM–3 PM, closed
   Tue–Thu. The page previously showed Fri/Sat until 6 PM and omitted Monday entirely. Two
   independent listings agree on the new hours; **confirm against @cedarvillevault on Instagram**.
