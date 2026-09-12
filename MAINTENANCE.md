@@ -32,6 +32,67 @@ a freshen, or hand it to Claude with "let's do a quarterly pass."
 
 ## Audit log
 
+### 2026-09-12 — September refresh
+
+Ran the news sweep + `scripts/check_links.py`. **Link check was clean: 70 OK, 0 broken.** The rot
+this month was all *content* rot — dated events that had already happened but still read as upcoming.
+
+**Policy change: recurring events are now evergreen.** Hardcoded years were the recurring failure
+mode (every September the site advertises an August fair that already happened). Annual Events and
+the seasonal cards now say "held each August", "around the Fourth of July", "a Saturday each June"
+and link the organizer for current dates. **Don't reintroduce hardcoded years for annual events** —
+if a specific date is genuinely needed, add it as a separate "Next:" line that the monthly pass owns.
+
+**Fixed**
+
+- `plan-your-visit.html` — Modoc District Fair card and the Summer season bullet both still read
+  "August 27–30, 2026" (the fair ran Aug 27–30 and was over). Both now evergreen.
+- `plan-your-visit.html` — Fandango Days said "check … for the 2026 schedule" (July, past);
+  Community Flea Market said "June 6, 2026" (past). Both now evergreen.
+- `places-to-visit.html` — listed "Modoc County Fair". The correct name is Modoc **District** Fair.
+- **Farmers market season was wrong.** `cedarville.html` claimed "2nd and 4th Saturdays,
+  June–October". The Surprise Valley Chamber calendar shows every other Saturday, **July–September**,
+  with the last 2026 market on Sept 26 — we were over-promising by a month on both ends. Corrected
+  there, in `alturas.html` (had "July–October"), and in the plan-your-visit card.
+
+**Added — the site had no fall events at all**
+
+Every event we listed was a summer event, so an October visitor found nothing. Added four
+*recurring* events (deliberately not one-offs, which would need a refresh every pass):
+
+- **First Fridays — Cedarville** — first Friday evenings, 5–9 PM, Main Street. October adds a
+  pumpkin-growing contest.
+- **Mt Bidwell Celebration** — Fort Bidwell, each October, Saturday-morning parade.
+- **Fall Festival — Alturas** — new for 2027, see below.
+- **Movie Night in the Park** — Alturas, monthly through the summer from June.
+
+**Alturas Balloon Fest is discontinued — permanently**
+
+The Alturas Chamber ended its decades-old September Balloon Fest; pilots retired and travel/flight
+costs made it too hard to attract replacements. A **Fall Festival takes the same September weekend
+beginning in 2027**, and the Chamber is adding a monthly summer "Movie Night in the Park" that
+closes out at the Fall Festival. The site never listed the Balloon Fest, so nothing had to be
+removed — but **do not add it**, and watch for the first Fall Festival details in 2027.
+
+**Known link-checker noise (do not re-investigate) — new entry**
+
+- `surprisevalleychamber.com` returns **HTTP 403** to the checker *and* to `curl` with a browser UA,
+  but renders perfectly in a real browser (verified via DevTools — title, nav, and 2026/2027 event
+  calendar all load). It is UA/header-based bot blocking, not an outage. This link sits in
+  `base.html`, so it appears on every page; don't panic when it shows up as a suspect.
+
+**Tooling gotcha**
+
+`scripts/check_links.py` needs `requests`, which is not installed for any Python on this machine and
+the repo has no venv — `direnv exec . python scripts/check_links.py` fails twice over (`python` is
+not on PATH; `python3` has no `requests`). Run it as:
+
+```
+uv run --with requests python scripts/check_links.py
+```
+
+Same for the app when testing locally: `uv run --with flask --with requests python app.py`.
+
 ### 2026-08-01 — monthly refresh (manual; cloud routine's digest never arrived)
 
 The "Visit Modoc — monthly refresh" cloud routine fired on schedule (Jul 1 and Aug 1) but
