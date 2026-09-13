@@ -97,6 +97,20 @@ by the YouTube nocookie iframes before interaction. Same as May. A click-to-load
 covers a11y/BP/SEO/agentic but **not** performance — that needs `performance_start_trace`.
 Note it rejects `outputDirPath` outside the workspace root; omit it and use the temp reports.
 
+**Verify deploys against a cache-busted URL, or you will misread the result**
+
+Re-auditing production right after the deploy still scored 96, which looked like a failed fix. It
+wasn't: `cf-cache-status: HIT`, `age: 326`, `cache-control: public, max-age=300, s-maxage=3600`.
+Cloudflare's edge was serving HTML cached *before* the deploy, and Lighthouse saw the old colours.
+The same URL with a query string (`?lhcheck=1`) is a different cache key, goes to the origin, and
+scored 100. Railway itself had the new build live in **45 seconds**.
+
+Consequence worth knowing: with `s-maxage=3600` and **no cache purge on deploy**, a content change
+can take up to an hour to reach visitors even though the deploy succeeded immediately. Always append
+a cache-buster when verifying, and don't trust a plain-URL check in the hour after a push. Purging
+on deploy would need a Cloudflare token with purge rights — the token in 1Password is read-only
+(see `reference_cloudflare_analytics.md`), so this is unresolved, not done.
+
 ### 2026-09-12 — September refresh
 
 Ran the news sweep + `scripts/check_links.py`. **Link check was clean: 70 OK, 0 broken.** The rot
