@@ -23,6 +23,36 @@ a freshen, or hand it to Claude with "let's do a quarterly pass."
   - **Surprise Valley Chamber** — surprisevalleychamber.com events page
   - **Google News** — `"Modoc County" OR "Alturas California" OR "Cedarville California"`
 - [ ] **Seasonal/calendar content** — fishing season dates, hunting tags, Modoc District Fair, chili cookoff, farmers' market dates. Confirm nothing's drifted from the linked sources.
+- [ ] **Run through the Standing watch list** (next section) — three deferred questions that only
+  become work when an external condition flips.
+
+## Standing watch list
+
+Open questions that resolve themselves over time. Check these on the monthly sweep; each one
+becomes an action only when the condition flips. Kept in the repo rather than in Claude's memory
+store, because there are two checkouts of this repo and the memory store is keyed to only one of
+their paths (see "Two checkouts" at the bottom of this file). Anything written here travels with
+the repo to either machine.
+
+- [ ] **California Pines Lodge — does it have its own website yet?** Added to the site 2026-09-12
+      (`/alturas`, `/where-to-stay`, `/where-to-eat`) from a newspaper ad. It has a Facebook page
+      but no real site found, which under the merchant-page policy would make it *eligible* for a
+      merchant page. **Deferred deliberately** — the call is to wait and see whether they build one
+      themselves. If a real site appears, link it and drop the idea. If it's still Facebook-only
+      after a few passes, revisit whether to create `/merchants/california-pines-lodge` (which
+      would need the full `alert-warning` menu caveat, since it would have real menu sections).
+      Contacts on file: lodge (530) 233-5842, dining reservations (530) 646-5330.
+- [ ] **Valley Farm Store — has `valley-farmstore.com` gone live?** Still a password-walled Shopify
+      placeholder as of 2026-08-01. The merchant page (`/merchants/valley-farm-store`) exists
+      *because* they have no working site. When theirs goes live, link it and retire our page —
+      same policy, opposite direction from California Pines.
+- [ ] **Modoc Harvest — is `modocharvest.org` back?** Entirely offline since at least 2026-08-01;
+      all links now point at their Facebook page. Their own print flyer still advertises the dead
+      domain, so they may not know. If it returns, switch the farmers-market links back.
+
+**The policy both lodge items turn on:** create a merchant page only when the business has no
+website of its own. A merchant page is a stopgap for an unrepresented business, not a permanent
+fixture — when the business can speak for itself, link them and step back.
 
 ## When-changed: ad-hoc triggers
 
@@ -363,4 +393,31 @@ Ran Lighthouse (desktop, navigation mode) on every public page. Final scores aft
 | Image attribution | `licenses.json` (single source of truth, see CLAUDE.md) |
 | Sitemap | `static/sitemap.xml` |
 | SEO/meta | per-page Jinja blocks in templates that extend `base.html` |
-| Outreach context | `~/.claude-personal/projects/-Volumes-DataT2-Projects-VisitModoc/memory/` (path is keyed to the repo's old DataT2 location; the repo now lives on DataT1 but the memories stayed put) |
+| Outreach context | `~/.claude-personal/projects/-Volumes-DataT2-Projects-VisitModoc/memory/` — see the warning below |
+
+## Two checkouts, and a memory store keyed to the wrong one
+
+**Topology** (verified 2026-09-12):
+
+- `/Volumes/DataT1` — a local APFS disk on the **MacBook Air**. The Air's own checkout.
+- `/Volumes/DataT2` — an **SMB mount of the Mac mini's drive**, mounted on the Air. So
+  `/Volumes/DataT2/Projects/VisitModoc` is the *mini's* checkout, reachable from the Air over the
+  network. It is a genuinely separate working copy, not a second path to the same files.
+
+**Keep them in sync through git, not the mount.** As of 2026-09-12 the mini's checkout sat at
+`8f4a34c` — five commits behind the Air. Editing the same repo from two checkouts without pulling
+is the ordinary way to lose work; `git pull` on whichever machine you sit down at.
+
+**The memory-store consequence.** Claude's per-project memory directory is keyed to the project's
+filesystem *path*, and both key directories live under the Air's `$HOME`:
+
+- `~/.claude-personal/projects/-Volumes-DataT2-Projects-VisitModoc/memory/` — **10 memory files**
+  (merchant page policy, Modoc Record outreach, the never-center-body-text rule, the Cloudflare
+  analytics pointer, and more). Written by Air sessions that worked on the mini's copy over SMB.
+- `~/.claude-personal/projects/-Volumes-DataT1-Projects-VisitModoc/memory/` — **empty**. This is
+  what a session started from the Air's local checkout is handed.
+
+So a session working here gets an empty memory store and sees none of that context unless someone
+goes looking. Consolidating is a plain `mv` into the DataT1-keyed directory, but it hasn't been
+done — it's Charles's memory store, not something to reorganise unasked. Until it is, **durable
+project knowledge belongs in this file**, which is why the watch list above lives here.
