@@ -32,6 +32,62 @@ a freshen, or hand it to Claude with "let's do a quarterly pass."
 
 ## Audit log
 
+### 2026-09-12 — newspaper-sourced additions + farmers market correction
+
+Charles supplied two print sources: the Modoc County Record's "Lodging & Dining Guide" ad page and
+a Modoc Certified Farmers Markets flyer. Both were checked against the site.
+
+**One business was genuinely missing: California Pines Lodge**
+
+Five of the six advertisers were already listed (Wagon Wheel, Antonio's, Country Hearth, Hotel
+Niles, Sunrise Motel). **California Pines Lodge appeared nowhere on the site** — no spelling, no
+phone, no address. Verified independently as open (Yelp listing updated Sept 2026, TripAdvisor
+2026 reviews, active Facebook page) before adding. 750 Shasta View Dr, (530) 233-5842: a 28-room
+lodge in the California Pines subdivision *southwest of town*, with its own restaurant, banquet
+rooms, and lakes. Added to `/alturas` (Hotels + American & Steakhouses), `/where-to-stay`, and
+`/where-to-eat`.
+
+Deliberately **no star rating** — the site's convention is Google ratings and no reliable Google
+figure was available. Worth knowing the sentiment is genuinely mixed: TripAdvisor sits at 3.0/5
+across 16 reviews (ranked #2 of 2 specialty lodging in Alturas), while the *restaurant* draws
+strong praise. Copy describes it factually rather than enthusing.
+
+**Correction to earlier in this same session: I over-corrected the Cedarville market schedule**
+
+Earlier today I changed Cedarville's market from "2nd and 4th Saturdays, June–October" to "every
+other Saturday, July–September", using the Surprise Valley Chamber calendar's looser "every other
+Saturday" phrasing. The Modoc Harvest flyer — the organizer's own material, and therefore
+authoritative — shows the original **"2nd and 4th Saturdays" pattern was right**; only the months
+were wrong. Restored. Lesson: the chamber calendar is a secondary source that paraphrases; prefer
+Modoc Harvest's own flyer/page for market specifics.
+
+The July–September month fix *was* correct and is confirmed by the flyer.
+
+**Also corrected and added from the flyer**
+
+- **Alturas market venue was wrong.** `/plan-your-visit` gave the Alturas market as "108 S. Main
+  St." The flyer says **Veterans Memorial Park**. (108 S. Main appears to be a Modoc Harvest
+  office address, not the market site.) Fixed.
+- **Alturas runs the 1st and 3rd Saturdays**, Cedarville the 2nd and 4th — so there is a market
+  most Saturdays of the season. The site previously gave no day pattern for Alturas at all. Both
+  now stated on `/alturas`, `/cedarville`, and `/plan-your-visit`.
+- **Payment programs added** (genuinely useful and previously absent): EBT, WIC, SunBucks,
+  CalFresh, and Senior Farmers Market Nutrition Program are accepted, and Market Match matches
+  EBT spending up to $15 per market.
+- Note the flyer still prints `www.modocharvest.org`, which has been **offline since at least
+  Aug 1** (see the 2026-08-01 entry). Site links continue to point at their Facebook page instead.
+
+Re-audited `/alturas` and `/plan-your-visit` after the edits: both still 100 across all four
+categories.
+
+**Not done — offered, awaiting a decision**
+
+The Lodging & Dining ad carries detail the site could absorb for businesses it already lists:
+Sunrise Motel's AAA approval / 14 rooms / 3-bedroom Victorian guest house; Hotel Niles's Starbucks
+coffee house; Antonio's "open daily for lunch and dinner"; Country Hearth's hours and Thursday
+Mexican night. Held back because hours rot fast and some of it brushes against the menu rules in
+`CLAUDE.md` (§ Handling Restaurant & Cafe Menus).
+
 ### 2026-09-12 — quarterly Lighthouse pass (same session as the refresh above)
 
 First full audit since 2026-05-05. Ran navigation-mode Lighthouse (desktop) against production
