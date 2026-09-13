@@ -88,6 +88,36 @@ coffee house; Antonio's "open daily for lunch and dinner"; Country Hearth's hour
 Mexican night. Held back because hours rot fast and some of it brushes against the menu rules in
 `CLAUDE.md` (§ Handling Restaurant & Cafe Menus).
 
+### 2026-09-12 — California Pines Lodge menu ad (menu rules applied)
+
+Charles supplied the lodge's "Specials of the Week" newspaper ad. Handled under `CLAUDE.md`
+§ Handling Restaurant & Cafe Menus: **nothing from the dish-and-price listings was transcribed.**
+
+**Taken** (durable, structural, no prices):
+
+- **A separate dining reservation line: (530) 646-5330**, call or text, reservations recommended.
+  This is *not* the main lodge number (530-233-5842) already on the page. Both now appear, labelled.
+- Hours confirmed exactly as written earlier from secondary sources: **Wed 4&ndash;8 PM, Thu&ndash;Sat 4&ndash;9 PM.**
+- Salad and ice cream bar included with dinner; Early Bird pricing Wed&ndash;Sat 4&ndash;5 PM; slow-roasted
+  prime rib as the Saturday night fixture. These are broad-offering facts, which the rules
+  explicitly permit ("cards that describe what a place generally offers in broad terms ... don't
+  count as a menu").
+
+**Not taken:** every priced item (Calamari Steak, Shrimp Alfredo, Filet Mignon, Malibu Chicken,
+French Dip, Teriyaki Beef Bowl, the pizza-and-wings add-on) and every dollar figure, including the
+"+$2 after 5 p.m." note and the two prime rib portion prices. Verified absent by grep after editing.
+
+**A judgment call worth recording:** the rules require a prominent `alert-warning` caveat *above
+menu sections*. This is a single list entry, not a menu section, so a full alert block would be
+disproportionate. Instead the entry closes with "Confirm current offerings and hours before you go."
+If the lodge ever gets a merchant page with real menu sections, the alert becomes mandatory.
+
+**Open question, not decided:** whether California Pines Lodge should get a merchant page. The
+merchant-page policy is "only when the business has no website of their own" — they appear to have
+a Facebook presence but no real site, so they may qualify. Left for Charles; not created unilaterally.
+
+Re-audited `/alturas`: still 100 across all four categories.
+
 ### 2026-09-12 — quarterly Lighthouse pass (same session as the refresh above)
 
 First full audit since 2026-05-05. Ran navigation-mode Lighthouse (desktop) against production
