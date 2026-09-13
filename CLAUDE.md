@@ -110,7 +110,10 @@ Uses `gunicorn` via Procfile for deployment on Railway.
 - All images need descriptive alt-text (not generic)
 - Hero background images need `role="img"` and `aria-label`
 - Links need descriptive text (not "click here" or "learn more")
-- Color contrast ratio: 8.5:1 (AAA level)
+- Color contrast: WCAG AA (4.5:1) is the bar, verified by Lighthouse. Body text on
+  white far exceeds it; the card-header bands in `base.html` are the tight case and
+  sit at 5.0-7.1:1. Card headers are 20px *normal* weight, so the relaxed 3.0:1
+  large-text threshold does not apply to them. Re-check any new band color.
 - Skip links present for keyboard navigation
 - Reduced motion support via `prefers-reduced-motion` media query
 

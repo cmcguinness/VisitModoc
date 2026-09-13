@@ -32,6 +32,71 @@ a freshen, or hand it to Claude with "let's do a quarterly pass."
 
 ## Audit log
 
+### 2026-09-12 — quarterly Lighthouse pass (same session as the refresh above)
+
+First full audit since 2026-05-05. Ran navigation-mode Lighthouse (desktop) against production
+on all 13 auditable routes. **One CSS regression found, affecting 7 pages and 40 violations.**
+
+| Page | A11y | BP | SEO | Agentic |
+|---|---|---|---|---|
+| `/` | 100 | 100 | 100 | 100 |
+| `/things-to-do` | 100* | 100 | 100 | 100 |
+| `/places-to-visit` | 100* | 100 | 100 | 100 |
+| `/plan-your-visit` | 100* | 100 | 100 | 100 |
+| `/where-to-eat` | 100* | 100 | 100 | 100 |
+| `/where-to-stay` | 100* | 100 | 100 | 100 |
+| `/alturas` | 100* | 100 | 100 | 100 |
+| `/cedarville` | 100* | 100 | 100 | 100 |
+| `/webcams` | 100 | 100 | 100 | 100 |
+| `/technical-details` | 100 | 100 | 100 | 100 |
+| `/bartells-backroads` | 100 | **96** | 100 | 100 |
+| `/merchants/the-vault` | 100 | 100 | 100 | 100 |
+| `/merchants/valley-farm-store` | 100 | 100 | 100 | 100 |
+
+\* scored 96 before the contrast fix below; re-verified at 100 after.
+
+**The regression: two card-header colors never met WCAG AA**
+
+The site-wide card-header colour treatment (`202a7ee`, `47f39d6`, `dbdccc7` — all after the May
+audit) introduced two band colours that fail 4.5:1 against white text:
+
+| Class | Old | Ratio | New | Ratio |
+|---|---|---|---|---|
+| `theme-green` / `season-spring` / `svc-full` | `#4a8b2a` | 4.19 ✗ | `#427c25` | 5.07 ✓ |
+| `theme-amber` / `season-summer` / `svc-some` | `#c2701f` | 3.73 ✗ | `#a35e1a` | 5.03 ✓ |
+| `theme-rust` / `season-fall` / `svc-none` | `#92400e` | 7.09 ✓ | unchanged | 7.09 ✓ |
+| `theme-blue` / `season-winter` | `#2c5d8a` | 6.91 ✓ | unchanged | 6.91 ✓ |
+
+The trap worth remembering: these headers are **20px normal weight**, which does *not* qualify for
+WCAG's relaxed 3.0:1 large-text threshold (that needs ≥24px normal or ≥18.66px bold). Both failing
+colours would have passed at 3.0. Hue and saturation were held exactly; only lightness dropped.
+Measured ratios are now recorded in a comment above the rules in `base.html` — **keep any new band
+colour above 4.5:1**. Visual note: summer amber now sits closer to fall rust than before. Still
+clearly distinguishable, but the gap is tighter; don't darken amber further without rechecking.
+
+`CLAUDE.md` claimed "Color contrast ratio: 8.5:1 (AAA level)", which was not true of these headers.
+Corrected to state the real AA bar and the tight case.
+
+**Closed out from the May pass**
+
+- **Merchant subpages are clean.** `/merchants/the-vault` and `/merchants/valley-farm-store` both
+  score 100 across all four categories — the May "not audited individually" limitation is resolved.
+- `/merchants/bidwell-canyon-farm` is a **301 redirect** to their own site, not a page (consistent
+  with the merchant-page policy: no merchant page for a business that has its own site). Nothing
+  to audit; don't add it to the audit list.
+- `/where-to-stay`'s three `card h-100 text-center` cards: Lighthouse is clean on that page, so
+  this stays a taste question, not an a11y one.
+
+**Unchanged known limitation**
+
+`/bartells-backroads` is still 96 Best Practices — `inspector-issues` for third-party cookies set
+by the YouTube nocookie iframes before interaction. Same as May. A click-to-load pattern
+(`lite-youtube-embed`) is the only real fix; still not worth it for 4 points.
+
+**How to re-run:** the Chrome DevTools MCP `lighthouse_audit` action (desktop, navigation mode)
+covers a11y/BP/SEO/agentic but **not** performance — that needs `performance_start_trace`.
+Note it rejects `outputDirPath` outside the workspace root; omit it and use the temp reports.
+
 ### 2026-09-12 — September refresh
 
 Ran the news sweep + `scripts/check_links.py`. **Link check was clean: 70 OK, 0 broken.** The rot
