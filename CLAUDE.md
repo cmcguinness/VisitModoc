@@ -99,6 +99,7 @@ Uses `gunicorn` via Procfile for deployment on Railway.
 - `requirements.txt` - Flask==3.0.0, gunicorn==21.2.0
 - `static/sitemap.xml` - SEO sitemap
 - `static/robots.txt` - Search engine directives
+- `static/llms.txt` - Markdown site summary for LLMs (llmstxt.org format); update it when adding or removing pages
 - `Procfile` - Railway deployment config
 - `runtime.txt` - Python version for Railway
 

@@ -308,8 +308,8 @@ def add_cache_headers(response):
 
     path = request.path
 
-    # Sitemap and robots: short cache so search engines see updates promptly.
-    if path in ('/sitemap.xml', '/robots.txt'):
+    # Sitemap, robots, and llms.txt: short cache so crawlers see updates promptly.
+    if path in ('/sitemap.xml', '/robots.txt', '/llms.txt'):
         _set_cache_control(response, 3600)  # 1 hour
         return response
 
@@ -437,6 +437,11 @@ def sitemap():
 @app.route('/robots.txt')
 def robots():
     return send_from_directory('static', 'robots.txt')
+
+
+@app.route('/llms.txt')
+def llms():
+    return send_from_directory('static', 'llms.txt', mimetype='text/plain')
 
 
 if __name__ == '__main__':
