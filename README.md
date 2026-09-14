@@ -41,4 +41,4 @@ Automatically deploys to Railway from the main branch.
 
 ## License
 
-Website content is public domain (except images from Wikimedia Commons, see `/technical-details` for attribution).
+Website text and code are public domain (CC0 1.0). Photographs are not: each keeps its own license (Creative Commons, or used with credit from the business that owns it). See `licenses.json` or `/technical-details` for details.
