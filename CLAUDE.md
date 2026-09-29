@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session Start
+
+At the start of every session, after pulling a fresh copy (there are two checkouts of this repo;
+see the bottom of `MAINTENANCE.md`), read the **Backlog** and **Standing watch list** sections of
+`MAINTENANCE.md` and briefly tell Charles what's open, flagging anything with a date that's close.
+
 ## Project Overview
 
 Visit Modoc County is a tourism website showcasing Modoc County, California. Built with Flask and Bootstrap 5, it's a simple, content-focused site promoting the county's outdoor recreation, wildlife, and small-town charm.

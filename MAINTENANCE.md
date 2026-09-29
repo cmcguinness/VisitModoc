@@ -62,7 +62,8 @@ fixture — when the business can speak for itself, link them and step back.
 
 ## Backlog
 
-Open items that need a human (usually a phone call) before the site can change.
+Open work items, reviewed at the start of every session (see `CLAUDE.md`). Tick and date an
+item when it's done, or move the detail into the audit log.
 
 - [ ] **Call before adding (from the 2026-09-29 freshness check):**
   - **Fort Bidwell Hotel & Restaurant** — (530) 708-1070. The restaurant ("Newell's Fort Bidwell
@@ -70,6 +71,11 @@ Open items that need a human (usually a phone call) before the site can change.
     If either is open, add it to the Fort Bidwell / remote-communities listings in `cedarville.html`.
   - **Wild Mustard**, 203 S Main St, Alturas — coffee, scones, gifts. No website; only weak listing
     evidence. If open, add it to Alturas dining in `alturas.html` and `where-to-eat.html`.
+- [ ] **Migrate Railway config before 2026-12-01.** Railway has deprecated config-as-code
+  (`railway.json`) in favour of infrastructure-as-code (`.railway/railway.ts`); existing files stop
+  working on **2026-12-01**. Run `railway config migrate`, check that its gunicorn `startCommand` carries over and
+  that the `MISE_PYTHON_GITHUB_ATTESTATIONS=false` env var is untouched, then confirm a deploy succeeds.
+  Docs: https://docs.railway.com/infrastructure-as-code#migrating-from-config-as-code
 
 ## Audit log
 
