@@ -30,6 +30,17 @@ a freshen, or hand it to Claude with "let's do a quarterly pass."
 - [ ] **After editing a merchant or restaurant page** — re-check the menu rules (`CLAUDE.md` § "Handling Restaurant & Cafe Menus"): no full transcription, no prices, "highlights" framing, caveat alert in place.
 - [ ] **After a route or template structural change** — verify `static/sitemap.xml` still lists every public route; `base.html` nav still reaches every page; `licenses.json` still loads on `/technical-details`.
 
+## Backlog
+
+Open items that need a human (usually a phone call) before the site can change.
+
+- [ ] **Call before adding (from the 2026-09-29 freshness check):**
+  - **Fort Bidwell Hotel & Restaurant** — (530) 708-1070. The restaurant ("Newell's Fort Bidwell
+    BBQ and Cafe", later "The NFB") shows as closed on Yelp as of March 2026; lodging status unknown.
+    If either is open, add it to the Fort Bidwell / remote-communities listings in `cedarville.html`.
+  - **Wild Mustard**, 203 S Main St, Alturas — coffee, scones, gifts. No website; only weak listing
+    evidence. If open, add it to Alturas dining in `alturas.html` and `where-to-eat.html`.
+
 ## Audit log
 
 ### 2026-08-01 — monthly refresh (manual; cloud routine's digest never arrived)
