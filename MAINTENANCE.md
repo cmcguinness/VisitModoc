@@ -79,6 +79,49 @@ item when it's done, or move the detail into the audit log.
 
 ## Audit log
 
+### 2026-09-29 — freshness pass on the iMac agent, plus Tule Lake NM
+
+First real use of the iMac agent (`imac-task`). There were two rounds on branch
+`imac/freshness-check`, then a separate task `imac/tule-lake-nm-location`. All are merged, deployed
+and verified on production with cache-busted fetches.
+
+**Stale-base merge.** The pass ran from the Mac mini checkout, which was 8 commits behind GitHub,
+so it overlapped the 2026-09-12 refresh. For farmers markets, fair wording, Fandango Days and the
+flea market, the 09-12 (flyer-verified) text won. The iMac's First Fridays card duplicated the
+existing one and was dropped. The rule is now "pull before any work" (global CLAUDE.md), and
+`imac-task start` refuses a checkout that is behind.
+
+**Corrections**
+- Cedarville–Alturas distance: "60 miles" (3 places) → about 23 miles via CA-299.
+- Pages Market → Beam Market (same address and phone; sold and renamed).
+- Avila's Taqueria removed; Guerrerense y Jalisciense (spelling fixed) is at its address, 206 N Main.
+- "Frosty's" → Harold's Frosty, 720 N Main St.
+- Gray wolves: "southwestern Modoc" → northern and western (the Interstate and Whitehorse packs).
+- Klamath salmon: dropped the unsupported "over 10,000 Chinook in 2025"; now says small numbers
+  reached Upper Klamath Lake.
+- places-to-visit: the Alturas box listed a "Modoc County Fair" → Modoc District Fair, in Cedarville.
+- Tule Lake NM: the visitor center is at 44340 Hwy 139, **Newell**, 8 mi south of Tulelake. The NPS
+  warns that Google pins it about 1/8 mi off. The Maps link now searches Newell.
+- CalVada museum days: sources disagree (Thu–Sat vs Thu–Sun), so the text says "limited days".
+
+**Added**
+- Plan Your Visit: a "Before You Drive: Seasonal Closures" box (museum seasons, Medicine Lake
+  campgrounds, Lava Beds winter roads, fire restrictions, with no order numbers). Also event cards
+  for Migratory Bird Day at Modoc NWR (Oct), the Winterfest Parade of Lights (Dec) and Surprise
+  Valley Holidays (Shop & Stroll, Fort Bidwell Lighted Tractor Parade), all with evergreen timing.
+- Things to Do: a 2026 current-conditions note for Tule Lake NWR (botulism, algal bloom, H5N1 for
+  hunters); the Modoc Line Rail Trail; how to see the Devil's Garden wild horses.
+- Listings: Niles Coffee Company and Niles Roadhouse; the Eagleville Saloon (dining and rooms);
+  the Cottage at Winje's Farm (Lake City); Warner Mountain Weavers (Cedarville).
+
+**Checked and left alone:** Whalen's, The Station and The Vault (evidence too weak; call if it
+matters). Valley Farm Store's site is still a password page ("Opening soon"), so the merchant page
+stays. Link check: 135 external links, 0 broken. The SUSPECT ones are bot-blocking.
+
+**Not added (unverified):** Floating Island Books (conflicting addresses), Wyldeflower Dyes,
+Annie's House, Steamboat Stopover, and fairgrounds RV camping. Fort Bidwell Hotel and Wild Mustard
+are on the Backlog.
+
 ### 2026-09-12 — newspaper-sourced additions + farmers market correction
 
 Charles supplied two print sources: the Modoc County Record's "Lodging & Dining Guide" ad page and
