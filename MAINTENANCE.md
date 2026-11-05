@@ -76,6 +76,27 @@ item when it's done, or move the detail into the audit log.
 
 ## Audit log
 
+### 2026-11-05 — Railway config: railway.json removed, not migrated
+
+Railway's Config-as-Code (`railway.json`) stops working 2026-12-01. Its only setting was a
+`startCommand` identical to the `Procfile`, which Railpack already reads ("Found web command in
+Procfile"). So the file was **deleted** rather than migrated to `.railway/railway.ts`. Why not
+migrate: Railway never reads `.railway/` at deploy time, so it only takes effect via a manual
+`railway config apply` with the Node `railway` package — tooling and a manual step this Python
+repo doesn't need.
+
+**Traps found on the way (worth knowing for any other Railway app):**
+- `railway config migrate` (dry run) named the service after the repo (`VisitModoc`) instead of
+  the live service (`web`). A blind `--apply` could have created a second service. Use `--service <name>`.
+- The service's dashboard Start Command held a stale bare `gunicorn app:app`, masked by
+  `railway.json`. Deleting the file alone would have dropped production to one sync worker. It was
+  cleared via `railway api` (`serviceInstanceUpdate` with `startCommand: ""`; `null` is a no-op).
+  It must stay empty — see `CLAUDE.md` § Gunicorn config.
+
+**Verified:** deploy `0453b293` SUCCESS; gunicorn 25.1.0 booted 2 gthread workers on :8080;
+`MISE_PYTHON_GITHUB_ATTESTATIONS` untouched; `/` and `/alturas` 200 (cache-busted); `railway status`
+no longer prints the deprecation warning.
+
 ### 2026-09-29 — freshness pass on the iMac agent, plus Tule Lake NM
 
 First real use of the iMac agent (`imac-task`). There were two rounds on branch

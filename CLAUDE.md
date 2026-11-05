@@ -102,7 +102,7 @@ Uses `gunicorn` via Procfile for deployment on Railway.
 
 - `app.py` - Flask routes
 - `licenses.json` - Image metadata (attribution + alt-text)
-- `requirements.txt` - Flask==3.0.0, gunicorn==21.2.0
+- `requirements.txt` - pinned Flask, gunicorn, requests
 - `static/sitemap.xml` - SEO sitemap
 - `static/robots.txt` - Search engine directives
 - `static/llms.txt` - Markdown site summary for LLMs (llmstxt.org format); update it when adding or removing pages
