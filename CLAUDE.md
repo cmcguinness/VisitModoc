@@ -106,7 +106,7 @@ Uses `gunicorn` via Procfile for deployment on Railway.
 - `static/sitemap.xml` - SEO sitemap
 - `static/robots.txt` - Search engine directives
 - `static/llms.txt` - Markdown site summary for LLMs (llmstxt.org format); update it when adding or removing pages
-- `Procfile` - Railway deployment config
+- `Procfile` - Railway start command (the only one; see Gunicorn config)
 - `runtime.txt` - Python version for Railway
 
 ## Content Guidelines
@@ -176,7 +176,14 @@ The site includes a tarpit system that slows down malicious vulnerability scanne
 Add regex patterns to `TARPIT_PATTERNS` list in `app.py`. Patterns are case-insensitive.
 
 **Gunicorn config:**
-The Procfile uses `--workers 4 --timeout 45` to handle multiple concurrent tarpits without affecting legitimate users.
+The Procfile runs `gunicorn app:app --workers 2 --threads 8 --worker-class gthread --timeout 45`, so 16
+concurrent request slots absorb several 30-second tarpits without stalling legitimate users.
+
+**The Procfile is the only source of the start command.** There is no `railway.json` (removed
+2026-11-05) and the service's Start Command setting in the Railway dashboard is deliberately
+empty. Don't fill it in: a dashboard start command overrides the Procfile, and the stale bare
+`gunicorn app:app` that used to sit there would mean one sync worker, which a single tarpit hit
+blocks for everyone.
 
 ## Deployment
 
@@ -185,4 +192,4 @@ The site deploys to Railway automatically from the main branch. Railway environm
 **Infrastructure:**
 - **Hosting:** Railway
 - **CDN/Security:** Cloudflare (handles DDoS, SSL, caching)
-- **Workers:** 4 gunicorn workers with 45-second timeout
+- **Workers:** 2 gunicorn gthread workers × 8 threads, 45-second timeout (start command lives in the Procfile only)
