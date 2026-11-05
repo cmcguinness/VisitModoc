@@ -34,19 +34,15 @@ store, because there are two checkouts of this repo and the memory store is keye
 their paths (see "Two checkouts" at the bottom of this file). Anything written here travels with
 the repo to either machine.
 
-- [ ] **California Pines Lodge — does it have its own website yet?** Added to the site 2026-09-12
-      (`/alturas`, `/where-to-stay`, `/where-to-eat`) from a newspaper ad. It has a Facebook page
-      but no real site found, which under the merchant-page policy would make it *eligible* for a
-      merchant page. **Deferred deliberately** — the call is to wait and see whether they build one
-      themselves. If a real site appears, link it and drop the idea. If it's still Facebook-only
-      after a few passes, revisit whether to create `/merchants/california-pines-lodge` (which
-      would need the full `alert-warning` menu caveat, since it would have real menu sections).
-      Contacts on file: lodge (530) 233-5842, dining reservations (530) 646-5330.
+- [x] **California Pines Lodge — does it have its own website yet?** Yes:
+      [californiapineslodge.org](https://californiapineslodge.org/) ("Cal-Pines Lodge's official
+      webpage"; domain renewed 2026-08). Linked from `/alturas` on 2026-11-05; merchant-page idea
+      dropped. Its posted hours sit under an old "dine-in again" notice but match ours.
 - [ ] **Valley Farm Store — has `valley-farmstore.com` gone live?** Still a password-walled Shopify
-      placeholder as of 2026-08-01. The merchant page (`/merchants/valley-farm-store`) exists
+      placeholder ("Opening soon") as of 2026-11-05. The merchant page (`/merchants/valley-farm-store`) exists
       *because* they have no working site. When theirs goes live, link it and retire our page —
       same policy, opposite direction from California Pines.
-- [ ] **Modoc Harvest — is `modocharvest.org` back?** Entirely offline since at least 2026-08-01;
+- [ ] **Modoc Harvest — is `modocharvest.org` back?** Entirely offline since at least 2026-08-01 (still down, cert expired, 2026-11-05);
       all links now point at their Facebook page. Their own print flyer still advertises the dead
       domain, so they may not know. If it returns, switch the farmers-market links back.
 
@@ -65,16 +61,55 @@ fixture — when the business can speak for itself, link them and step back.
 Open work items, reviewed at the start of every session (see `CLAUDE.md`). Tick and date an
 item when it's done, or move the detail into the audit log.
 
-- [ ] **Call before adding (from the 2026-09-29 freshness check):**
-  - **Fort Bidwell Hotel & Restaurant** — (530) 708-1070. The restaurant ("Newell's Fort Bidwell
-    BBQ and Cafe", later "The NFB") shows as closed on Yelp as of March 2026; lodging status unknown.
-    If either is open, add it to the Fort Bidwell / remote-communities listings in `cedarville.html`.
-  - **Wild Mustard**, 203 S Main St, Alturas — coffee, scones, gifts. No website; only weak listing
-    evidence. If open, add it to Alturas dining in `alturas.html` and `where-to-eat.html`.
+- [ ] **Phone checks (web evidence is weak or conflicting; updated 2026-11-05):**
+  - **Fort Bidwell Hotel & Restaurant** — (530) 708-1070. "The NFB" Yelp listing is still marked
+    closed (Mar 2026), but a separate "Ft Bidwell Hotel and Restaurant" listing at the same address,
+    updated June 2026, shows Thu–Fri noon–8, Sat–Sun 10–8 and no closed flag. Probably reopened under
+    the hotel's name. If so, add to the Fort Bidwell listings in `cedarville.html`.
+  - **Wild Mustard**, 203 S Main St, Alturas — now on TripAdvisor/Restaurantji (4.5★, ~140 reviews),
+    so likely open; its own domain no longer resolves. If confirmed, add to Alturas dining in
+    `alturas.html` and `where-to-eat.html`.
+  - **Guerrerense y Jalisciense vs. El Agave Azul**, 206 N Main, Alturas. The 2026-09-29 pass put
+    Guerrerense y Jalisciense at this address; the 2026-11-05 sweep found no current trace of that name
+    and an **El Agave Azul** (Mexican, Tue–Sun 12–7, (530) 233-2454, listing updated Aug 2026) there.
+    Call before renaming.
+  - **Whalen's Public House** and **The Station**, Cedarville — Yelp results dated Sept 2026 still
+    list both, but undated directories mark them closed and Whalen's address/hours conflict.
+  - **Cuatro Palomas Taqueria**, Alturas — no web presence at all under that name.
+
 - [x] **Migrate Railway config before 2026-12-01.** Done 2026-11-05 by *removing* `railway.json`
   rather than migrating it to `.railway/railway.ts`. See the 2026-11-05 audit log entry.
 
 ## Audit log
+
+### 2026-11-05 — November refresh (content sweep)
+
+Link check: 72 OK, 0 broken, 19 suspect (all known bot-blocks; abc10.com now times out to the
+checker). Business status checked by three research agents across ~45 listings; nothing confirmed
+closed.
+
+**Changed**
+- California Pines Lodge now links its own site (watch item closed, see above).
+- Added **Coffee Adventure**, a coffee bar inside Modoc Family Pharmacy on North Main, Alturas
+  (opened Nov 5, 2026; second location of the Canby shop; Modoc Record, Oct 15, 2026).
+- Lava Beds visitor center hours 9:30–4:00 → **9:30–4:30** (NPS hours page), in `places-to-visit`
+  and `things-to-do`.
+- Plan Your Visit: the "Before You Drive" box now notes Lava Beds' winter cave closures (typically to
+  mid-April) with a link to NPS conditions; the winter card's "4WD required" became "snow and chain
+  controls on the passes, back roads closed" (US-395/CA-299 are plowed); First Fridays now says it's
+  a warm-season event (the Chamber's 2026 calendar shows no winter dates).
+
+**Checked, no change:** December events are already evergreen. For reference, the Surprise Valley
+Chamber lists (tentatively) the Fort Bidwell Lighted Tractor Parade Sat Dec 5, Cedarville tree
+lighting Sun Dec 6, Shop & Stroll Sat Dec 12; Alturas Winterfest is usually the first Saturday of
+December (2026 not yet announced). Cedar Pass Snow Park did not open in 2025–26 and has no 2026–27
+announcement — the site doesn't mention it, keep it that way until it does. Winter Wings Festival's
+domain (winterwingsfest.org) has lapsed to an unrelated site — never link it. No 2027 Alturas Fall
+Festival details yet.
+
+**Noted, not acted on:** Wagon Wheel Restaurant & Motel is listed for sale (still operating);
+Hotel Niles's dining room may now be branded "High Grade Room" rather than Niles Roadhouse; Bidwell
+Canyon Farm's online orders are paused until about April. Phone checks are on the Backlog.
 
 ### 2026-11-05 — Railway config: railway.json removed, not migrated
 
