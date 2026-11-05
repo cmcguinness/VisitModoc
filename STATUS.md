@@ -1,6 +1,6 @@
 # Visit Modoc — Status
 
-_Last updated: 2026-09-29_
+_Last updated: 2026-11-05_
 
 ## Where things stand
 
@@ -20,16 +20,24 @@ All work is merged and deployed. There are no open branches, locally, on GitHub 
     (`/Volumes/DataT2`, over SMB). Pull before working.
 - **`CLAUDE.md`:** architecture, content rules (menus, tone, accessibility), session-start steps.
 
-## Open threads (details in MAINTENANCE.md → Backlog)
+## Open threads (details in MAINTENANCE.md)
 
-1. **Railway config migration, due 2026-12-01.** `railway.json` is deprecated; run
-   `railway config migrate` and confirm a deploy.
-2. **Phone calls before adding:** Fort Bidwell Hotel & Restaurant, and Wild Mustard (Alturas).
+1. **Standing watch list:** Valley Farm Store's own site (still "Opening soon") and modocharvest.org
+   (still down). California Pines Lodge's site was found and linked 2026-11-05.
+2. **Next monthly pass (early December):** confirm the Alturas Winterfest date once the Chamber
+   posts it, and re-check the tentative Surprise Valley December dates.
 3. **Optional:** the Tule Lake NM map embed on `/places-to-visit` may have a made-up place ID.
    It renders fine; regenerate it from Google Maps (Share → Embed) if it ever misbehaves.
 
+No phone calls: Charles doesn't make them. Decide listings on web evidence and hedge with
+"call ahead" wording when it's thin.
+
 ## Recent work
 
+- **2026-11-05:** November refresh. Railway `railway.json` removed (Procfile is the only start
+  command; the dashboard start command is deliberately empty). Content sweep of about 45 listings,
+  winter details, airport facts corrected using Search Console data, and Coffee Adventure, Wild
+  Mustard and the Fort Bidwell Hotel added.
 - **2026-09-29:** a freshness pass run on the iMac agent (the first real use of `imac-task`), plus
   a follow-up task for Tule Lake NM. The corrections, new content and merge are in the
   MAINTENANCE.md audit log.

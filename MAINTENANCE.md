@@ -61,21 +61,10 @@ fixture — when the business can speak for itself, link them and step back.
 Open work items, reviewed at the start of every session (see `CLAUDE.md`). Tick and date an
 item when it's done, or move the detail into the audit log.
 
-- [ ] **Phone checks (web evidence is weak or conflicting; updated 2026-11-05):**
-  - **Fort Bidwell Hotel & Restaurant** — (530) 708-1070. "The NFB" Yelp listing is still marked
-    closed (Mar 2026), but a separate "Ft Bidwell Hotel and Restaurant" listing at the same address,
-    updated June 2026, shows Thu–Fri noon–8, Sat–Sun 10–8 and no closed flag. Probably reopened under
-    the hotel's name. If so, add to the Fort Bidwell listings in `cedarville.html`.
-  - **Wild Mustard**, 203 S Main St, Alturas — now on TripAdvisor/Restaurantji (4.5★, ~140 reviews),
-    so likely open; its own domain no longer resolves. If confirmed, add to Alturas dining in
-    `alturas.html` and `where-to-eat.html`.
-  - **Guerrerense y Jalisciense vs. El Agave Azul**, 206 N Main, Alturas. The 2026-09-29 pass put
-    Guerrerense y Jalisciense at this address; the 2026-11-05 sweep found no current trace of that name
-    and an **El Agave Azul** (Mexican, Tue–Sun 12–7, (530) 233-2454, listing updated Aug 2026) there.
-    Call before renaming.
-  - **Whalen's Public House** and **The Station**, Cedarville — Yelp results dated Sept 2026 still
-    list both, but undated directories mark them closed and Whalen's address/hours conflict.
-  - **Cuatro Palomas Taqueria**, Alturas — no web presence at all under that name.
+- [x] **Phone-check list — resolved on web evidence, 2026-11-05.** Charles doesn't make calls, so
+  these are decided on the best web evidence, with "call ahead" wording where it's thin. Don't
+  re-queue items as phone calls; re-check them on the web in a later pass instead. Outcomes are in
+  the 2026-11-05 audit log ("Decided on web evidence").
 
 - [x] **Migrate Railway config before 2026-12-01.** Done 2026-11-05 by *removing* `railway.json`
   rather than migrating it to `.railway/railway.ts`. See the 2026-11-05 audit log entry.
@@ -106,6 +95,31 @@ December (2026 not yet announced). Cedar Pass Snow Park did not open in 2025–2
 announcement — the site doesn't mention it, keep it that way until it does. Winter Wings Festival's
 domain (winterwingsfest.org) has lapsed to an unrelated site — never link it. No 2027 Alturas Fall
 Festival details yet.
+
+**Decided on web evidence (no phone calls; Charles's standing preference)**
+- **206 N Main, Alturas: kept Guerrerense y Jalisciense.** The agent's "renamed to El Agave Azul"
+  finding came from stale aggregators; Yelp marks El Agave Azul **closed** (Nov 2025), which fits the
+  09-29 finding that Guerrerense took over the space.
+- **Cuatro Palomas Taqueria is real**: a taco truck at 1201 Spruce St (~150 reviews, 4.6). Rating
+  corrected from 5.0 and described as a truck.
+- **Fort Bidwell Hotel & Restaurant added** to the Fort Bidwell entry on `/cedarville`, with "limited
+  days, call (530) 708-1070 before making the drive". Evidence: June 2026 listing with hours; the
+  "NFB" closure was the restaurant's old name. An older listing gives 916-279-2050.
+- **Wild Mustard added** (coffee, scones, gifts; 203 S Main) on `/alturas` and `/where-to-eat`.
+- **Whalen's**: dropped the specific "Wed–Sat" hours (sources conflict) for "evenings only; hours
+  vary". The Station already said "call ahead". Both kept.
+
+**Search-driven fixes (Search Console export, Aug–Nov 2026)**
+- "flights to modoc county" (~200 impressions, position 6–9): the By Air card had wrong mileages
+  (Reno 150 → ~175, Redding 180 → ~145; measured with OSRM), listed Klamath Falls as a regional
+  airport (no airline service since 2014; SkyWest only evaluating as of Feb 2026), and omitted
+  Medford (MFR). All fixed; homepage airport line made consistent.
+- "modoc inn" (~230 impressions, position 14–19): no website of its own exists; listing now says
+  "21-room motel on North Main with free breakfast and Wi-Fi" and the "Modoc INN" casing is fixed.
+- "brass rail alturas" (position 1, no clicks): open; added "closed Mondays". The zero clicks are
+  most likely Google's own business panel answering the query.
+- Population / "what county is Alturas in" queries (~1,100 impressions) left alone: Google answers
+  them on the results page, and stuffing facts into copy would break the visitor-first rule.
 
 **Noted, not acted on:** Wagon Wheel Restaurant & Motel is listed for sale (still operating);
 Hotel Niles's dining room may now be branded "High Grade Room" rather than Niles Roadhouse; Bidwell
